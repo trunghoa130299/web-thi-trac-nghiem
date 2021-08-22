@@ -17,4 +17,8 @@ public class MemberController {
     public String showMemberEditPass(){
         return "member/editPass";
     }
+    @GetMapping(value = "/history")
+    public String showHistory(){
+        return "member/history";
+    }
 }
