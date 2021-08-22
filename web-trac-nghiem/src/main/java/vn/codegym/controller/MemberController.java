@@ -21,4 +21,8 @@ public class MemberController {
     public String showHistory(){
         return "member/history";
     }
+    @GetMapping(value = "/register")
+    public String dashBoard(){
+        return "register";
+    }
 }
