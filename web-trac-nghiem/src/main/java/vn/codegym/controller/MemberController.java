@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MemberController {
     @GetMapping(value = "/view")
     public String showMemberView(){
-        return "member/view";
+        return "trung/view";
     }
     @GetMapping(value = "/editMember")
     public String showMemberEdit(){
-        return "member/editMember";
+        return "trung/editMember";
     }
     @GetMapping(value = "/editPass")
     public String showMemberEditPass(){
-        return "member/editPass";
+        return "trung/editPass";
     }
     @GetMapping(value = "/history")
     public String showHistory(){
-        return "member/history";
+        return "trung/history";
     }
     @GetMapping(value = "/register")
     public String dashBoard(){
