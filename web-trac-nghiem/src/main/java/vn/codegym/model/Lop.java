@@ -7,10 +7,6 @@ import java.io.Serializable;
 import java.util.List;
 
 
-/**
- * The persistent class for the lop database table.
- * 
- */
 @Entity
 @Table(name="lop")
 @NamedQuery(name="Lop.findAll", query="SELECT l FROM Lop l")
@@ -26,7 +22,6 @@ public class Lop implements Serializable {
 	@Nationalized
 	private String tenLop;
 
-	//bi-directional many-to-one association to DeThi
 	@OneToMany(mappedBy="lop")
 	private List<DeThi> deThis;
 

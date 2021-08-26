@@ -6,10 +6,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 
-/**
- * The persistent class for the phuong_an database table.
- * 
- */
 @Entity
 @Table(name="phuong_an")
 @NamedQuery(name="PhuongAn.findAll", query="SELECT p FROM PhuongAn p")
@@ -28,7 +24,6 @@ public class PhuongAn implements Serializable {
 	@Nationalized
 	private String noiDung;
 
-	//bi-directional many-to-one association to CauHoi
 	@ManyToOne
 	@JoinColumn(name="id_cau_hoi")
 	private CauHoi cauHoi;

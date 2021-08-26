@@ -5,10 +5,6 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 
-/**
- * The persistent class for the tham_gia_thi database table.
- * 
- */
 @Entity
 @Table(name="tham_gia_thi")
 @NamedQuery(name="ThamGiaThi.findAll", query="SELECT t FROM ThamGiaThi t")
@@ -32,12 +28,10 @@ public class ThamGiaThi implements Serializable {
 	@Column()
 	private Boolean finished;
 
-	//bi-directional many-to-one association to DeThi
 	@ManyToOne
 	@JoinColumn(name="id_bo_de")
 	private DeThi deThi;
 
-	//bi-directional many-to-one association to TaiKhoan
 	@ManyToOne
 	@JoinColumn(name="username")
 	private User taiKhoan;

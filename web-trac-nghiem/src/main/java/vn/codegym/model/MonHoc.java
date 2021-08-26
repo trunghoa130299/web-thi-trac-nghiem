@@ -7,10 +7,6 @@ import java.io.Serializable;
 import java.util.List;
 
 
-/**
- * The persistent class for the mon_hoc database table.
- * 
- */
 @Entity
 @Table(name="mon_hoc")
 @NamedQuery(name="MonHoc.findAll", query="SELECT m FROM MonHoc m")
@@ -26,7 +22,6 @@ public class MonHoc implements Serializable {
 	@Nationalized
 	private String tenMonHoc;
 
-	//bi-directional many-to-one association to DeThi
 	@OneToMany(mappedBy="monHoc")
 	private List<DeThi> deThis;
 

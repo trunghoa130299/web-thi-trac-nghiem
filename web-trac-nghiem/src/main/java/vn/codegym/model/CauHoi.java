@@ -7,10 +7,6 @@ import java.io.Serializable;
 import java.util.List;
 
 
-/**
- * The persistent class for the cau_hoi database table.
- * 
- */
 @Entity
 @Table(name="cau_hoi")
 @NamedQuery(name="CauHoi.findAll", query="SELECT c FROM CauHoi c")

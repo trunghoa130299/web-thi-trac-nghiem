@@ -10,10 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 
-/**
- * The persistent class for the de_thi database table.
- * 
- */
+
 @Entity
 @Table(name="de_thi")
 @NamedQuery(name="DeThi.findAll", query="SELECT d FROM DeThi d")
@@ -76,26 +73,21 @@ public class DeThi implements Serializable {
 		this.ngayTao = ngayTao;
 	}
 
-	//bi-directional many-to-one association to CauHoi
 	@OneToMany(mappedBy="deThi")
 	private List<CauHoi> cauHois;
 
-	//bi-directional many-to-one association to Lop
 	@ManyToOne
 	@JoinColumn(name="id_lop")
 	private Lop lop;
 
-	//bi-directional many-to-one association to MonHoc
 	@ManyToOne
 	@JoinColumn(name="id_mon_hoc")
 	private MonHoc monHoc;
 
-	//bi-directional many-to-one association to TaiKhoan
 	@ManyToOne
 	@JoinColumn(name="username_nguoi_tao")
 	private User taiKhoan;
 
-	//bi-directional many-to-one association to ThamGiaThi
 	@OneToMany(mappedBy="deThi")
 	private List<ThamGiaThi> thamGiaThis;
 
