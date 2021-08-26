@@ -10,6 +10,10 @@ public class HomeController {
     public String showIndex(){
         return "index";
     }
+    @GetMapping("/default")
+    public String show(){
+        return "default-page";
+    }
     @GetMapping("/them")
     public String showThem(){
         return "them";
