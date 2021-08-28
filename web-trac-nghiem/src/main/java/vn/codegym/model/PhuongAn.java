@@ -1,69 +1,61 @@
 package vn.codegym.model;
 
-import org.hibernate.annotations.Nationalized;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 
 @Entity
 @Table(name="phuong_an")
-@NamedQuery(name="PhuongAn.findAll", query="SELECT p FROM PhuongAn p")
 public class PhuongAn implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_phuong_an")
-	private int idPhuongAn;
+	private int id;
+	private String username;
+	private int totalCorrect = 0;
 
-	@Column(name="is_correct")
-	private boolean isCorrect;
-
-	@Column(name="noi_dung",length = 3000)
-	@Nationalized
-	private String noiDung;
-
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="id_cau_hoi")
 	private CauHoi cauHoi;
 
 	public PhuongAn() {
 	}
-	
-	@Override
-	public String toString() {
-		return "PhuongAn [idPhuongAn=" + idPhuongAn + ", isCorrect=" + isCorrect + ", noiDung=" + noiDung + "]";
+
+
+	public PhuongAn(int id, String username, int totalCorrect, CauHoi cauHoi) {
+		this.id = id;
+		this.username = username;
+		this.totalCorrect = totalCorrect;
+		this.cauHoi = cauHoi;
 	}
 
-	public PhuongAn(String noiDung,boolean isCorrect,CauHoi cauHoi) {
-		this.noiDung=noiDung;
-		this.isCorrect=isCorrect;
-		this.cauHoi=cauHoi;
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
 	}
 
-	public int getIdPhuongAn() {
-		return this.idPhuongAn;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdPhuongAn(int idPhuongAn) {
-		this.idPhuongAn = idPhuongAn;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public boolean getIsCorrect() {
-		return this.isCorrect;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setIsCorrect(boolean isCorrect) {
-		this.isCorrect = isCorrect;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getNoiDung() {
-		return this.noiDung;
+	public int getTotalCorrect() {
+		return totalCorrect;
 	}
 
-	public void setNoiDung(String noiDung) {
-		this.noiDung = noiDung;
+	public void setTotalCorrect(int totalCorrect) {
+		this.totalCorrect = totalCorrect;
 	}
 
 	public CauHoi getCauHoi() {
