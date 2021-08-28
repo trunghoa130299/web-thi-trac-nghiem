@@ -23,12 +23,10 @@ public class User {
     @OneToMany(mappedBy="taiKhoan")
     private List<DeThi> deThis;
 
-    //bi-directional many-to-one association to Role
     @ManyToOne
     @JoinColumn(name="role_id")
     private Role role;
 
-    //bi-directional many-to-one association to ThamGiaThi
     @OneToMany(mappedBy="taiKhoan")
     private List<ThamGiaThi> thamGiaThis;
 

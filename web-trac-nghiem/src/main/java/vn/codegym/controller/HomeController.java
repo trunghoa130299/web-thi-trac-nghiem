@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
+    @GetMapping("/login")
+    public String showLogin(){
+        return "login";
+    }
+
     @GetMapping("/index")
     public String showIndex(){
         return "index";
