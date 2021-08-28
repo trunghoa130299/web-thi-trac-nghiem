@@ -1,12 +1,14 @@
 package vn.codegym.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
-
+@Component
 @Entity
 @Table(name="phuong_an")
-public class PhuongAn implements Serializable {
+public class PhuongAn {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -15,8 +17,8 @@ public class PhuongAn implements Serializable {
 	private String username;
 	private int totalCorrect = 0;
 
-	@OneToOne
-	@JoinColumn(name="id_cau_hoi")
+	@ManyToOne
+	@JoinColumn(name="quesId", nullable = false)
 	private CauHoi cauHoi;
 
 	public PhuongAn() {

@@ -39,7 +39,7 @@ public class QuizService {
             allQues.remove(rand);
         }
 
-        qForm.setQuestions(qList);
+        qForm.setCauHois(qList);
 
         return qForm;
     }
@@ -47,7 +47,7 @@ public class QuizService {
     public int getResult(QuestionForm qForm) {
         int correct = 0;
 
-        for(CauHoi q: qForm.getQuestions())
+        for(CauHoi q: qForm.getCauHois())
             if(q.getAns() == q.getChose())
                 correct++;
 

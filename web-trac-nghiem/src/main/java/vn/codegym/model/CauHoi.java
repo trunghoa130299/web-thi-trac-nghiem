@@ -1,15 +1,14 @@
 package vn.codegym.model;
 
-import org.hibernate.annotations.Nationalized;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
-
+@Component
 @Entity
 @Table(name="cau_hoi")
-@NamedQuery(name="CauHoi.findAll", query="SELECT c FROM CauHoi c")
 public class CauHoi implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,30 +23,19 @@ public class CauHoi implements Serializable {
 	private int chose;
 
 	//bi-directional many-to-one association to DeThi
-	@ManyToOne
-	@JoinColumn(name="id_bo_de")
-	private DeThi deThi;
+//	@ManyToOne
+//	@JoinColumn(name="id_bo_de")
+//	private DeThi deThi;
 
 	//bi-directional many-to-one association to PhuongAn
-	@OneToOne(mappedBy="cau_hoi")
-	private PhuongAn phuongAn;
+	@OneToMany(mappedBy= "cauHoi")
+	private Set<PhuongAn> phuongAns;
 
 
 
 	public CauHoi() {
 	}
 
-	public CauHoi(int quesId, String title, String optionA, String optionB, String optionC, int ans, int chose, DeThi deThi, PhuongAn phuongAn) {
-		this.quesId = quesId;
-		this.title = title;
-		this.optionA = optionA;
-		this.optionB = optionB;
-		this.optionC = optionC;
-		this.ans = ans;
-		this.chose = chose;
-		this.deThi = deThi;
-		this.phuongAn = phuongAn;
-	}
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
@@ -109,20 +97,12 @@ public class CauHoi implements Serializable {
 		this.chose = chose;
 	}
 
-	public DeThi getDeThi() {
-		return deThi;
+	public Set<PhuongAn> getPhuongAns() {
+		return phuongAns;
 	}
 
-	public void setDeThi(DeThi deThi) {
-		this.deThi = deThi;
-	}
-
-	public PhuongAn getPhuongAn() {
-		return phuongAn;
-	}
-
-	public void setPhuongAn(PhuongAn phuongAn) {
-		this.phuongAn = phuongAn;
+	public void setPhuongAns(Set<PhuongAn> phuongAns) {
+		this.phuongAns = phuongAns;
 	}
 
 	@Override

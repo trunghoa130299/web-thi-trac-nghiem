@@ -8,14 +8,13 @@ import java.util.List;
 @Component
 public class QuestionForm {
 
-    private List<TypePatternQuestions.Question> questions;
+    private List<CauHoi> cauHois;
 
-
-    public List<TypePatternQuestions.Question> getQuestions() {
-        return questions;
+    public List<CauHoi> getCauHois() {
+        return cauHois;
     }
 
-    public void setQuestions(List<TypePatternQuestions.Question> questions) {
-        this.questions = questions;
+    public void setCauHois(List<CauHoi> cauHois) {
+        this.cauHois = cauHois;
     }
 }
