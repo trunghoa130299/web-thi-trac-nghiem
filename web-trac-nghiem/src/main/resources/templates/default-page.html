@@ -14,7 +14,7 @@
 <body>
 </div>
 <nav class="navbar navbar-expand-sm bg-light navbar-dark col-12" th:fragment="navbar">
-    <a class="navbar-brand" href="/">HOME</a>
+    <a class="navbar-brand" th:href="@{/default}">Trang Chủ</a>
     <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -43,20 +43,18 @@
     <p></p>
 </nav>
 <br>
-
-<div class="container"></div>
 <div class="row">
     <div class="col-3">
         <div class="card-left">
             <div class="card text-primary bg-light mb-3" style="max-width: 14rem;">
-                <div class="card-header">Vinh danh bang vang</div>
+                <div class="card-header">Vinh danh bảng vàng</div>
                 <div class="card-body bg-white ">
                     <h5 class="card-title">Primary card title</h5>
                     <p class="card-text">the card's content.</p>
                 </div>
             </div>
             <div class="card text-primary bg-light mb-3" style="max-width: 14rem;">
-                <div class="card-header">Ho Tro truc tuyen</div>
+                <div class="card-header">Hỗ Trợ Trực Tuyến</div>
                 <div class="card-body bg-white ">
                     <h5 class="card-title">Secondary card title</h5>
                     <p class="card-text"> card's content.</p>
@@ -64,7 +62,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="col-6">
         <div class="container-fluid">
@@ -125,9 +122,15 @@
                     </div>
                     <div class="card-body">
                     <div sec:authorize="isAuthenticated()">
-                       <span sec:authentication="name"></span><br>
-                        <a th:href="@{/view/__${userName}__}">Thông Tin Cá Nhân</a>
+                    <span>Xin Chào :</span>   <span sec:authentication="name" style="color: red"></span><br>
+                        <a th:href="@{/view/__${userName}__}" class="nav-link">Thông Tin Cá Nhân</a>
+                        <a href="/logout" class="mid_card-text pl-5"><button class="btn btn-primary">
+                            Đăng xuất
+                        </button></a>
                     </div>
+                        <div sec:authorize="!isAuthenticated()">
+                            <span>Vui Lòng Đăng Nhập</span>
+                        </div>
                     </div>
                 </div>
 
