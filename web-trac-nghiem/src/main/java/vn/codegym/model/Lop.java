@@ -9,7 +9,10 @@ import java.util.List;
 
 @Entity
 @Table(name="lop")
+<<<<<<< HEAD
 @NamedQuery(name="Lop.findAll", query="SELECT l FROM Lop l")
+=======
+>>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 public class Lop implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +30,11 @@ public class Lop implements Serializable {
 
 	public Lop() {
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 	public Lop(String tenLop) {
 		this.tenLop=tenLop;
 	}

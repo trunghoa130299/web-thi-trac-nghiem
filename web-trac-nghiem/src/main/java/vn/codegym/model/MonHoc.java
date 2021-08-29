@@ -9,7 +9,10 @@ import java.util.List;
 
 @Entity
 @Table(name="mon_hoc")
+<<<<<<< HEAD
 @NamedQuery(name="MonHoc.findAll", query="SELECT m FROM MonHoc m")
+=======
+>>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 public class MonHoc implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,11 +30,19 @@ public class MonHoc implements Serializable {
 
 	public MonHoc() {
 	}
+<<<<<<< HEAD
 
 	public MonHoc(String tenMonHoc) {
 		this.tenMonHoc = tenMonHoc;
 	}
 
+=======
+	
+	public MonHoc(String tenMonHoc) {
+		this.tenMonHoc = tenMonHoc;
+	}
+	
+>>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 	public int getIdMonHoc() {
 		return this.idMonHoc;
 	}

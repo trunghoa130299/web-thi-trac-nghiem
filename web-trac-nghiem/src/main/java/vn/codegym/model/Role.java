@@ -6,7 +6,13 @@ import java.util.Set;
 @Entity
 public class Role {
     @Id
+<<<<<<< HEAD
     private Integer id;
+=======
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+>>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
     private String roleName;
 
     @ManyToMany(mappedBy = "roles")

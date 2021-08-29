@@ -7,36 +7,48 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+<th:block th:insert="~{/default-page :: navbar}"></th:block>
 <div class="container">
     <div class="card row" style="border-color: #00BFFF">
         <div class="alert" role="alert" style="background: #00BFFF">
             Thông tin cá nhân
         </div>
-        <form class="mx-5 mb-3 mt-2">
+        <form class="mx-5 mb-3 mt-2" method="post" th:object="${users}" th:action="@{/editMember}">
+            <input type="hidden" th:filed="*{user}">
+            <input type="hidden" th:filed="*{passWord}">
+            <input type="hidden" th:filed="*{rePassWord}">
+            <input type="hidden" th:filed="*{anh}">
             <div class="form-group row">
-                <label class="col-lg-2 col-sm-4 col-form-label" for="name">Họ Tên<span class="text-danger">*</span></label>
+                <label class="col-lg-2 col-sm-4 col-form-label" for="name">Họ Tên<span
+                        class="text-danger">*</span></label>
                 <div class="col-lg-10 col-sm-8">
-                    <input type="text" class="form-control" placeholder="Lê Thế Trung" id="name">
+                    <input type="text" class="form-control" th:field="*{fullName}" id="name">
+                    <label th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" style="color: red"></label>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-2 col-sm-4 col-form-label" for="email">Email<span class="text-danger">*</span></label>
+                <label class="col-lg-2 col-sm-4 col-form-label" for="email">Email<span
+                        class="text-danger">*</span></label>
                 <div class="col-lg-10 col-sm-8">
-                    <input type="text" class="form-control" placeholder="Trunghoa130299@gmail.com" id="email">
+                    <input type="text" class="form-control" th:field="*{email}" id="email">
+                    <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></label>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-lg-2 col-sm-4 col-form-label" for="address">Địa Chỉ<span class="text-danger" >*</span></label>
+                <label class="col-lg-2 col-sm-4 col-form-label" for="address">Địa Chỉ<span class="text-danger">*</span></label>
                 <div class="col-lg-10 col-sm-8">
-                    <input type="text" class="form-control" placeholder="Nghệ An" id="address">
+                    <input type="text" class="form-control" th:field="*{address}" id="address">
+                    <label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color: red"></label>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-lg-2 col-sm-4 col-form-label" for="phone">Số Điện Thoại<span class="text-danger ">*</span></label>
+                <label class="col-lg-2 col-sm-4 col-form-label" for="phone">Số Điện Thoại<span
+                        class="text-danger ">*</span></label>
                 <div class="col-lg-10 col-sm-8">
-                    <input type="text" class="form-control" placeholder="090000999" id="phone">
+                    <input type="text" class="form-control" th:field="*{phoneNumber}" id="phone">
+                    <label th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" style="color: red"></label>
                 </div>
             </div>
 
@@ -50,13 +62,23 @@
             <div class="form-group row">
                 <label class="col-lg-2 col-sm-4 col-form-label hiden"></span></label>
                 <div class="col-lg-10 col-sm-8">
-                    <button class="btn  " type="submit">Gửi</button>
-                    <a href="#">
-                        <button class="btn btn-primary " type="submit">Đổi Mật Khẩu</button>
-                    </a>
+                    <button class="btn">Gửi</button>
                 </div>
             </div>
         </form>
+        <div class="form-group row">
+            <label class="col-lg-3 col-sm-4 col-form-label hiden"></span></label>
+            <label class="col-lg-2 col-sm-4 col-form-label hiden"></span></label>
+            <div class="col-lg-6 col-sm-8">
+                <a href="#">
+                    <button class="btn btn-primary " >Đổi Mật Khẩu</button>
+                </a>
+                <a th:href="@{/view/__${userName}__}">
+                    <button class="btn btn-danger ">Đóng</button>
+                </a>
+            </div>
+        </div>
+
     </div>
 </div>
 
