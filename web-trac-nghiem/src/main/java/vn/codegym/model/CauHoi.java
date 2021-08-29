@@ -1,113 +1,101 @@
 package vn.codegym.model;
 
-import org.springframework.stereotype.Component;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
-@Component
+
 @Entity
 @Table(name="cau_hoi")
+@NamedQuery(name="CauHoi.findAll", query="SELECT c FROM CauHoi c")
 public class CauHoi implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int quesId;
-	private String title;
-	private String optionA;
-	private String optionB;
-	private String optionC;
-	private int ans;
-	private int chose;
+	@Column(name="id_cau_hoi")
+	private int idCauHoi;
+	
+	@Column(name="giai_thich",length = 3000)
+	@Nationalized
+	private String giaiThich;
+	@Nationalized
+	private String noiDung;
 
 	//bi-directional many-to-one association to DeThi
-//	@ManyToOne
-//	@JoinColumn(name="id_bo_de")
-//	private DeThi deThi;
+	@ManyToOne
+	@JoinColumn(name="id_bo_de")
+	private DeThi deThi;
 
 	//bi-directional many-to-one association to PhuongAn
-	@OneToMany(mappedBy= "cauHoi")
-	private Set<PhuongAn> phuongAns;
-
-
+	@OneToMany(mappedBy="cauHoi")
+	private List<PhuongAn> phuongAns;
 
 	public CauHoi() {
 	}
 
-
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
+	public int getIdCauHoi() {
+		return this.idCauHoi;
 	}
 
-	public int getQuesId() {
-		return quesId;
+	public void setIdCauHoi(int idCauHoi) {
+		this.idCauHoi = idCauHoi;
 	}
 
-	public void setQuesId(int quesId) {
-		this.quesId = quesId;
+	public String getGiaiThich() {
+		return this.giaiThich;
 	}
 
-	public String getTitle() {
-		return title;
+	public void setGiaiThich(String giaiThich) {
+		this.giaiThich = giaiThich;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+
+	public DeThi getDeThi() {
+		return this.deThi;
 	}
 
-	public String getOptionA() {
-		return optionA;
-	}
-
-	public void setOptionA(String optionA) {
-		this.optionA = optionA;
-	}
-
-	public String getOptionB() {
-		return optionB;
-	}
-
-	public void setOptionB(String optionB) {
-		this.optionB = optionB;
-	}
-
-	public String getOptionC() {
-		return optionC;
-	}
-
-	public void setOptionC(String optionC) {
-		this.optionC = optionC;
-	}
-
-	public int getAns() {
-		return ans;
-	}
-
-	public void setAns(int ans) {
-		this.ans = ans;
-	}
-
-	public int getChose() {
-		return chose;
-	}
-
-	public void setChose(int chose) {
-		this.chose = chose;
-	}
-
-	public Set<PhuongAn> getPhuongAns() {
-		return phuongAns;
-	}
-
-	public void setPhuongAns(Set<PhuongAn> phuongAns) {
-		this.phuongAns = phuongAns;
+	public void setDeThi(DeThi deThi) {
+		this.deThi = deThi;
 	}
 
 	@Override
 	public String toString() {
-		return "CauHoi [quesId=" + quesId + ", title=" + title + ", optionA=" + optionA + ", optionB=" + optionB + ", optionC=" + optionC + ", ans=" + ans + ", chose=" + chose + "]";
-
+		return "CauHoi [idCauHoi=" + idCauHoi + ", giaiThich=" + giaiThich + ", noiDung=" + noiDung + "]";
 	}
+
+	public String getNoiDung() {
+		return noiDung;
+	}
+
+	public void setNoiDung(String noiDung) {
+		this.noiDung = noiDung;
+	}
+
+	public List<PhuongAn> getPhuongAns() {
+		return this.phuongAns;
+	}
+
+	public void setPhuongAns(List<PhuongAn> phuongAns) {
+		this.phuongAns = phuongAns;
+	}
+
+	public PhuongAn addPhuongAn(PhuongAn phuongAn) {
+		getPhuongAns().add(phuongAn);
+		phuongAn.setCauHoi(this);
+
+		return phuongAn;
+	}
+
+	public PhuongAn removePhuongAn(PhuongAn phuongAn) {
+		getPhuongAns().remove(phuongAn);
+		phuongAn.setCauHoi(null);
+
+		return phuongAn;
+	}
+	
+	
+
 }

@@ -1,7 +1,9 @@
-//package vn.codegym.service;
-//
-//import vn.codegym.model.User;
-//
-//public interface UserService {
-//    void save(User user);
-//}
+package vn.codegym.service;
+
+import vn.codegym.model.User;
+
+public interface UserService {
+    void save(User user);
+
+    User findByUser(String name);
+}
