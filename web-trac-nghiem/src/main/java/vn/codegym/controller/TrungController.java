@@ -47,8 +47,11 @@ public class TrungController {
         return "trung/view";
     }
 
-    @GetMapping(value = "/editMember")
-    public String showMemberEdit(){
+    @GetMapping(value = "/editMember/{user}")
+    public String showMemberEdit(@PathVariable("user") String userName,Model model){
+        User user = userService.findByUser(userName);
+        model.addAttribute("users",user);
+        model.addAttribute("userName",user.getUser());
         return "trung/editMember";
     }
     @GetMapping(value = "/editPass")

@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 @Table(name="mon_hoc")
-@NamedQuery(name="MonHoc.findAll", query="SELECT m FROM MonHoc m")
 public class MonHoc implements Serializable {
 	private static final long serialVersionUID = 1L;
 

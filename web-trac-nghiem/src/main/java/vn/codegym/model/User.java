@@ -2,6 +2,8 @@ package vn.codegym.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 import java.util.Set;
 
@@ -9,13 +11,28 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotBlank(message = "Tài Khoản Không Được Để Trống")
     private String user;
+
+    @NotBlank(message = "Mật Khẩu Không Được Để Trống")
     private String passWord;
+
+    @NotBlank(message = " Không Được Để Trống")
     private String rePassWord;
+
+    @NotBlank(message = "Tên Không Được Để Trống")
     private String fullName;
+
+    @Pattern(regexp = "^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$", message = "Sai định dạng")
+    @NotBlank(message = " Email Không được để trống")
     private String email;
+
+    @NotBlank(message = "Địa Chỉ Được Để Trống")
     private String address;
+
+    @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng")
     private String phoneNumber;
+
     private String anh;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)

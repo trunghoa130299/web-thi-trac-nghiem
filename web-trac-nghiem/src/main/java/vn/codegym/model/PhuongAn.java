@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="phuong_an")
-@NamedQuery(name="PhuongAn.findAll", query="SELECT p FROM PhuongAn p")
 public class PhuongAn implements Serializable {
 	private static final long serialVersionUID = 1L;
 
