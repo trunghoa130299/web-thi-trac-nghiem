@@ -22,12 +22,10 @@ public class CauHoi implements Serializable {
 	private int ans;
 	private int chose;
 
-	//bi-directional many-to-one association to DeThi
-//	@ManyToOne
-//	@JoinColumn(name="id_bo_de")
-//	private DeThi deThi;
+	@ManyToOne
+	@JoinColumn(name="id_bo_de")
+	private DeThi deThi;
 
-	//bi-directional many-to-one association to PhuongAn
 	@OneToMany(mappedBy= "cauHoi")
 	private Set<PhuongAn> phuongAns;
 

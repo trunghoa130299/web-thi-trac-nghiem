@@ -13,10 +13,10 @@ public class MemberController {
     public String showMemberEdit(){
         return "trung/editMember";
     }
-    @GetMapping(value = "/editPass")
-    public String showMemberEditPass(){
-        return "trung/editPass";
-    }
+//    @GetMapping(value = "/editPass")
+//    public String showMemberEditPass(){
+//        return "trung/editPass";
+//    }
     @GetMapping(value = "/history")
     public String showHistory(){
         return "trung/history";
