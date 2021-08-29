@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 <title>Multiple Choice Quiz</title>
@@ -124,14 +124,10 @@
                         </svg></span> &nbsp;<a th:href="@{/login}">Đăng Nhập</a>
                     </div>
                     <div class="card-body">
-                       <div class="table">
-                           <tr>
-                               <td>User : </td>
-                           </tr>
-                           <tr>
-                               <td><a>Information</a></td>
-                           </tr>
-                       </div>
+                    <div sec:authorize="isAuthenticated()">
+                       <span sec:authentication="name"></span><br>
+                        <a th:href="@{/view/__${userName}__}">Thông Tin Cá Nhân</a>
+                    </div>
                     </div>
                 </div>
 

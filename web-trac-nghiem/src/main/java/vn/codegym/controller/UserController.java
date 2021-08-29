@@ -26,6 +26,7 @@ public class UserController {
     public String signUp(@ModelAttribute User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassWord(passwordEncoder.encode(user.getPassWord()));
+        user.setRePassWord(passwordEncoder.encode(user.getRePassWord()));
         userService.save(user);
         return "login";
     }
