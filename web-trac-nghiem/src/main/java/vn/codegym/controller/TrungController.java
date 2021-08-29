@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import vn.codegym.model.User;
 import vn.codegym.service.UserService;
+
+import javax.validation.Valid;
 
 @Controller
 public class TrungController {
@@ -54,6 +57,18 @@ public class TrungController {
         model.addAttribute("userName",user.getUser());
         return "trung/editMember";
     }
+
+    @PostMapping("/editMember")
+    public String editMember(@Valid @ModelAttribute("users") User user , BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()){
+            return "trung/editMember";
+        }else {
+            userService.save(user);
+            model.addAttribute("userName",user.getUser());
+            return "trung/editMember";
+        }
+    }
+
     @GetMapping(value = "/editPass")
     public String showMemberEditPass(){
         return "trung/editPass";
@@ -61,9 +76,5 @@ public class TrungController {
     @GetMapping(value = "/history")
     public String showHistory(){
         return "trung/history";
-    }
-    @GetMapping(value = "/register")
-    public String dashBoard(){
-        return "register";
     }
 }

@@ -50,7 +50,8 @@ public class User {
     public User() {
     }
 
-    public User(String user, String passWord, String rePassWord, String fullName, String email, String address, String phoneNumber, String anh, Set<Role> roles, List<DeThi> deThis, List<ThamGiaThi> thamGiaThis) {
+    public User(@NotBlank(message = "Tài Khoản Không Được Để Trống") String user, @NotBlank(message = "Mật Khẩu Không Được Để Trống") String passWord, @NotBlank(message = " Không Được Để Trống") String rePassWord, @NotBlank(message = "Tên Không Được Để Trống") String fullName, @Pattern(regexp = "^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$", message = "Sai định dạng") @NotBlank(message = " Email Không được để trống") String email, @NotBlank(message = "Địa Chỉ Được Để Trống") String address, @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng") String phoneNumber, String anh, Set<Role> roles,
+                List<DeThi> deThis, List<ThamGiaThi> thamGiaThis) {
         this.user = user;
         this.passWord = passWord;
         this.rePassWord = rePassWord;
@@ -62,6 +63,25 @@ public class User {
         this.roles = roles;
         this.deThis = deThis;
         this.thamGiaThis = thamGiaThis;
+    }
+
+    public User(@NotBlank(message = "Tài Khoản Không Được Để Trống") String user, @NotBlank(message = "Mật Khẩu Không Được Để Trống") String passWord, @NotBlank(message = " Không Được Để Trống") String rePassWord, @NotBlank(message = "Tên Không Được Để Trống") String fullName, @Pattern(regexp = "^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$",
+            message = "Sai định dạng") @NotBlank(message = " Email Không được để trống") String email, @NotBlank(message = "Địa Chỉ Được Để Trống") String address, @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng") String phoneNumber, String anh) {
+        this.user = user;
+        this.passWord = passWord;
+        this.rePassWord = rePassWord;
+        this.fullName = fullName;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.anh = anh;
+    }
+
+    public User(@NotBlank(message = "Tên Không Được Để Trống") String fullName, @Pattern(regexp = "^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$", message = "Sai định dạng") @NotBlank(message = " Email Không được để trống") String email, @NotBlank(message = "Địa Chỉ Được Để Trống") String address, @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng") String phoneNumber) {
+        this.fullName = fullName;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
     }
 
     public User(String anh) {

@@ -13,7 +13,7 @@
         <div class="alert" role="alert" style="background: #00BFFF">
             Thông tin cá nhân
         </div>
-        <form class="mx-5 mb-3 mt-2" method="post" th:object="${users}">
+        <form class="mx-5 mb-3 mt-2" method="post" th:object="${users}" th:action="@{/editMember}">
             <input type="hidden" th:filed="*{user}">
             <input type="hidden" th:filed="*{passWord}">
             <input type="hidden" th:filed="*{rePassWord}">
@@ -23,6 +23,7 @@
                         class="text-danger">*</span></label>
                 <div class="col-lg-10 col-sm-8">
                     <input type="text" class="form-control" th:field="*{fullName}" id="name">
+                    <label th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" style="color: red"></label>
                 </div>
             </div>
             <div class="form-group row">
@@ -30,6 +31,7 @@
                         class="text-danger">*</span></label>
                 <div class="col-lg-10 col-sm-8">
                     <input type="text" class="form-control" th:field="*{email}" id="email">
+                    <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></label>
                 </div>
             </div>
 
@@ -37,6 +39,7 @@
                 <label class="col-lg-2 col-sm-4 col-form-label" for="address">Địa Chỉ<span class="text-danger">*</span></label>
                 <div class="col-lg-10 col-sm-8">
                     <input type="text" class="form-control" th:field="*{address}" id="address">
+                    <label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color: red"></label>
                 </div>
             </div>
 
@@ -45,6 +48,7 @@
                         class="text-danger ">*</span></label>
                 <div class="col-lg-10 col-sm-8">
                     <input type="text" class="form-control" th:field="*{phoneNumber}" id="phone">
+                    <label th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" style="color: red"></label>
                 </div>
             </div>
 
@@ -58,7 +62,7 @@
             <div class="form-group row">
                 <label class="col-lg-2 col-sm-4 col-form-label hiden"></span></label>
                 <div class="col-lg-10 col-sm-8">
-                    <button class="btn  " type="submit">Gửi</button>
+                    <button class="btn">Gửi</button>
                 </div>
             </div>
         </form>
