@@ -31,14 +31,14 @@ public class HomeController {
 
     @GetMapping("/addQuestion")
     public String addQuestion(){
-        return "question/addQS";
+        return "question/createNewExam";
     }
     @GetMapping("/listExam")
     public String listExam(){
-        return "question/listExamQuestions";
+        return "question/listExam";
     }
     @GetMapping("/questionList")
     public String questionList(){
-        return "question/questionList";
+        return "question/listQuestion";
     }
 }
