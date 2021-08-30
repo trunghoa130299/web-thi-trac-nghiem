@@ -85,7 +85,7 @@ public class TrungController {
             return "trung/editPass";
         }else {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            users.setPassWord(passwordEncoder.encode(users.getPassWord()));
+            users.setPassWord(passwordEncoder.encode(users.getRePassWord()));
             users.setRePassWord(passwordEncoder.encode(users.getRePassWord()));
             userService.save(users);
             model.addAttribute("message","Cập Nhật Thành Công !");
