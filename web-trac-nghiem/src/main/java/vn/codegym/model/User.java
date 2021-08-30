@@ -9,7 +9,6 @@ import java.util.Set;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotBlank(message = "Tài Khoản Không Được Để Trống")
     private String user;
 
@@ -42,11 +41,10 @@ public class User {
     @OneToMany(mappedBy = "users")
     private List<Exam> exams;
 
-
     @OneToMany(mappedBy = "users")
     private List<TestExam> testExams;
 
-    @OneToOne(targetEntity = Result.class)
+    @OneToOne(cascade = CascadeType.ALL)
     private Result result;
 
     public User() {
