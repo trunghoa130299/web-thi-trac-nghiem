@@ -38,7 +38,7 @@ public class TrungController {
 
     @GetMapping(value = "/view/{userName}")
     public String showMemberView(@PathVariable String userName, Model model){
-        User user = userService.findByUser(userName);
+        User user = userService.findById(userName);
         model.addAttribute("users",user);
         return "trung/view";
     }
@@ -46,32 +46,52 @@ public class TrungController {
     @PostMapping("/edit")
     public String editView(@ModelAttribute("users") User user,Model model){
         userService.save(user);
+        model.addAttribute("message","Cập Nhật Thành Công !");
         model.addAttribute("users",user);
         return "trung/view";
     }
 
     @GetMapping(value = "/editMember/{user}")
     public String showMemberEdit(@PathVariable("user") String userName,Model model){
-        User user = userService.findByUser(userName);
+        User user = userService.findById(userName);
         model.addAttribute("users",user);
         model.addAttribute("userName",user.getUser());
         return "trung/editMember";
     }
 
     @PostMapping("/editMember")
-    public String editMember(@Valid @ModelAttribute("users") User user , BindingResult bindingResult, Model model){
+    public String editMember(@Valid @ModelAttribute("users") User users , BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
+            model.addAttribute("userName",users.getUser());
             return "trung/editMember";
         }else {
-            userService.save(user);
-            model.addAttribute("userName",user.getUser());
+            userService.save(users);
+            model.addAttribute("message","Cập Nhật Thành Công !");
+            model.addAttribute("userName",users.getUser());
             return "trung/editMember";
         }
     }
 
-    @GetMapping(value = "/editPass")
-    public String showMemberEditPass(){
+    @GetMapping(value = "/editPass/{user}")
+    public String showMemberEditPass(@PathVariable String user,Model model){
+        User users = userService.findById(user);
+        model.addAttribute("users",users);
         return "trung/editPass";
+    }
+    @PostMapping("/editPass")
+    public String editPass(@Valid @ModelAttribute("users") User users , BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()){
+            model.addAttribute("userName",users.getUser());
+            return "trung/editPass";
+        }else {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            users.setPassWord(passwordEncoder.encode(users.getPassWord()));
+            users.setRePassWord(passwordEncoder.encode(users.getRePassWord()));
+            userService.save(users);
+            model.addAttribute("message","Cập Nhật Thành Công !");
+            model.addAttribute("userName",users.getUser());
+            return "trung/editPass";
+        }
     }
     @GetMapping(value = "/history")
     public String showHistory(){

@@ -10,13 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 
-
 @Entity
 @Table(name="de_thi")
-<<<<<<< HEAD
-@NamedQuery(name="DeThi.findAll", query="SELECT d FROM DeThi d")
-=======
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 public class DeThi implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -33,16 +28,6 @@ public class DeThi implements Serializable {
 	@Column(name="mo_ta",length = 1000)
 	@Nationalized
 	private String moTa;
-<<<<<<< HEAD
-
-	@Column(name="ngay_tao")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date ngayTao;
-
-	@Column(length = 1000)
-	private boolean hienThiDapAnVaGiaiThich;
-
-=======
 	
 	@Column(name="ngay_tao")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -51,7 +36,6 @@ public class DeThi implements Serializable {
 	@Column(length = 1000)
 	private boolean hienThiDapAnVaGiaiThich;
 	
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 	@Column()
 	private int thoiGianThi;
 
@@ -133,21 +117,6 @@ public class DeThi implements Serializable {
 		this.cauHois = cauHois;
 	}
 
-<<<<<<< HEAD
-//	public CauHoi addCauHoi(CauHoi cauHoi) {
-//		getCauHois().add(cauHoi);
-//		cauHoi.setDeThi(this);
-//
-//		return cauHoi;
-//	}
-//
-//	public CauHoi removeCauHoi(CauHoi cauHoi) {
-//		getCauHois().remove(cauHoi);
-//		cauHoi.setDeThi(null);
-//
-//		return cauHoi;
-//	}
-=======
 	public CauHoi addCauHoi(CauHoi cauHoi) {
 		getCauHois().add(cauHoi);
 		cauHoi.setDeThi(this);
@@ -161,7 +130,6 @@ public class DeThi implements Serializable {
 
 		return cauHoi;
 	}
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 
 	public Lop getLop() {
 		return this.lop;
@@ -213,12 +181,9 @@ public class DeThi implements Serializable {
 	public String toString() {
 		return "DeThi [idDe=" + idDe + ", tenDe=" + tenDe + ", moTa=" + moTa + ", thoiGianThi=" + thoiGianThi + "]";
 	}
-<<<<<<< HEAD
-=======
 
 	
 	
 	
 
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 }

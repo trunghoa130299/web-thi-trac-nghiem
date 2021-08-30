@@ -9,6 +9,12 @@
 <body>
 <th:block th:insert="~{/default-page :: navbar}"></th:block>
 <div class="container">
+    <div class="alert alert-primary alert-dismissible fade show" role="alert" th:if="${message}">
+        <strong th:text="${message}"></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <div class="card mt-5 row" style="border-color: #00BFFF">
         <div class="card-header col-lg-12" style="background: #00BFFF">
             <label class="col-form-label">Thông Tin Cá Nhân</label>
@@ -66,6 +72,7 @@
         <div class="row col-lg-12 hide mt-3"></div>
     </div>
 </div>
+<th:block th:insert="~{/default-page :: footer}"></th:block>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

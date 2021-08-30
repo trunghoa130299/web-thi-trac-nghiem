@@ -7,10 +7,6 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name="tham_gia_thi")
-<<<<<<< HEAD
-@NamedQuery(name="ThamGiaThi.findAll", query="SELECT t FROM ThamGiaThi t")
-=======
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 public class ThamGiaThi implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,11 +23,7 @@ public class ThamGiaThi implements Serializable {
 
 	@Column(name="tong_diem")
 	private double tongDiem;
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 	@Column()
 	private Boolean finished;
 
@@ -84,13 +76,8 @@ public class ThamGiaThi implements Serializable {
 		this.ngayGioKetThuc = ngayGioKetThuc;
 	}
 
-<<<<<<< HEAD
-
-
-=======
 	
 	
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 	public Boolean getFinished() {
 		return finished;
 	}

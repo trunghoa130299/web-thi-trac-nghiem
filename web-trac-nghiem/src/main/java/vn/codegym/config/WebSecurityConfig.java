@@ -10,23 +10,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-<<<<<<< HEAD
-=======
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 import vn.codegym.service.Impl.MyUserDetailServiceImpl;
 
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-<<<<<<< HEAD
-//    @Autowired
-//    private MyUserDetailServiceImpl myUserDetailService;
-=======
     @Autowired
     private MyUserDetailServiceImpl myUserDetailService;
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -35,15 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-<<<<<<< HEAD
-        auth.inMemoryAuthentication()
-                .withUser("user").password(passwordEncoder().encode("123")).roles("USER")
-                .and()
-                .withUser("admin").password(passwordEncoder().encode("123")).roles("ADMIN");
-//        auth.userDetailsService(myUserDetailService).passwordEncoder(passwordEncoder());
-=======
         auth.userDetailsService(myUserDetailService).passwordEncoder(passwordEncoder());
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
     }
 
     @Override

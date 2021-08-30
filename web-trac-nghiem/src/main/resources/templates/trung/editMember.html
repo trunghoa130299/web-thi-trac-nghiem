@@ -9,15 +9,21 @@
 <body>
 <th:block th:insert="~{/default-page :: navbar}"></th:block>
 <div class="container">
+    <div class="alert alert-primary alert-dismissible fade show" role="alert" th:if="${message}">
+        <strong th:text="${message}"></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <div class="card row" style="border-color: #00BFFF">
         <div class="alert" role="alert" style="background: #00BFFF">
             Thông tin cá nhân
         </div>
         <form class="mx-5 mb-3 mt-2" method="post" th:object="${users}" th:action="@{/editMember}">
-            <input type="hidden" th:filed="*{user}">
-            <input type="hidden" th:filed="*{passWord}">
-            <input type="hidden" th:filed="*{rePassWord}">
-            <input type="hidden" th:filed="*{anh}">
+            <input type="hidden" th:field="*{user}">
+            <input type="hidden" th:field="*{passWord}">
+            <input type="hidden" th:field="*{rePassWord}">
+            <input type="hidden" th:field="*{anh}">
             <div class="form-group row">
                 <label class="col-lg-2 col-sm-4 col-form-label" for="name">Họ Tên<span
                         class="text-danger">*</span></label>
@@ -70,7 +76,7 @@
             <label class="col-lg-3 col-sm-4 col-form-label hiden"></span></label>
             <label class="col-lg-2 col-sm-4 col-form-label hiden"></span></label>
             <div class="col-lg-6 col-sm-8">
-                <a href="#">
+                <a th:href="@{/editPass/__${users.user}__}">
                     <button class="btn btn-primary " >Đổi Mật Khẩu</button>
                 </a>
                 <a th:href="@{/view/__${userName}__}">
@@ -81,7 +87,7 @@
 
     </div>
 </div>
-
+<script>$('.alert').alert()</script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

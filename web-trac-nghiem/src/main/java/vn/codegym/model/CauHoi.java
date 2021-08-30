@@ -23,24 +23,14 @@ public class CauHoi implements Serializable {
 	@Nationalized
 	private String noiDung;
 
-<<<<<<< HEAD
-=======
 	//bi-directional many-to-one association to DeThi
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 	@ManyToOne
 	@JoinColumn(name="id_bo_de")
 	private DeThi deThi;
 
-<<<<<<< HEAD
-	@OneToMany(mappedBy= "cauHoi")
-	private Set<PhuongAn> phuongAns;
-
-
-=======
 	//bi-directional many-to-one association to PhuongAn
 	@OneToMany(mappedBy="cauHoi")
 	private List<PhuongAn> phuongAns;
->>>>>>> 3f69a13f21c83079eb8eef8d7b2b641baaf304c9
 
 	public CauHoi() {
 	}

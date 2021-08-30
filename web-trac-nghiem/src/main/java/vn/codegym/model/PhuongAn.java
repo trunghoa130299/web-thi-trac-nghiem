@@ -35,7 +35,7 @@ public class PhuongAn implements Serializable {
 		return "PhuongAn [idPhuongAn=" + idPhuongAn + ", isCorrect=" + isCorrect + ", noiDung=" + noiDung + "]";
 	}
 
-	public PhuongAn(String noiDung,boolean isCorrect,CauHoi cauHoi) {
+	public PhuongAn(String noiDung, boolean isCorrect, CauHoi cauHoi) {
 		this.noiDung=noiDung;
 		this.isCorrect=isCorrect;
 		this.cauHoi=cauHoi;
