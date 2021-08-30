@@ -2,6 +2,7 @@ package vn.codegym.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.sql.Timestamp;
 
@@ -20,9 +21,11 @@ public class TestExam {
 
 
     @ManyToOne(targetEntity = Exam.class)
+    @JoinColumn(name = "exams_id", referencedColumnName = "id")
     private Exam exams;
 
     @ManyToOne
+    @JoinColumn(name = "users_id", referencedColumnName = "id")
     private User users;
 
     public TestExam() {

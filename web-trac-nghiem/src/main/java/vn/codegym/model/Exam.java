@@ -14,12 +14,15 @@ public class Exam {
     private String nameExam;
 
     @ManyToOne(targetEntity = Classes.class)
+    @JoinColumn(name = "classes_id", referencedColumnName = "id")
     private Classes classes;
 
     @ManyToOne(targetEntity = Subject.class)
+    @JoinColumn(name = "subject_id", referencedColumnName = "id")
     private Subject subject;
 
     @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "users_id", referencedColumnName = "id")
     private User users;
 
     @OneToMany(mappedBy = "exams")

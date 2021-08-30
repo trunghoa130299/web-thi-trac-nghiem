@@ -10,7 +10,7 @@ import java.util.Set;
 public class User {
     @Id
     @NotBlank(message = "Tài Khoản Không Được Để Trống")
-    private String user;
+    private String id;
 
     @NotBlank(message = "Mật Khẩu Không Được Để Trống")
     private String passWord;
@@ -34,7 +34,7 @@ public class User {
     private String img;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "username", referencedColumnName = "user"),
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "username", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;
 
@@ -44,7 +44,7 @@ public class User {
     @OneToMany(mappedBy = "users")
     private List<TestExam> testExams;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "users", cascade = CascadeType.ALL)
     private Result result;
 
     public User() {
@@ -59,7 +59,7 @@ public class User {
                 @NotBlank(message = "Địa Chỉ Được Để Trống") String address,
                 @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng") String phoneNumber,
                 String img, Set<Role> roles, List<Exam> exams, List<TestExam> testExams, Result result) {
-        this.user = user;
+        this.id = user;
         this.passWord = passWord;
         this.rePassWord = rePassWord;
         this.fullName = fullName;
@@ -73,12 +73,12 @@ public class User {
         this.result = result;
     }
 
-    public String getUser() {
-        return user;
+    public String getId() {
+        return id;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setId(String user) {
+        this.id = user;
     }
 
     public String getPassWord() {

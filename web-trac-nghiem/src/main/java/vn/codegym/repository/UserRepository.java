@@ -6,5 +6,5 @@ import vn.codegym.model.User;
 
 @Service
 public interface  UserRepository  extends JpaRepository<User,String > {
-    User findByUser(String username);
+
 }

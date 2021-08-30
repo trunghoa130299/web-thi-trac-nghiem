@@ -30,7 +30,7 @@ public class TrungController {
     public String signUp(@ModelAttribute User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassWord(passwordEncoder.encode(user.getPassWord()));
-        user.setRePassWord(passwordEncoder.encode(user.getRePassWord()));
+        user.setRePassWord(user.getPassWord());
         userService.save(user);
         return "login";
     }
@@ -51,28 +51,28 @@ public class TrungController {
         return "trung/view";
     }
 
-    @GetMapping(value = "/editMember/{user}")
-    public String showMemberEdit(@PathVariable("user") String userName,Model model){
+    @GetMapping(value = "/editMember/{id}")
+    public String showMemberEdit(@PathVariable("id") String userName,Model model){
         User user = userService.findById(userName);
         model.addAttribute("users",user);
-        model.addAttribute("userName",user.getUser());
+        model.addAttribute("userName",user.getId());
         return "trung/editMember";
     }
 
     @PostMapping("/editMember")
     public String editMember(@Valid @ModelAttribute("users") User users , BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
-            model.addAttribute("userName",users.getUser());
+            model.addAttribute("userName",users.getId());
             return "trung/editMember";
         }else {
             userService.save(users);
             model.addAttribute("message","Cập Nhật Thành Công !");
-            model.addAttribute("userName",users.getUser());
+            model.addAttribute("userName",users.getId());
             return "trung/editMember";
         }
     }
 
-    @GetMapping(value = "/editPass/{user}")
+    @GetMapping(value = "/editPass/{id}")
     public String showMemberEditPass(@PathVariable String user,Model model){
         User users = userService.findById(user);
         model.addAttribute("users",users);
@@ -81,7 +81,7 @@ public class TrungController {
     @PostMapping("/editPass")
     public String editPass(@Valid @ModelAttribute("users") User users , BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
-            model.addAttribute("userName",users.getUser());
+            model.addAttribute("userName",users.getId());
             return "trung/editPass";
         }else {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -89,7 +89,7 @@ public class TrungController {
             users.setRePassWord(passwordEncoder.encode(users.getRePassWord()));
             userService.save(users);
             model.addAttribute("message","Cập Nhật Thành Công !");
-            model.addAttribute("userName",users.getUser());
+            model.addAttribute("userName",users.getId());
             return "trung/editPass";
         }
     }

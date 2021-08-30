@@ -15,7 +15,7 @@ public class Result {
     private int totalCorrect = 0;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_result",referencedColumnName = "user" )
+    @JoinColumn(name = "users_user",referencedColumnName = "id" )
     private User users;
 
 

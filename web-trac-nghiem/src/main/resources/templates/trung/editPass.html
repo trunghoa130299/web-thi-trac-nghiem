@@ -28,8 +28,8 @@
             Đổi mật khẩu
         </div>
         <form class="mx-5 mb-3 mt-2" method="post" th:object="${users}" th:action="@{/editPass}">
-            <input type="hidden" th:field="*{user}">
-            <input type="hidden" th:field="*{anh}">
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{img}">
             <input type="hidden" th:field="*{fullName}">
             <input type="hidden" th:field="*{address}">
             <input type="hidden" th:field="*{email}">
@@ -64,7 +64,7 @@
                 <label class="col-lg-2 col-sm-4 col-form-label hiden"></span></label>
                 <div class="col-lg-10 col-sm-8">
                     <button class="btn btn-light " type="submit">Gửi</button>
-                    <a th:href="@{/editMember/__${users.user}__}" class="btn btn-primary">
+                    <a th:href="@{/editMember/__${users.id}__}" class="btn btn-primary">
                         Đóng
                     </a>
                 </div>

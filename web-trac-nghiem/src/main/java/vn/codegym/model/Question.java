@@ -20,6 +20,7 @@ public class Question {
     private int chose;
 
     @ManyToOne(targetEntity = Exam.class)
+    @JoinColumn(name = "exams_id", referencedColumnName = "id")
     private Exam exams;
 
     @OneToMany(mappedBy="questions")
