@@ -32,7 +32,7 @@
             <input type="hidden" th:field="*{rePassWord}">
             <div class="col-lg-4 mt-2">
                 <p class="text-center">Ảnh</p>
-                <p class="text-center"><img th:src="@{/img/{img}(img=${users.getAnh()})}" style="width: 10em;height: 10em"/></p>
+                <p class="text-center"><img th:src="@{/img/{img}(img=${users.getImg()})}" style="width: 10em;height: 10em"/></p>
             </div>
             <div class="col-lg-8 mt-2">
                 <div class="form-group row">
@@ -65,7 +65,7 @@
                 <input class="btn"   style="margin-left: 6em" type="submit" value="Cập Nhật"/>
                 &nbsp  <input type="file"
                               value="Chọn Tệp"
-                              class="btn" th:field="*{anh}" >
+                              class="btn" th:field="*{img}" >
             </div>
         </form>
         <div class="row col-lg-12 mt-5 ">

@@ -3,10 +3,10 @@ package vn.codegym.model;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Component
 @Entity
-@Table(name = "questions")
 public class Question {
 
     @Id
@@ -19,12 +19,17 @@ public class Question {
     private int ans;
     private int chose;
 
+    @ManyToOne(targetEntity = Exam.class)
+    private Exam exams;
+
+    @OneToMany(mappedBy="questions")
+    private List<Result> results;
+
     public Question() {
         super();
     }
 
-    public Question(int quesId, String title, String optionA, String optionB, String optionC, int ans, int chose) {
-        super();
+    public Question(int quesId, String title, String optionA, String optionB, String optionC, int ans, int chose, Exam exams, List<Result> results) {
         this.quesId = quesId;
         this.title = title;
         this.optionA = optionA;
@@ -32,6 +37,8 @@ public class Question {
         this.optionC = optionC;
         this.ans = ans;
         this.chose = chose;
+        this.exams = exams;
+        this.results = results;
     }
 
     public int getQuesId() {
@@ -86,13 +93,38 @@ public class Question {
         return chose;
     }
 
-    public void setChose(int choosed) {
-        this.chose = choosed;
+    public void setChose(int chose) {
+        this.chose = chose;
+    }
+
+    public Exam getExams() {
+        return exams;
+    }
+
+    public void setExams(Exam exams) {
+        this.exams = exams;
+    }
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
     }
 
     @Override
     public String toString() {
-        return "Question [quesId=" + quesId + ", title=" + title + ", optionA=" + optionA + ", optionB=" + optionB + ", optionC=" + optionC + ", ans=" + ans + ", chose=" + chose + "]";
+        return "Question{" +
+                "quesId=" + quesId +
+                ", title='" + title + '\'' +
+                ", optionA='" + optionA + '\'' +
+                ", optionB='" + optionB + '\'' +
+                ", optionC='" + optionC + '\'' +
+                ", ans=" + ans +
+                ", chose=" + chose +
+                ", exams=" + exams +
+                ", results=" + results +
+                '}';
     }
-
 }
