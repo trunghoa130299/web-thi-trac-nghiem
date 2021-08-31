@@ -11,6 +11,7 @@ public class Result {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String username;
 
     private int totalCorrect = 0;
 
@@ -26,8 +27,9 @@ public class Result {
         super();
     }
 
-    public Result(int id, int totalCorrect, User users, Question questions) {
+    public Result(int id, String username, int totalCorrect, User users, Question questions) {
         this.id = id;
+        this.username = username;
         this.totalCorrect = totalCorrect;
         this.users = users;
         this.questions = questions;
@@ -63,5 +65,13 @@ public class Result {
 
     public void setQuestions(Question questions) {
         this.questions = questions;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

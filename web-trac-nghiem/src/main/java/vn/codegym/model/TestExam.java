@@ -17,8 +17,6 @@ public class TestExam {
 
     private double scoreSum;
 
-    private Boolean finished;
-
 
     @ManyToOne(targetEntity = Exam.class)
     @JoinColumn(name = "exams_id", referencedColumnName = "id")
@@ -31,12 +29,11 @@ public class TestExam {
     public TestExam() {
     }
 
-    public TestExam(int id, Timestamp timeStart, Timestamp timeEnd, double scoreSum, Boolean finished, Exam exams, User users) {
+    public TestExam(int id, Timestamp timeStart, Timestamp timeEnd, double scoreSum, Exam exams, User users) {
         this.id = id;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
         this.scoreSum = scoreSum;
-        this.finished = finished;
         this.exams = exams;
         this.users = users;
     }
@@ -71,14 +68,6 @@ public class TestExam {
 
     public void setScoreSum(double scoreSum) {
         this.scoreSum = scoreSum;
-    }
-
-    public Boolean getFinished() {
-        return finished;
-    }
-
-    public void setFinished(Boolean finished) {
-        this.finished = finished;
     }
 
     public Exam getExams() {
