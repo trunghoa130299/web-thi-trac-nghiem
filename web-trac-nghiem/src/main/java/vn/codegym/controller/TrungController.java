@@ -73,7 +73,7 @@ public class TrungController {
     }
 
     @GetMapping(value = "/editPass/{id}")
-    public String showMemberEditPass(@PathVariable String user,Model model){
+    public String showMemberEditPass(@PathVariable("id") String user,Model model){
         User users = userService.findById(user);
         model.addAttribute("users",users);
         return "trung/editPass";
@@ -85,7 +85,7 @@ public class TrungController {
             return "trung/editPass";
         }else {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            users.setPassWord(passwordEncoder.encode(users.getRePassWord()));
+            users.setPassWord(passwordEncoder.encode(users.getPassWord()));
             users.setRePassWord(passwordEncoder.encode(users.getRePassWord()));
             userService.save(users);
             model.addAttribute("message","Cập Nhật Thành Công !");

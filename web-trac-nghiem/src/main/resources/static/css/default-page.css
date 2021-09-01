@@ -92,7 +92,7 @@ div [class^="col-"]{
 
 .card-right{
     margin-right: 2rem;
-    float: none;
+    float: right;
     margin-bottom: 10px;
 }
 .card-header{
