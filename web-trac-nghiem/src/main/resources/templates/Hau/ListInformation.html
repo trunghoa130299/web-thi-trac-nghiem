@@ -3,47 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Vinh Danh Bảng Vàng</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         .number {
             display: inline;
             border-radius: 15px;
             padding: 3px;
-            background-color: gray;
+            background-color: rgb(114, 187, 230);
             color: white;
             float: right;
             margin-right: 20px;
+            font-size: 14px
         }</style>
-    <link rel="stylesheet" type="text/css" href="List.css">
-    <link rel="stylesheet" href="bootstrap413/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="datatables/css/dataTables.bootstrap4.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
-    <div class="row card mt-5 col-4" style="border-color: #00BFFF;padding:0px;">
+    <div  th:fragment="thong-ke" >
         <div class="card-header  " style="background: #00BFFF;text-align: center;">
-            <label class="col-form-label">Vinh danh bảng vàng</label>
+            <label class="col-form-label" style="color: black;"><i class="far fa-thumbs-up"></i>Vinh danh bảng vàng</label>
         </div>
-        <table class="table mt-3 ml-3 mr-3 h-50 tablemain " id="tableHistory" style="width:90%">
+        <table class="table table-hover mt-3 ml-2 mr-3 h-50 rounded "  id="tableHistory" style="width:90%;font-size: 15px">
             <thead>
-            <tr class="table-danger text-danger">
-                <th>Lonvirus <p class="number">220</p></th>
+            <tr class="table-primary text-primary">
+                <td><i class="fa fa-user mr-1" aria-hidden="true"></i></i>Lonvirus <span style="float: right;" class="number">220</span></td>
             </tr>
-            <tr class="table-warning text-warning">
-                <th>Laphuc <p class="number">200</p></th>
+            <tr class="table-primary text-primary">
+                <td><i class="fa fa-user mr-1" aria-hidden="true"></i></i>Laphuc <span class="number">200</span></td>
 
             </tr>
             <tr class="table-primary text-primary">
-                <th>PhuNhuan <p class="number">180</p></th>
+                <td><i class="fa fa-user mr-1" aria-hidden="true"></i></i>PhuNhuan <span class="number">180</span></td>
 
             </tr>
-            <tr class="table-success text-success">
-                <th>Vonghia <p class="number">150</p></th>
+            <tr class="table-primary text-primary">
+                <td><i class="fa fa-user mr-1" aria-hidden="true"></i></i>Vonghia <span class="number">150</span></td>
 
             </tr>
-            <tr class="table-success text-success">
-                <th>Demons <p class="number">100</p></th>
+            <tr class="table-primary text-primary">
+                <td><i class="fa fa-user mr-1" aria-hidden="true"></i></i>Demons <span class="number">100</span></td>
             </tr>
             </thead>
             <tbody>

@@ -13,27 +13,32 @@
             float: right;
             margin-right: 20px;
         }</style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="bootstrap413/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="datatables/css/dataTables.bootstrap4.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
-    <div class="row card mt-5 col-md-4 tablemain" style="border-color: #00BFFF;padding:0px;background-color:#00BFFF;">
-        <div class="card-header " style="background: #00BFFF;text-align: center;">
-            <label class="col-form-label">Vinh danh bảng vàng</label>
+    <div  th:fragment="thong-ke-thanh-vien" >
+        <div class="card-header  " style="background: #00BFFF;text-align: center;">
+            <label class="col-form-label" style="color: black;"><i class="fa fa-thumbs-o-up mr-1" aria-hidden="true"></i>THỐNG KÊ THÀNH VIÊN</label>
         </div>
-        <table class="table mt-3 ml-3 mr-3 h-50 tablemain " id="tableHistory" style="width:90%;">
+        <table class="table  mt-3 ml-2 mr-3 h-50 "  id="tableHistory" style="width:90%;font-size: 15px">
+
             <thead>
-            <tr class="table">
-                <th>Tổng thành viên <p class="number">7</p></th>
+            <tr class="bg-light text-primary">
+
+                <td ><i class="fa fa-user mr-1"  aria-hidden="true"></i></i>Tổng thành viên <span style="float: right;" class="number">220</span></td>
             </tr>
-            <tr class="table">
-                <th>Mới nhất <p class="number">kakashi</p></th>
+
+            <tr class="table-light  text-primary">
+                <td><i class="fa fa-user mr-1" aria-hidden="true"></i></i>Mới nhất <span class="number">HuuDat</span></td>
             </tr>
             </thead>
+            <tbody>
+
+            </tbody>
         </table>
     </div>
 </div>
