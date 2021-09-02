@@ -7,27 +7,27 @@ import java.util.Set;
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String name;
 
-    @OneToMany(mappedBy = "subject")
+    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
     private Set<Exam> exams;
 
     public Subject() {
     }
 
-    public Subject(int id, String name, Set<Exam> exams) {
+    public Subject(Integer id, String name, Set<Exam> exams) {
         this.id = id;
         this.name = name;
         this.exams = exams;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
