@@ -34,6 +34,14 @@ public class Exam {
     public Exam() {
     }
 
+    public Exam(int id, String idName, String nameExam, Classes classes, Subject subject) {
+        this.id = id;
+        this.idName = idName;
+        this.nameExam = nameExam;
+        this.classes = classes;
+        this.subject = subject;
+    }
+
     public Exam(int id, String idName, String nameExam, Classes classes, Subject subject, User users, List<TestExam> testExams, List<Question> questions) {
         this.id = id;
         this.idName = idName;
