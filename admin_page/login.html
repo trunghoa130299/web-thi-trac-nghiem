@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Chỉnh sửa câu hỏi đề 1</title>
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <style>
+              select {
+      
+            background-color:rgb(167, 195, 204);
+            /* -webkit-appearance: none; */
+            -webkit-border-radius: 0px;
+
+            border: 0;
+            outline: 1px solid #CCC;
+            height: 50px;
+            }
+            img {
+                margin: 2px;
+                width: 60px;
+                max-height: 100px;
+            }
+            a:hover, a:visited, a:link, a:active
+            {
+                text-decoration: none;
+            }
+            .logo { 
+                    background: url("/path") no-repeat; 
+                    width: 40px; 
+                    height: 40px; 
+                    display: block; 
+                    text-indent: -9999px;
+            }    
+            
+        </style>
+        <script>
+       
+            const isEmpty = str => !str.trim().length;
+            // kiểm tra mdethi
+            var input = document.getElementById('inputEmail');
+            input.oninvalid = function(event) {
+                event.target.setCustomValidity('Mã đề thi gồm 3 số');
+            }
+            document.getElementById("inputEmail").addEventListener("input", function() {
+            if( isEmpty(this.value) ) {
+                alert( "Mã đề thi còn trống" )
+            } else {
+                alert( `Mã đề thi là: ${this.value}` );
+            }
+        });
+            // kiểm tra mcauhoi
+            document.getElementById("inputPassword1").addEventListener("input", function() {
+            if( isEmpty(this.value) ) {
+                alert( "Mã câu hỏi còn trống" )
+            } else {
+                alert( `Mã câu hỏi là: ${this.value}` );
+            }
+        });
+        document.getElementById("inputPassword2").addEventListener("input", function() {
+            if( isEmpty(this.value) ) {
+                alert( "Mã câu hỏi còn trống" )
+            } else {
+                alert( `Mã câu hỏi là: ${this.value}` );
+            }
+        });
+            document.getElementById("d_an1").addEventListener("input", function() {
+            if( isEmpty(this.value) ) {
+                alert( "Đáp án 1 còn trống" )
+            } else {
+                alert( `Đáp án 1 là: ${this.value}` );
+            }
+        });
+
+            document.getElementById("d_an2").addEventListener("input", function() {
+            if( isEmpty(this.value) ) {
+                alert( "Đáp án 2 còn trống" )
+            } else {
+                alert( `Đáp án 2 là: ${this.value}` );
+            }
+        });
+
+            document.getElementById("d_an3").addEventListener("input", function() {
+            if( isEmpty(this.value) ) {
+                alert( "Đáp án 3 còn trống" )
+            } else {
+                alert( `Đáp án 3 là: ${this.value}` );
+            }
+        });
+
+            document.getElementById("d_an4").addEventListener("input", function() {
+            if( isEmpty(this.value) ) {
+                alert( "Đáp án 4 còn trống" )
+            } else {
+                alert( `Đáp án 4 là: ${this.value}` );
+            }
+        });
+        function formValidate(){
+        var regExp = /^([0-9]{3})$/;
+        var dethi = document.getElementById("inputEmail").value;
+        var cauhoi = document.getElementById("inputPassword1").value;
+        if (regExp.test(dethi) ) 
+            alert('Mã đề thi hợp lệ!'); 
+        if(regExp.test(cauhoi) ){
+            alert('Mã câu hỏi hợp lệ!');
+        }
+        if(!(regExp.test(dethi) ) && !(regExp.test(cauhoi) ) )
+            alert('Mã đề thi và câu hỏi không hợp lệ!');
+        }
+        
+        function Check() {
+            var a = document.forms["form"]["d_an1"].value;
+            var b = document.forms["form"]["d_an2"].value;
+            var c = document.forms["form"]["d_an3"].value;
+            var d = document.forms["form"]["d_an4"].value;
+            var e = document.forms["form"]["inputPassword1"].value;
+            var g = document.forms["form"]["inputPassword2"].value;
+            var f = document.forms["form"]["inputEmail"].value;
+            // alert(document.forms["form"]["inputPassword"].value);
+            if (
+            a == null || a == "",
+            b == null || b == "", 
+            c == null || c == "", 
+            d == null || d == "", 
+            e == null || e == "", 
+            f == null || f == "",
+            g == null || g == "") {
+            alert("Vui lòng nhập dữ liêu vào.");
+            }
+            else{
+                alert("ok, Chuyển trang!!!");
+                document.location="tables.html";
+            }
+        }
+
+
+        </script>
+    </head>
+    
+    <body class="bg-light">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-info ">
+            <!-- Navbar Brand-->
+            <img class="logo" src="https://yt3.ggpht.com/ytc/AKedOLTsbJZEJqWN2WIi4YwnRKqMPBoolS4HIIeHWieEiQ=s900-c-k-c0x00ffffff-no-rj" />  
+        </br> 
+       <strong><a class=" active text-black m-2" href="/default.html"><b>CG_Learn</b></a> </strong>
+           
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Tìm kiếm mã đề thi" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </nav>
+         <div id="layoutSidenav">
+          
+            </div> 
+            <div id="layoutSidenav_content">
+                <main>
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Chỉnh sửa câu hỏi</h3></div>
+                                    <div class="card-body">
+                                        <form id="form">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="text" placeholder="Text" onchange="formValidate()" />
+                                                <label for="inputEmail">Mã đề thi</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputPassword1" type="text"  placeholder="Text" onchange="formValidate()" />
+                                                <label for="inputPassword">Mã câu hỏi</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputPassword2" type="text"  placeholder="Text"   />
+                                                <label for="inputPassword">Câu hỏi</label>
+                                            </div>
+                            
+                                            <!--  -->
+                                            <div class="row mb-3">
+                                                <div class="col-md-10">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="d_an1" type="text"  placeholder="Text" />
+                                                        <label for="inputPassword">Đáp án 1</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class=" p-lg-0 my-3 ">
+                                                        <select class="form-select form-select-sm mt-0 border-primary" aria-label=".form-select-sm example">
+                                                            <option value="1">Sai</option>
+                                                            <option value="2">Đúng</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--  -->
+                                            <div class="row mb-3">
+                                                <div class="col-md-10">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="d_an2" type="text"  placeholder="Text" />
+                                                        <label for="inputPassword">Đáp án 2</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class=" p-lg-0 my-3 ">
+                                                        <select class="form-select form-select-sm mt-0 border-primary" aria-label=".form-select-sm example">
+                                                            <option value="1">Sai</option>
+                                                            <option value="2">Đúng</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--  -->
+                                            <div class="row mb-3">
+                                                <div class="col-md-10">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="d_an3" type="text" placeholder="Create a password" />
+                                                        <label for="inputPassword">Đáp án 3</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class=" p-lg-0 my-3 ">
+                                                        <select class="form-select form-select-sm mt-0 border-primary" aria-label=".form-select-sm example">
+                                                            <option value="1">Sai</option>
+                                                            <option value="2">Đúng</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--  -->
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-10">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="d_an4" type="text" placeholder="Create a password" />
+                                                        <label for="inputPassword">Đáp án 4</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class=" p-lg-0 my-3 ">
+                                                        <select class="form-select form-select-sm mt-0 border-primary" aria-label=".form-select-sm example">
+                                                            <option value="1">Sai</option>
+                                                            <option value="2">Đúng</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--  -->
+                                            
+                                            <!-- <i class="fa fa-plus" aria-hidden="true">Thêm đáp án câu hỏi</i> -->
+                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                <a class="small" href="tables.html">Trở lại ngân hàng câu hỏi</a>
+                                                <a class="btn btn-primary" onclick="Check()">Xác nhận</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                <!-- //    <div class="card-footer text-center py-3">
+                                //         <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                //     </div>  -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <div id="layoutAuthentication_footer">
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Bản quyền &copy;  CG-Learning Website</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

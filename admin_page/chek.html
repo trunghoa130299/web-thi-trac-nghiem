@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Analytics Dashboard - This is an example dashboard created using build-in elements and components.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <!--
+    =========================================================
+    * ArchitectUI HTML Theme Dashboard - v1.0.0
+    =========================================================
+    * Product Page: https://dashboardpack.com
+    * Copyright 2019 DashboardPack (https://dashboardpack.com)
+    * Licensed under MIT (https://github.com/DashboardPack/architectui-html-theme-free/blob/master/LICENSE)
+    =========================================================
+    * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    -->
+<link href="./main.css" rel="stylesheet"></head>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+    $(function(){
+    $('.button-checkbox').each(function(){
+		var $widget = $(this),
+			$button = $widget.find('button'),
+			$checkbox = $widget.find('input:checkbox'),
+			color = $button.data('color'),
+			settings = {
+					on: {
+						icon: 'glyphicon glyphicon-check'
+					},
+					off: {
+						icon: 'glyphicon glyphicon-unchecked'
+					}
+			};
+
+		$button.on('click', function () {
+			$checkbox.prop('checked', !$checkbox.is(':checked'));
+			$checkbox.triggerHandler('change');
+			updateDisplay();
+		});
+
+		$checkbox.on('change', function () {
+			updateDisplay();
+		});
+
+		function updateDisplay() {
+			var isChecked = $checkbox.is(':checked');
+			// Set the button's state
+			$button.data('state', (isChecked) ? "on" : "off");
+
+			// Set the button's icon
+			$button.find('.state-icon')
+				.removeClass()
+				.addClass('state-icon ' + settings[$button.data('state')].icon);
+
+			// Update the button's color
+			if (isChecked) {
+				$button
+					.removeClass('btn-default')
+					.addClass('btn-' + color + ' active');
+			}
+			else
+			{
+				$button
+					.removeClass('btn-' + color + ' active')
+					.addClass('btn-default');
+			}
+		}
+		function init() {
+			updateDisplay();
+			// Inject the icon if applicable
+			if ($button.find('.state-icon').length == 0) {
+				$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+			}
+		}
+		init();
+	});
+});
+</script>
+</head>
+<body>
+<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    <div class="app-header header-shadow" style=" background-color: deepskyblue;">
+        <div class="app-header__logo">
+          <strong class="text-primary pary"> <a class="active" href="/default"><i class="fa fa-fw fa-home"> 𝓒𝓖_𝓛𝓮𝓪𝓻𝓷𝓲𝓷𝓰</i></a></strong>
+        </br>
+            <div class="header__pane ml-auto">
+                <div>
+                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="app-header__mobile-menu">
+            <div>
+                <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="app-header__menu">
+            <span>
+                <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                    <span class="btn-icon-wrapper">
+                        <i class="fa fa-ellipsis-v fa-w-6"></i>
+                    </span>
+                </button>
+            </span>
+        </div>    
+        <div class="app-header__content">
+            <div class="app-header-left">
+                <div class="search-wrapper">
+                    <div class="input-holder">
+                        <input type="text" class="search-input" placeholder="Type to search">
+                        <button class="search-icon"><span></span></button>
+                    </div>
+                    <button class="close"></button>
+                </div>
+                <!-- 
+                  <a href="#"><i class="fa fa-fw fa-eur"></i> Khối A</a>
+                  <a href="#"><i class="fa fa-fw fa-cloud"></i> Khối B</a>
+                  <a href="#"><i class="fa fa-fw fa-wrench"></i> Khối D</a>
+                  <a href="#"><i class="fa fa-fw fa-book"></i> IQ Test</a>
+                  <a href="#"><i class="fa fa-fw fa-globe"></i> About Us</a> -->
+                <ul class="header-menu nav">
+                    <li class="nav-item">
+                        <a href="javascript:void(0);" class="nav-link">
+                            <i class="nav-link-icon fa fa-fw fa-eur"> </i>
+                            Khối A
+                        </a>
+                    </li>
+                    <li class="btn-group nav-item">
+                        <a href="javascript:void(0);" class="nav-link">
+                            <i class="nav-link-icon fa fa-fw fa-cloud"></i>
+                            Khối B
+                        </a>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a href="javascript:void(0);" class="nav-link">
+                            <i class="nav-link-icon fa-fw fa-wrench"></i>
+                            Khối C
+                        </a>
+                    </li>
+                    <li class="dropdown nav-item">
+                      <a href="javascript:void(0);" class="nav-link">
+                          <i class="nav-link-icon fa fa-fw fa-book"></i>
+                          Khối D
+                      </a>
+                  </li>
+                  <li class="dropdown nav-item">
+                    <a href="javascript:void(0);" class="nav-link">
+                        <i class="nav-link-icon fa fa-fw fa-globe"></i>
+                        About Us
+                    </a>
+                </li>
+                </ul>        </div>
+            <div class="app-header-right">
+                <div class="header-btn-lg pr-0">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-wrapper">
+                            <div class="widget-content-left">
+                                <div class="btn-group">
+                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                        <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
+                                        <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                    </a>
+                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                        <button type="button" tabindex="0" class="dropdown-item">User Account</button>
+                                        <button type="button" tabindex="0" class="dropdown-item">Settings</button>
+                                        <h6 tabindex="-1" class="dropdown-header">Header</h6>
+                                        <button type="button" tabindex="0" class="dropdown-item">Actions</button>
+                                        <div tabindex="-1" class="dropdown-divider"></div>
+                                        <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-content-left  ml-3 header-user-info">
+                                <div class="widget-heading">
+                                    dthuytram
+                                </div>
+                                <div class="widget-subheading">
+                                    Nhân viên văn phòng
+                                </div>
+                            </div>
+                            <div class="widget-content-right header-user-info ml-3">
+                                <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
+                                    <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>        </div>
+        </div>
+</div>
+        <!--  -->
+        
+        <!------ Include the above in your HEAD tag ---------->
+    
+        <div class="row " style="margin-top:100px; width: 1000px;  margin-left: auto;
+        margin-right: auto;">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                <form role="form ">
+                    <fieldset>
+                        
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading font-weight alert-link">Chào mừng bạn đến với đăng nhập</h4>
+                            <p>Form đăng nhập này chỉ sử dụng khi bạn đã có tài khoản</p>
+                            <hr>
+                            <p class="mb-0">Nếu chưa có tài khoản. Hãy đăng kí !!</p>
+                          </div>
+                        <hr class="colorgraph">
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" class="form-control input-lg" value="dtt3020@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" id="password" class="form-control input-lg" value="annanguyen123">
+                        </div>
+                        <span class="button-checkbox">
+                            <button type="button" class="btn" data-color="info">Nhớ mật khẩu</button>
+                            <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
+                            <a href="" class="btn btn-link pull-right">Bạn có quên mật khẩu?</a>
+                        </span>
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Đăng nhập">
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <a href="" class="btn btn-lg btn-primary btn-block">Đăng ký</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        
+        </div>
+    </body>
+    </html>
