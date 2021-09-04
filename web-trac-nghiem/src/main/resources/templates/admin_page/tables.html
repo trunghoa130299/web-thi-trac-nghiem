@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Ngân hàng câu hỏi Đề 1</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <style>
+              .content1{
+                background-color:lightgreen; 
+              }
+              .content2{
+                background-color:rgb(204, 227, 238);
+              }
+              .content3{
+                background-color:rgb(223, 230, 169);
+              }
+              .content4{
+                background-color:rgb(230, 207, 220);
+              }
+              .content1  .content2  .content3 .content4{
+                margin: 3px; 
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+                border-radius: 8px; 
+                font-weight:bolder;
+              }
+              select {
+            margin: 0 auto;
+            background-color:deepskyblue;
+            -webkit-appearance: none;
+            -webkit-border-radius: 0px;
+
+            border: 0;
+            outline: 1px solid #CCC;
+
+            }
+
+            img {
+                margin: 2px;
+                width: 50px;
+                max-height: 100px;
+            }
+          
+        </style>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-info ">
+            <!-- Navbar Brand-->
+            <img class="logo" src="https://yt3.ggpht.com/ytc/AKedOLTsbJZEJqWN2WIi4YwnRKqMPBoolS4HIIeHWieEiQ=s900-c-k-c0x00ffffff-no-rj" />  
+         </br> 
+        <strong><a class=" active text-black m-2" href="/default.html"><b>CG_Learn</b></a> </strong>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Tìm kiếm mã đề thi" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                   
+                </div>
+            </form>
+        </nav>
+         <div id="layoutSidenav">
+          
+            </div> 
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4 ">
+                        <h1 class="mt-5 pt-5 mb-4">Ngân hàng câu hỏi</h1>
+                        <!-- <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Bảng câu hỏi</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                              Ngân hàng câu hỏi hiển thị theo đề do người dùng đã tải lên từ trước, muốn hiển thị ra màn hình cần chọn "Ngân hàng câu hỏi"
+                      
+                                <div class=" p-lg-0 my-3">
+                                  <select class="selectpicker" searchable="Search here..">
+                                      <option value="1">Ngân hàng câu hỏi</option>
+                                      <option value="2">Danh sách đề thi</option>
+                                  </select>
+                        
+                              </div>
+
+                            </div> -->
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                 <b> Ngân hàng Đề 1</b>
+                                 
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                  <!-- <input type="button" class="btn btn-primary " style="margin-left:1300px;" value="Thêm mới">
+                                  <input type="button" class="btn btn-primary " style="margin-left:1300px;" value="Xóa"> -->
+                                    <thead>
+                                      
+                                        <th scope="col"> STT
+                                        </th>
+                                        <th scope="col">Mã câu hỏi</th>
+                                        <th scope="col">Câu hỏi</th>
+                                        <th scope="col">Phương án trả lời</th>
+                                        <th scope="col">Đáp án</th>
+                                        <th scope="col">Hành động</th>
+                                        <th scope="col"></th>
+                                    </thead>
+                                   
+                                    <tbody>
+                                        <tr scope="row">
+                                            <td>1
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">
+                                                <b><a href="login.html" style="margin-left: 10px;">001</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                              <!-- <small class="d-block">Far far away, behind the word mountains</small> -->
+                                            </td>
+                                            <td>
+                                            <div class="content">
+                                             <p class="content1" >Gia tốc không thay đổi</p>
+                                             <p class="content2" >Vận tốc không thay đổi </p>             
+                                             <p class="content3" >Quãng đường đi lớn nhất </p>           
+                                             <p class="content4" >Vận tốc tăng dần với gia tốc không đổi </p>
+                                               </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <a title="Click vào sửa câu hỏi" href="login.html"><i class="fas fa-edit text-primary fa-lg ms-2"></i></a>
+
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>2
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">
+                                                <b><a href="login.html" style="margin-left: 10px;">002</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <a title="Click vào sửa câu hỏi" href="login.html"><i class="fas fa-edit text-primary fa-lg ms-2"></i></a>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>3
+                                              <label class="control control--checkbox small">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">
+                                                <b><a href="login.html" style="margin-left: 10px;">003</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <a title="Click vào sửa câu hỏi" href="login.html"><i class="fas fa-edit text-primary fa-lg ms-2"></i></a>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>4
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">
+                                                <b><a href="login.html" style="margin-left: 10px;">004</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <a title="Click vào sửa câu hỏi" href="login.html"><i class="fas fa-edit text-primary fa-lg ms-2"></i></a>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>5
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">
+                                                <b><a href="login.html" style="margin-left: 10px;">005</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <a title="Click vào sửa câu hỏi" href="login.html"><i class="fas fa-edit text-primary fa-lg ms-2"></i></a>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>6
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">
+                                                <b><a href="#" style="margin-left: 10px;">006</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <a title="Click vào sửa câu hỏi" href="login.html"><i class="fas fa-edit text-primary fa-lg ms-2"></i></a>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>7
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">
+                                                <b><a href="login.html" style="margin-left: 10px;">007</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <a href="#" class='fas fa-highlighter'></a>
+                                              <a href="#" class='fas fa-eraser'></a>
+                                            </td>
+                                          </tr>
+                                          <tr scope="row">
+                                            <td>8
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">
+                                                <b><a href="login.html" style="margin-left: 10px;">008</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <a title="Click vào sửa câu hỏi" href="login.html"><i class="fas fa-edit text-primary fa-lg ms-2"></i></a>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+                                          <tr scope="row">
+                                            <td>9
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">
+                                               
+                                                <b><a href="login.html" style="margin-left: 10px;">009</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <a title="Click vào sửa câu hỏi" href="login.html"><i class="fas fa-edit text-primary fa-lg ms-2"></i></a>
+                                              <a href="#" class='fas fa-eraser'></a>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>10
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">                              
+                                                <b><a href="#" style="margin-left: 10px;">010</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <i class="fas fa-edit text-primary fa-lg ms-2"></i>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+
+                                          </tr>
+                                          <tr scope="row">
+                                            <td>11
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">                              
+                                                <b><a href="login.html" style="margin-left: 10px;">011</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <i class="fas fa-edit text-primary fa-lg ms-2"></i>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>12
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">                              
+                                                <b><a href="login.html" style="margin-left: 10px;">012</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <i class="fas fa-edit text-primary fa-lg ms-2"></i>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>13
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">                              
+                                                <b><a href="login.html" style="margin-left: 10px;">013</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <i class="fas fa-edit text-primary fa-lg ms-2"></i>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>14
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">                              
+                                                <b><a href="login.html" style="margin-left: 10px;">014</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <i class="fas fa-edit text-primary fa-lg ms-2"></i>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>15
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">                              
+                                                <b><a href="login.html" style="margin-left: 10px;">015</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <i class="fas fa-edit text-primary fa-lg ms-2"></i>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>16
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">                              
+                                                <b><a href="login.html" style="margin-left: 10px;">016</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <i class="fas fa-edit text-primary fa-lg ms-2"></i>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>17
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">                              
+                                                <b><a href="login.html" style="margin-left: 10px;">017</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <i class="fas fa-edit text-primary fa-lg ms-2"></i>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>18
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">                              
+                                                <b><a href="login.html" style="margin-left: 10px;">018</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <i class="fas fa-edit text-primary fa-lg ms-2"></i>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+
+                                          <tr scope="row">
+                                            <td>19
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">                              
+                                                <b><a href="#" style="margin-left: 10px;">019</a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <i class="fas fa-edit text-primary fa-lg ms-2"></i>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          
+                                          </tr>
+                                          <tr scope="row">
+                                            <td>20
+                                              <label class="control control--checkbox">
+                                              <input type="checkbox" />
+                                              <div class="control__indicator"></div>
+                                              </label>
+                                            </td>
+                                            <td class="pl-0">
+                                              <div class="d-flex align-items-center">                              
+                                                <b><a href="login.html" style="margin-left: 10px;">020/a></b>
+                                              </div>
+                                            </td>
+                                            <td class="font-weight-bold">
+                                              Chuyển động tăng dần đều là gì?
+                                            </td>
+                                            <td>
+                                            
+                                              <div class="content">
+                                                <p class="content1">Gia tốc không thay đổi</p>
+                                                <p class="content2">Vận tốc không thay đổi </p>
+                                                 <p class="content3"> Quãng đường đi lớn nhất </p>
+                                                 <p class="content4"> Vận tốc tăng dần với gia tốc không đổi </p>
+                                                  </div>
+                                            </td>
+                                            <td>Vận tốc tăng dần với gia tốc không đổi</td>
+                                            <td>
+                                              <i class="fas fa-edit text-primary fa-lg ms-2"></i>
+                                              <i class="far fa-trash-alt text-danger fa-lg ms-1" ></i>
+                                            </td>
+                                          </tr>
+
+                                     
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-dark mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Bản quyền &copy; CG-Learning Website</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+    </body>
+</html>
