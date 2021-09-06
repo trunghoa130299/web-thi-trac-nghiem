@@ -63,7 +63,6 @@ public class QuizService {
 
     public List<Result> getTopScore() {
         List<Result> sList = rRepo.findAll(Sort.by(Sort.Direction.DESC, "totalCorrect"));
-
         return sList;
     }
 }

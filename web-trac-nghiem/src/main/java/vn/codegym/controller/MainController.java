@@ -11,6 +11,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.model.QuestionForm;
 import vn.codegym.model.Result;
 import vn.codegym.service.QuizService;
+import vn.codegym.service.ResultService;
+import vn.codegym.service.UserService;
 
 import java.util.List;
 
@@ -22,6 +24,12 @@ public class MainController {
     QuizService qService;
 
     Boolean submitted = false;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    ResultService rService;
 
     @ModelAttribute("result")
     public Result getResult() {
@@ -62,9 +70,22 @@ public class MainController {
 
     @GetMapping("/score")
     public String score(Model m) {
-        List<Result> sList = qService.getTopScore();
+        List<Result> sList = rService.getTopScore();
         m.addAttribute("sList", sList);
 
         return "exam/scoreboard";
+    }
+    @GetMapping("/listInformation")
+    public String listInformation(Model m) {
+        List<Result> sList = qService.getTopScore();
+        m.addAttribute("sList", sList);
+
+        return "Hau/ListInformation";
+    }
+    @GetMapping("/honorthegoldboard")
+    public String honorthegoldboard(Model m) {
+        int total = userService.findByTotalUser();
+        m.addAttribute("total", total);
+        return "Hau/HonorTheGoldBoard";
     }
 }

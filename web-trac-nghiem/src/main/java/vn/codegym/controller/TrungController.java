@@ -15,7 +15,7 @@ import vn.codegym.service.UserService;
 import javax.validation.Valid;
 
 @Controller
-public class TrungController {
+public class    TrungController {
 
     @Autowired
     UserService userService;
