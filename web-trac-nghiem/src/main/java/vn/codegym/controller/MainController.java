@@ -38,73 +38,72 @@ public class MainController {
         return result;
     }
 
-    @GetMapping("/")
-<<<<<<< HEAD
-    public String home(Model model) {
+    @GetMapping("/total")
+    public String home1(Model model) {
         List<Result> sList = qService.getTopScore();
         model.addAttribute("sList", sList);
         int total = userService.findByTotalUser();
         model.addAttribute("total", total);
-
-=======
-    public String home(Model m) {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails){
-            String userName = ((UserDetails) principal).getUsername();
-            m.addAttribute("userName",userName);
-        }
->>>>>>> 3cd0e6dd796812fa59ce50a0ab18e65ec0c32f6d
-        return "exam/index";
+        return "";
     }
 
-    @PostMapping("/quiz")
-    public String quiz(@RequestParam String username, Model m, RedirectAttributes ra) {
-        if(username.equals("")) {
-            ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
-            return "redirect:/";
+        @GetMapping("/")
+        public String home(Model m){
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (principal instanceof UserDetails) {
+                String userName = ((UserDetails) principal).getUsername();
+                m.addAttribute("userName", userName);
+            }
+            return "exam/index";
         }
+        @PostMapping("/quiz")
+        public String quiz (@RequestParam String username, Model m, RedirectAttributes ra){
+            if (username.equals("")) {
+                ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
+                return "redirect:/";
+            }
 
-        submitted = false;
-        result.setUsername(username);
+            submitted = false;
+            result.setUsername(username);
 
-        QuestionForm qForm = qService.getQuestions();
-        m.addAttribute("qForm", qForm);
-        List<Result> sList = qService.getTopScore();
-        m.addAttribute("sList", sList);
-        int total = userService.findByTotalUser();
-        m.addAttribute("total", total);
-        return "exam/quiz";
-    }
-
-    @PostMapping("/submit")
-    public String submit(@ModelAttribute QuestionForm qForm, Model m) {
-        if(!submitted) {
-            result.setTotalCorrect(qService.getResult(qForm));
-            qService.saveScore(result);
-            submitted = true;
+            QuestionForm qForm = qService.getQuestions();
+            m.addAttribute("qForm", qForm);
+            List<Result> sList = qService.getTopScore();
+            m.addAttribute("sList", sList);
+            int total = userService.findByTotalUser();
+            m.addAttribute("total", total);
+            return "exam/quiz";
         }
 
-        return "exam/result";
-    }
+        @PostMapping("/submit")
+        public String submit (@ModelAttribute QuestionForm qForm, Model m){
+            if (!submitted) {
+                result.setTotalCorrect(qService.getResult(qForm));
+                qService.saveScore(result);
+                submitted = true;
+            }
 
-    @GetMapping("/score")
-    public String score(Model m) {
-        List<Result> sList = rService.getTopScore();
-        m.addAttribute("sList", sList);
+            return "exam/result";
+        }
 
-        return "exam/scoreboard";
-    }
-    @GetMapping("/listInformation")
-    public String listInformation(Model m) {
-        List<Result> sList = qService.getTopScore();
-        m.addAttribute("sList", sList);
+        @GetMapping("/score")
+        public String score (Model m){
+            List<Result> sList = rService.getTopScore();
+            m.addAttribute("sList", sList);
 
-        return "Hau/ListInformation";
+            return "exam/scoreboard";
+        }
+        @GetMapping("/listInformation")
+        public String listInformation (Model m){
+            List<Result> sList = qService.getTopScore();
+            m.addAttribute("sList", sList);
+
+            return "Hau/ListInformation";
+        }
+        @GetMapping("/honorthegoldboard")
+        public String honorthegoldboard (Model m){
+            int total = userService.findByTotalUser();
+            m.addAttribute("total", total);
+            return "Hau/HonorTheGoldBoard";
+        }
     }
-    @GetMapping("/honorthegoldboard")
-    public String honorthegoldboard(Model m) {
-        int total = userService.findByTotalUser();
-        m.addAttribute("total", total);
-        return "Hau/HonorTheGoldBoard";
-    }
-}
