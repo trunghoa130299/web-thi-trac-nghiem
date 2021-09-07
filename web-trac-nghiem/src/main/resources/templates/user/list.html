@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="../static/css/default-page.css" rel="stylesheet" th:href="@{/css/default-page.css}">
+
 </head>
 <body>
-<table class="table table-bordered table-striped">
+<div  th:insert="~{default-admin.html :: navbarAdmin}">
+
+</div>
+
+<table class="table table-bordered table-striped ">
     <tr>
         <th>STT</th>
         <th>User Name</th>
@@ -29,7 +35,7 @@
     <span th:text="${users.number + 1}"></span>/<span th:text="${users.totalPages}"></span>
     <a th:href="@{'/user/list'(page=${users.number + 1})}" th:if="${users.hasNext()}">Next</a>
 </div>
-
+<div  th:insert="~{default-admin.html :: footer}"></div>
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
