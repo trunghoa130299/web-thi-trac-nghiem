@@ -54,6 +54,10 @@ public class MainController {
                 String userName = ((UserDetails) principal).getUsername();
                 m.addAttribute("userName", userName);
             }
+            List<Result> sList = qService.getTopScore();
+            m.addAttribute("sList", sList);
+            int total = userService.findByTotalUser();
+            m.addAttribute("total", total);
             return "exam/index";
         }
         @PostMapping("/quiz")
