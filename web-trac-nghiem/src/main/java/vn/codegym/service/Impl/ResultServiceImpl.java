@@ -15,6 +15,6 @@ public class ResultServiceImpl implements ResultService {
 
     @Override
     public List<Result> getTopScore() {
-        return resultRepository.findByTotalCorrect();
+        return resultRepository.findAll();
     }
 }
