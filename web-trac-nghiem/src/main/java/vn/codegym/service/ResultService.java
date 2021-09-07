@@ -5,5 +5,5 @@ import vn.codegym.model.Result;
 import java.util.List;
 
 public interface ResultService {
-    List<Result> getTopScore();
+    List<Result> getTopFive();
 }

@@ -92,15 +92,15 @@ public class MainController {
 
         @GetMapping("/score")
         public String score (Model m){
-            List<Result> sList = rService.getTopScore();
+            List<Result> sList = qService.getTopScore();
             m.addAttribute("sList", sList);
 
             return "exam/scoreboard";
         }
         @GetMapping("/listInformation")
         public String listInformation (Model m){
-            List<Result> sList = qService.getTopScore();
-            m.addAttribute("sList", sList);
+            List<Result> sListt = rService.getTopFive();
+            m.addAttribute("sList", sListt);
 
             return "Hau/ListInformation";
         }
