@@ -37,7 +37,12 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        List<Result> sList = qService.getTopScore();
+        model.addAttribute("sList", sList);
+        int total = userService.findByTotalUser();
+        model.addAttribute("total", total);
+
         return "exam/index";
     }
 
@@ -53,7 +58,10 @@ public class MainController {
 
         QuestionForm qForm = qService.getQuestions();
         m.addAttribute("qForm", qForm);
-
+        List<Result> sList = qService.getTopScore();
+        m.addAttribute("sList", sList);
+        int total = userService.findByTotalUser();
+        m.addAttribute("total", total);
         return "exam/quiz";
     }
 

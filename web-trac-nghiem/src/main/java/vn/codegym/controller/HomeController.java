@@ -1,15 +1,24 @@
 package vn.codegym.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import vn.codegym.model.Result;
+import vn.codegym.service.QuizService;
+import vn.codegym.service.UserService;
+
+import java.util.List;
 
 
 @Controller
 public class HomeController {
-
+    @Autowired
+    QuizService qService;
+    @Autowired
+    UserService userService;
     @GetMapping("/login")
     public String showLogin(){
         return "login";
@@ -26,6 +35,10 @@ public class HomeController {
             String userName = ((UserDetails) principal).getUsername();
             model.addAttribute("userName",userName);
         }
+        List<Result> sList = qService.getTopScore();
+        model.addAttribute("sList", sList);
+        int total = userService.findByTotalUser();
+        model.addAttribute("total", total);
         return "default-page";
     }
     @GetMapping("/them")

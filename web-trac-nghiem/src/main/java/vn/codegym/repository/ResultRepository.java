@@ -13,7 +13,7 @@ import java.util.List;
 
 @Repository
 public interface ResultRepository extends JpaRepository<Result, Integer> {
-    @Query(value = "SELECT * FROM result order by totalCorrect desc limit 5",nativeQuery = true)
+    @Query(value = "SELECT * FROM result order by  total_correct desc ",nativeQuery = true)
     List<Result> findByTotalCorrect();
 
 }
