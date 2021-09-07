@@ -39,12 +39,21 @@ public class MainController {
     }
 
     @GetMapping("/")
+<<<<<<< HEAD
+    public String home(Model model) {
+        List<Result> sList = qService.getTopScore();
+        model.addAttribute("sList", sList);
+        int total = userService.findByTotalUser();
+        model.addAttribute("total", total);
+
+=======
     public String home(Model m) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails){
             String userName = ((UserDetails) principal).getUsername();
             m.addAttribute("userName",userName);
         }
+>>>>>>> 3cd0e6dd796812fa59ce50a0ab18e65ec0c32f6d
         return "exam/index";
     }
 
@@ -60,7 +69,10 @@ public class MainController {
 
         QuestionForm qForm = qService.getQuestions();
         m.addAttribute("qForm", qForm);
-
+        List<Result> sList = qService.getTopScore();
+        m.addAttribute("sList", sList);
+        int total = userService.findByTotalUser();
+        m.addAttribute("total", total);
         return "exam/quiz";
     }
 
