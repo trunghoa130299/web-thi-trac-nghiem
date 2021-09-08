@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Đề thi Lý</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <style>
+              .content1{
+                background-color:lightgreen; 
+              }
+              .content2{
+                background-color:rgb(204, 227, 238);
+              }
+              .content3{
+                background-color:rgb(223, 230, 169);
+              }
+              .content4{
+                background-color:rgb(230, 207, 220);
+              }
+              .content1  .content2  .content3 .content4{
+                margin: 3px; 
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+                border-radius: 8px; 
+                font-weight:bolder;
+              }
+              select {
+            margin: 0 auto;
+            background-color:deepskyblue;
+            /* -webkit-appearance: none; */
+            -webkit-border-radius: 0px;
+
+            border: 0;
+            outline: 1px solid #CCC;
+            width: 100px;
+            }
+
+            img {
+                margin: 2px;
+                width: 50px;
+                max-height: 100px;
+            }
+            a:hover, a:visited, a:link, a:active
+            {
+                text-decoration: none;
+            }
+            .logo { 
+                    background: url("/path") no-repeat; 
+                    width: 40px; 
+                    height: 40px; 
+                    display: block; 
+                    text-indent: -9999px;
+            }     
+          
+        </style>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-info ">
+            <!-- Navbar Brand-->
+            <img class="logo" src="https://yt3.ggpht.com/ytc/AKedOLTsbJZEJqWN2WIi4YwnRKqMPBoolS4HIIeHWieEiQ=s900-c-k-c0x00ffffff-no-rj" />  
+         </br> 
+        <strong><a class=" active text-black m-2" href="/default.html"><b>CG_Learn</b></a> </strong>
+            
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Tìm kiếm mã đề thi" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </nav>
+         <div id="layoutSidenav">
+          
+            </div> 
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4 ">
+                        <h1 class="mt-4 pt-5">Đề thi môn Lý</h1>
+                        <div class="card mb-4 ">
+                            <div class="card-body">
+                                <br/>Nơi đây sẽ hiển thị các môn Lý trong các khối tổng thể: Khối A, Khối A1.  
+                                Đề thi hiển lên theo thời gian và số câu quy định.
+                                <br/>Bao gồm đề thi các năm từ 12/2010 - 12/2020 dành cho các sĩ tử. 
+                                <br/>Mời bạn chọn đề thi thích hợp để ôn luyện.
+                              </div>
+
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                      
+                                        <!-- <table class="table table-striped table-bordered table-hover table-responsive-md"> -->
+                                            <thead>
+                                            <tr style="background-color: #27c9ff;">
+                                                <th>STT</th>
+                                                <th>Mã đề thi</th>
+                                                <th>Tên đề thi</th>
+                                                <!-- <th>Môn học</th> -->
+                                                <th>Khối học</th>
+                                                <th class="text-center">
+                                                    <i class="far fa-plus-square"></i>
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td><a href="tables.html">001</a></td>
+                                                <td><a href="tables.html">Đề số 1</a></td>
+                                                <!-- <td>Vật Lý</td> -->
+                                                <td>A</td>
+                                                <td class="text-center">
+                                                    <i class="fas fa-edit text-primary"></i>
+                                                    <i class="far fa-trash-alt text-danger"></i>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="#" class="link" style="color: deepskyblue">Xem</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td><a href="tables.html">002</a></td>
+                                                <td><a href="tables.html">Đề số 2</a></td>
+                                                <!-- <td>Hóa Học</td> -->
+                                                <td>A1</td>
+                                                <td class="text-center">
+                                                    <i class="fas fa-edit text-primary"></i>
+                                                    <i class="far fa-trash-alt text-danger"></i>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="#" class="link" style="color: deepskyblue">Xem</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td><a href="tables.html">003</a></td>
+                                                <td><a href="tables.html">Đề số 3</a></td>
+                                                <!-- <td>Anh Văn</td> -->
+                                                <td>A1</td>
+                                                <td class="text-center">
+                                                    <i class="fas fa-edit text-primary"></i>
+                                                    <i class="far fa-trash-alt text-danger"></i>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="#" class="link" style="color: deepskyblue">Xem</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                         
+                                    </tbody>
+                                    <input type= "button" class="btn btn-info float-xl-end" type="submit" onclick="window.location.href='createExam.html'" value="Thêm mới"/>                      
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-dark mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Bản quyền &copy; CG-Learning Website</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+    </body>
+</html>

@@ -44,7 +44,10 @@ public class    TrungController {
     }
 
     @PostMapping("/edit")
-    public String editView(@ModelAttribute("users") User user,Model model){
+    public String editView(@Valid @ModelAttribute("users") User user,BindingResult bindingResult,Model model){
+        if (bindingResult.hasErrors()){
+            return "trung/view";
+        }else
         userService.save(user);
         model.addAttribute("message","Cập Nhật Thành Công !");
         model.addAttribute("users",user);
