@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c48e2570-9f8d-4539-b9e9-4b9f191ad156" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/web-trac-nghiem">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1xoZFbHaIdveDfr9s867K1rUjNJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Thuctap\quizz\web-thi-trac-nghiem\web-trac-nghiem\src\main\resources\static\assets" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="WebThiTracNghiemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="web-thi-trac-nghiem.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.codegym.WebThiTracNghiemApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c48e2570-9f8d-4539-b9e9-4b9f191ad156" name="Default Changelist" comment="" />
+      <created>1631023298228</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631023298228</updated>
+      <workItem from="1631023301360" duration="17309000" />
+      <workItem from="1631096923975" duration="5362000" />
+      <workItem from="1631109908328" duration="1683000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="587" y="192" key="FileChooserDialogImpl" timestamp="1631107464338">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="587" y="192" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1631107464338" />
+    <state width="1557" height="53" key="GridCell.Tab.0.bottom" timestamp="1631108377375">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="53" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1631108377375" />
+    <state width="1557" height="53" key="GridCell.Tab.0.center" timestamp="1631108377375">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="53" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1631108377375" />
+    <state width="1557" height="53" key="GridCell.Tab.0.left" timestamp="1631108377375">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="53" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1631108377375" />
+    <state width="1557" height="53" key="GridCell.Tab.0.right" timestamp="1631108377375">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="53" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1631108377375" />
+    <state width="1557" height="53" key="GridCell.Tab.1.bottom" timestamp="1631108377376">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="53" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1631108377376" />
+    <state width="1557" height="53" key="GridCell.Tab.1.center" timestamp="1631108377375">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="53" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1631108377375" />
+    <state width="1557" height="53" key="GridCell.Tab.1.left" timestamp="1631108377375">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="53" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1631108377375" />
+    <state width="1557" height="53" key="GridCell.Tab.1.right" timestamp="1631108377376">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="53" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1631108377376" />
+  </component>
+</project>
