@@ -16,10 +16,16 @@ import vn.codegym.service.QuizService;
 import vn.codegym.service.ResultService;
 import vn.codegym.service.UserService;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 public class MainController {
+    private boolean status = true;
+    private Date timer = null;
     @Autowired
     Result result;
     @Autowired
@@ -47,67 +53,74 @@ public class MainController {
         return "";
     }
 
-        @GetMapping("/")
-        public String home(Model m){
-            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            if (principal instanceof UserDetails) {
-                String userName = ((UserDetails) principal).getUsername();
-                m.addAttribute("userName", userName);
-            }
-            List<Result> sList = qService.getTopScore();
-            m.addAttribute("sList", sList);
-            int total = userService.findByTotalUser();
-            m.addAttribute("total", total);
-            return "exam/index";
+    @GetMapping("/")
+    public String home(Model m){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            String userName = ((UserDetails) principal).getUsername();
+            m.addAttribute("userName", userName);
         }
-        @PostMapping("/quiz")
-        public String quiz (@RequestParam String username, Model m, RedirectAttributes ra){
-            if (username.equals("")) {
-                ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
-                return "redirect:/";
-            }
-
-            submitted = false;
-            result.setUsername(username);
-
-            QuestionForm qForm = qService.getQuestions();
-            m.addAttribute("qForm", qForm);
-            List<Result> sList = qService.getTopScore();
-            m.addAttribute("sList", sList);
-            int total = userService.findByTotalUser();
-            m.addAttribute("total", total);
-            return "exam/quiz";
-        }
-
-        @PostMapping("/submit")
-        public String submit (@ModelAttribute QuestionForm qForm, Model m){
-            if (!submitted) {
-                result.setTotalCorrect(qService.getResult(qForm));
-                qService.saveScore(result);
-                submitted = true;
-            }
-
-            return "exam/result";
-        }
-
-        @GetMapping("/score")
-        public String score (Model m){
-            List<Result> sList = qService.getTopScore();
-            m.addAttribute("sList", sList);
-
-            return "exam/scoreboard";
-        }
-        @GetMapping("/listInformation")
-        public String listInformation (Model m){
-            List<Result> sListt = rService.getTopFive();
-            m.addAttribute("sList", sListt);
-
-            return "Hau/ListInformation";
-        }
-        @GetMapping("/honorthegoldboard")
-        public String honorthegoldboard (Model m){
-            int total = userService.findByTotalUser();
-            m.addAttribute("total", total);
-            return "Hau/HonorTheGoldBoard";
-        }
+        List<Result> sList = qService.getTopScore();
+        m.addAttribute("sList", sList);
+        int total = userService.findByTotalUser();
+        m.addAttribute("total", total);
+        return "exam/index";
     }
+    @PostMapping("/quiz")
+    public String quiz (@RequestParam String username, Model m, RedirectAttributes ra) throws ParseException {
+        if (username.equals("")) {
+            ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
+            return "redirect:/";
+        }
+        submitted = false;
+        result.setUsername(username);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        if (this.status){
+            timer = new Date(System.currentTimeMillis());
+            timer.setMinutes(timer.getMinutes()+2);
+            System.out.println(formatter.format(timer));
+            this.status = false;
+        }
+        QuestionForm qForm = qService.getQuestions();
+        m.addAttribute("qForm", qForm);
+        List<Result> sList = qService.getTopScore();
+        m.addAttribute("sList", sList);
+        int total = userService.findByTotalUser();
+        m.addAttribute("total", total);
+        m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
+        return "exam/quiz";
+    }
+
+    @PostMapping("/submit")
+    public String submit (@ModelAttribute QuestionForm qForm, Model m){
+        this.status = true;
+        if (!submitted) {
+            result.setTotalCorrect(qService.getResult(qForm));
+            qService.saveScore(result);
+            submitted = true;
+        }
+
+        return "exam/result";
+    }
+
+    @GetMapping("/score")
+    public String score (Model m){
+        List<Result> sList = rService.getTopScore();
+        m.addAttribute("sList", sList);
+
+        return "exam/scoreboard";
+    }
+    @GetMapping("/listInformation")
+    public String listInformation (Model m){
+        List<Result> sList = qService.getTopScore();
+        m.addAttribute("sList", sList);
+
+        return "Hau/ListInformation";
+    }
+    @GetMapping("/honorthegoldboard")
+    public String honorthegoldboard (Model m){
+        int total = userService.findByTotalUser();
+        m.addAttribute("total", total);
+        return "Hau/HonorTheGoldBoard";
+    }
+}
