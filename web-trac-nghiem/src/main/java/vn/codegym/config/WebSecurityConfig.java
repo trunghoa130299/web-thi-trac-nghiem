@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/role",true)
                 .and()
                 .authorizeRequests().antMatchers("/role").permitAll()
-                .antMatchers("/user/list").hasRole("ADMIN");
+                .antMatchers("/user/**", "/exam/**", "/question/**").hasRole("ADMIN");
 //                .anyRequest().authenticated();
         http.authorizeRequests().and().rememberMe().tokenRepository(this.persistentTokenRepository()).
                 tokenValiditySeconds(60 * 60 * 10);

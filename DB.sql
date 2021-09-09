@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: web_thuc_tap
+-- Host: localhost    Database: web_thuc_tap
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,7 +35,7 @@ CREATE TABLE `classes` (
 
 LOCK TABLES `classes` WRITE;
 /*!40000 ALTER TABLE `classes` DISABLE KEYS */;
-INSERT INTO `classes` VALUES (1,'a0920i1'),(2,'a01020i1'),(3,'16N03'),(4,'16N04'),(5,'16N05'),(6,'16N06'),(7,'16N07'),(8,'16N08'),(9,'16N09'),(10,'16N10'),(11,'17N01'),(12,'17N02'),(13,'17N03'),(14,'17N04'),(15,'17N05'),(16,'17N06'),(17,'17N08'),(18,'17N09'),(19,'17N10'),(20,'18N01'),(21,'18N02'),(22,'18N03'),(23,'18N04'),(24,'18N05'),(25,'18N06'),(26,'18N07'),(27,'18N08'),(28,'18N09'),(29,'18N10'),(30,'19N01'),(31,'19N02'),(32,'19N03'),(33,'19N04'),(34,'19N05'),(35,'19N06'),(36,'19N07'),(37,'19N08'),(38,'19N09'),(39,'19N10');
+INSERT INTO `classes` VALUES (1,'a0920i1'),(2,'a01020i1'),(3,'16N03'),(4,'16N04');
 /*!40000 ALTER TABLE `classes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +69,7 @@ CREATE TABLE `exam` (
 
 LOCK TABLES `exam` WRITE;
 /*!40000 ALTER TABLE `exam` DISABLE KEYS */;
-INSERT INTO `exam` VALUES (1,'jv','java',1,1,'admin'),(2,'pth','python',2,2,'trung'),(3,'vatly12c3','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 3',4,2,'admin'),(4,'vatly12c4','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 4',10,2,'trung'),(5,'vatly12c5','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 5',11,4,'admin'),(6,'vatly12c6','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 6',3,5,'trung'),(7,'vatly12c7','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 7',5,6,'admin'),(8,'vatly12c8','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 8',6,3,'trung'),(9,'vatly12c9','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 9',12,3,'admin'),(10,'vatly12c10','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 10',11,4,'trung'),(11,'vatly12c11','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 11',10,5,'admin'),(12,'vatly12c12','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 12',9,6,'trung'),(13,'vatly12c13','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 13',6,7,'trung'),(14,'vatly12c14','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 14',4,8,'admin'),(15,'vatly12c15','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 15',3,9,'trung'),(16,'vatly12c16','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 16',2,9,'admin'),(17,'vatly12c17','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 17',1,10,'trung'),(18,'vatly12c18','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 18',6,11,'admin'),(19,'vatly12c19','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 19',7,1,'trung'),(20,'vatly12c20','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 20',8,3,'trung');
+INSERT INTO `exam` VALUES (1,'jv','java',1,1,'admin'),(2,'pth','python',2,2,'trung'),(3,'vatly12c3','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 3',2,2,'admin'),(4,'vatly12c4','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 4',2,2,'trung'),(5,'vatly12c5','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 5',2,3,'admin'),(6,'vatly12c6','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 6',3,3,'trung'),(7,'vatly12c7','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 7',3,2,'admin'),(8,'vatly12c8','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 8',1,3,'trung'),(9,'vatly12c9','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 9',2,3,'admin'),(10,'vatly12c10','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 10',1,2,'trung'),(11,'vatly12c11','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 11',2,3,'admin'),(12,'vatly12c12','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 12',3,2,'trung'),(13,'vatly12c13','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 13',2,3,'trung'),(14,'vatly12c14','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 14',3,4,'admin'),(15,'vatly12c15','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 15',3,2,'trung'),(16,'vatly12c16','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 16',2,3,'admin'),(17,'vatly12c17','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 17',1,4,'trung'),(18,'vatly12c18','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 18',1,2,'admin'),(19,'vatly12c19','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 19',2,1,'trung'),(20,'vatly12c20','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 20',3,3,'trung');
 /*!40000 ALTER TABLE `exam` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,7 +202,7 @@ CREATE TABLE `subject` (
 
 LOCK TABLES `subject` WRITE;
 /*!40000 ALTER TABLE `subject` DISABLE KEYS */;
-INSERT INTO `subject` VALUES (0,'Anh 9'),(1,'lap trinh'),(2,'khoa hoc'),(3,'Vật Lý 8'),(4,'Vật Lý 9'),(5,'Vật Lý 10'),(6,'Vật Lý 11'),(7,'Vật Lý 12'),(8,'Toán 4'),(9,'Toán 5'),(10,'Toán 6'),(11,'Toán 7'),(12,'Toán 8'),(13,'Toán 9'),(14,'Toán 10'),(15,'Toán 11'),(16,'Toán 12'),(17,'Anh 6'),(18,'Anh 7'),(19,'Anh 8'),(21,'Anh 10'),(22,'Anh 11'),(23,'Anh 12'),(24,'Văn 6'),(25,'Văn 7'),(26,'Văn 8'),(27,'Văn 9'),(28,'Văn 10'),(29,'Văn 11'),(30,'Văn 12'),(31,'Hóa 8'),(32,'Hóa 9'),(33,'Hóa 10'),(34,'Hóa 11'),(35,'Hóa 12'),(36,'Sinh 6'),(37,'Sinh 7'),(38,'Sinh 8'),(39,'Sinh 9'),(40,'Sinh 10');
+INSERT INTO `subject` VALUES (0,'Toán'),(1,'Vật lý'),(2,'Hóa học'),(3,'Anh');
 /*!40000 ALTER TABLE `subject` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,4 +304,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-08 22:22:14
+-- Dump completed on 2021-09-09 20:31:40
