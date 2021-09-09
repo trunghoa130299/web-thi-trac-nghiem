@@ -13,6 +13,7 @@ import vn.codegym.model.User;
 import vn.codegym.service.UserService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class    TrungController {
@@ -27,7 +28,10 @@ public class    TrungController {
     }
 
     @PostMapping("/signup")
-    public String signUp(@ModelAttribute User user) {
+    public String signUp(@Valid @ModelAttribute User user,BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            return "register";
+        }
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassWord(passwordEncoder.encode(user.getPassWord()));
         user.setRePassWord(user.getPassWord());
