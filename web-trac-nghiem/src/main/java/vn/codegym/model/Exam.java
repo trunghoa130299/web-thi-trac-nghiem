@@ -1,6 +1,7 @@
 package vn.codegym.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -9,8 +10,10 @@ public class Exam {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotBlank()
     private String idName;
 
+    @NotBlank()
     private String nameExam;
 
     @ManyToOne(targetEntity = Classes.class)

@@ -9,19 +9,17 @@
 <table class="table table-bordered table-striped">
     <tr>
         <th>STT</th>
-        <th>User Name</th>
         <th>Full Name</th>
         <th>Address</th>
         <th>Phone</th>
     </tr>
     <tr th:each="user, count : ${users}">
         <td th:text="${count.index + 1}"></td>
-        <td th:text="${user.user}"></td>
         <td th:text="${user.fullName}"></td>
         <td th:text="${user.address}"></td>
         <td th:text="${user.phoneNumber}"></td>
-        <td><a class="btn btn-warning" th:href="@{/user/editMember/{id}(id=${user.user})}">edit</a></td>
-        <td><a class="btn btn-danger" th:href="@{/user/delete/{id}(id=${user.user})}" id="deleteButton">delete</a></td>
+        <td><a class="btn btn-warning" th:href="@{/user/editMember/{id}(id=${user.id})}">edit</a></td>
+        <td><a class="btn btn-danger" th:href="@{/user/delete/{id}(id=${user.id})}" id="deleteButton">delete</a></td>
     </tr>
 </table>
 <div>

@@ -9,13 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import vn.codegym.model.Classes;
-import vn.codegym.model.Exam;
+import vn.codegym.model.*;
 
-import vn.codegym.model.Subject;
-import vn.codegym.service.ClassesService;
-import vn.codegym.service.ExamService;
-import vn.codegym.service.SubjectService;
+import vn.codegym.service.*;
 
 import java.text.ParseException;
 import java.util.Optional;
@@ -31,6 +27,12 @@ public class ExamController {
     @Autowired
     private ClassesService classesService;
 
+    @Autowired
+    private TestExamService testExamService;
+
+    @Autowired
+    private QuestionService questionService;
+
     @ModelAttribute("subjects")
     public Iterable<Subject> subjects(){
         return subjectService.findAll();
@@ -39,6 +41,11 @@ public class ExamController {
     @ModelAttribute("classes")
     public Iterable<Classes> classes(){
         return classesService.findAll();
+    }
+
+    @ModelAttribute("question")
+    public Iterable<Question> questions(){
+        return questionService.findAll();
     }
 
     @GetMapping("/exam/list")
@@ -64,7 +71,7 @@ public class ExamController {
     }
 
     @PostMapping("/exam/create")
-    public String saveUser(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult) throws ParseException {
+    public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult) throws ParseException {
         if (bindingResult.hasFieldErrors()){
             return "exam/createExam";
         }
@@ -98,4 +105,28 @@ public class ExamController {
         examService.delete(exam);
         return "redirect:/exam/list";
     }
+
+    @GetMapping("/exam/exam-test")
+    public String questionList(){
+        return "test";
+    }
+
+    @GetMapping("/exam/exam-test/{id}")
+    public String addTestExam(@PathVariable("id") Integer id, Model model)  {
+        Exam exam = examService.findById(id);
+        Question question = questionService.findById(id);
+        if (question.getExams().getId() == exam.getId()){
+            model.addAttribute("question", question);
+        }
+        return "exam/listExam";
+    }
+//
+//    @PostMapping("/exam/test-exam")
+//    public String addExam(@PathVariable("id") Integer id, Model model){
+//        Exam exam = examService.findById(id);
+//        Question question = questionService.findById(id);
+//
+//       return "redirect:/exam/list";
+//    }
+
 }
