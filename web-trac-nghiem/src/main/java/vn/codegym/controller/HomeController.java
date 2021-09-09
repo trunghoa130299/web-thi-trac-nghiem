@@ -45,10 +45,6 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/index")
-    public String showIndex(){
-        return "index";
-    }
     @GetMapping("/default")
     public String show(Model model){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -62,26 +58,9 @@ public class HomeController {
         model.addAttribute("total", total);
         return "default-page";
     }
-    @GetMapping("/them")
-    public String showThem(){
-        return "them";
-    }
 
-    @GetMapping("/list")
-    public String showList(){
-        return "list/List_Information";
-    }
-
-    @GetMapping("/addQuestion")
-    public String addQuestion(){
-        return "question/addQS";
-    }
-    @GetMapping("/listExam")
-    public String listExam(){
-        return "question/listExamQuestions";
-    }
-    @GetMapping("/questionList")
-    public String questionList(){
-        return "question/questionList";
+    @GetMapping("/error")
+    public String error(){
+        return "error-page";
     }
 }

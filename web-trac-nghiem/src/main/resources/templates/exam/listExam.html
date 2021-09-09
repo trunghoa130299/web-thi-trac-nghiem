@@ -11,8 +11,10 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="../static/css/default-page.css" rel="stylesheet" th:href="@{/css/default-page.css}">
 </head>
 <body>
+<div  th:insert="~{default-admin.html :: navbarAdmin}"></div>
     <div class="container">
         <div class="h3 text-center">
             Danh sách đề thi
@@ -24,6 +26,7 @@
                     <th:block class="dropdown-menu" th:each = "subject : ${subjects}">
                         <option class="dropdown-item" th:value="${subject.id}" th:text="${subject.name}" th:href="@{/exam/subject/${subject.getId()}}"></option>
                     </th:block>
+                    <option value="">Hiện tất cả</option>
                 </select>
             </form>
         </div>
@@ -35,6 +38,7 @@
                 <th>Tên đề thi</th>
                 <th>Môn học</th>
                 <th>Khối học</th>
+                <th></th>
                 <th class="text-center">
                     <i class="far fa-plus-square"></i>
                 </th>
@@ -48,9 +52,13 @@
                 <td th:text="${exam.nameExam}"></td>
                 <td th:text="${exam.subject.name}"></td>
                 <td th:text="${exam.classes.nameClass}"></td>
+<!--                <td th:text="${exam.questions}"></td>-->
                 <td class="text-center">
                     <a th:href="@{/exam/editExam/{id}(id=${exam.getId()})}"><i class="fas fa-edit text-primary"></i></a>
                     <a th:href="@{/exam/delete/{id}(id=${exam.getId()})}" id="deleteButton"><i class="far fa-trash-alt text-danger"></i></a>
+                </td>
+                <td class="text-center" >
+                    <a href="/question/list" class="btn btn-success">Thêm câu hỏi</a>
                 </td>
                 <td class="text-center">
                     <a href="#" class="link" style="color: deepskyblue">Xem</a>
@@ -65,6 +73,8 @@
         <span th:text="${exams.number + 1}"></span>/<span th:text="${exams.totalPages}"></span>
         <a class="btn btn-primary" th:href="@{'/exam/list'(page=${exams.number + 1})}" th:if="${exams.hasNext()}">Next</a>
     </div>
+
+<div  th:insert="~{default-admin.html :: footer}"></div>
 
 
     <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
@@ -99,7 +109,10 @@
                 $('#deleteModal').modal();
             })
         })
-    </script>
 
+        $("#showExam").click(function(){
+            $("#question").toggle();
+        });
+    </script>
 </body>
 </html>

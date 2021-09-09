@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
@@ -26,21 +26,18 @@
                 <a class="nav-link" href="#"><i class="fa fa-fw fa-home"></i>Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-fw fa-eur"></i>Quản lí người dùng</a>
+                <a class="nav-link" href="/user/list"><i class="fa fa-fw fa-eur"></i>Quản lí người dùng</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-fw fa-cloud"></i>Quản lí Đề Thi</a>
+                <a class="nav-link" href="/exam/list"><i class="fa fa-fw fa-cloud"></i>Quản lí Đề Thi</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-fw fa-wrench"></i>Quản lí Câu hỏi</a>
+                <a class="nav-link" href="/question/list"><i class="fa fa-fw fa-wrench"></i>Quản lí Câu hỏi</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-fw fa-book"></i>Thông kê</a>
+                <a class="nav-link" href="/error"><i class="fa fa-fw fa-book"></i>Thông kê</a>
             </li>
-
-
         </ul>
-
     </div>
 </nav>
 <div class="page-footer" id="footer" th:fragment="footer">

@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Entity
 public class TestExam {
     @Id
-    private int id;
+    private Integer id;
 
     private Timestamp timeStart;
 
@@ -29,7 +29,7 @@ public class TestExam {
     public TestExam() {
     }
 
-    public TestExam(int id, Timestamp timeStart, Timestamp timeEnd, double scoreSum, Exam exams, User users) {
+    public TestExam(Integer id, Timestamp timeStart, Timestamp timeEnd, double scoreSum, Exam exams, User users) {
         this.id = id;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
@@ -38,11 +38,11 @@ public class TestExam {
         this.users = users;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
