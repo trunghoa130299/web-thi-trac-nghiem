@@ -31,6 +31,7 @@ public class User {
     @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng")
     private String phoneNumber;
 
+    @NotBlank(message = "Ảnh Không được để trống")
     private String img;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
@@ -58,7 +59,7 @@ public class User {
                 @NotBlank(message = " Email Không được để trống") String email,
                 @NotBlank(message = "Địa Chỉ Được Để Trống") String address,
                 @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng") String phoneNumber,
-                String img, Set<Role> roles, List<Exam> exams, List<TestExam> testExams, Result result) {
+                @NotBlank(message = "Ảnh Không được để trống")String img, Set<Role> roles, List<Exam> exams, List<TestExam> testExams, Result result) {
         this.id = user;
         this.passWord = passWord;
         this.rePassWord = rePassWord;

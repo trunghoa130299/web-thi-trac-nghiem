@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="../static/css/default-page.css" rel="stylesheet" th:href="@{/css/default-page.css}">
+
 </head>
 <body>
-<table class="table table-bordered table-striped">
+<div  th:insert="~{default-admin.html :: navbarAdmin}">
+
+</div>
+
+<table class="table table-bordered table-striped ">
     <tr>
         <th>STT</th>
         <th>Full Name</th>
@@ -15,6 +21,10 @@
     </tr>
     <tr th:each="user, count : ${users}">
         <td th:text="${count.index + 1}"></td>
+<<<<<<< HEAD
+=======
+        <td th:text="${user.id}"></td>
+>>>>>>> b223bb9f6016e66d9b55b88a6e859588d0fa091f
         <td th:text="${user.fullName}"></td>
         <td th:text="${user.address}"></td>
         <td th:text="${user.phoneNumber}"></td>
@@ -27,7 +37,7 @@
     <span th:text="${users.number + 1}"></span>/<span th:text="${users.totalPages}"></span>
     <a th:href="@{'/user/list'(page=${users.number + 1})}" th:if="${users.hasNext()}">Next</a>
 </div>
-
+<div  th:insert="~{default-admin.html :: footer}"></div>
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>

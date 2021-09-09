@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Vinh Danh Bảng Vàng</title>
@@ -11,7 +12,7 @@
         .number {
             display: inline;
             border-radius: 15px;
-            padding: 3px;
+            padding: 3px 6px;
             background-color: rgb(114, 187, 230);
             color: white;
             float: right;
@@ -25,26 +26,24 @@
         <div class="card-header  " style="background: #00BFFF;text-align: center;">
             <label class="col-form-label" style="color: black;"><i class="far fa-thumbs-up"></i>Vinh danh bảng vàng</label>
         </div>
-        <table class="table table-hover mt-3 ml-2 mr-3 h-50 rounded "  id="tableHistory" style="width:90%;font-size: 15px">
-            <thead>
-            <tr class="table-primary text-primary">
-                <td><i class="fa fa-user mr-1" aria-hidden="true"></i></i>Lonvirus <span style="float: right;" class="number">220</span></td>
+        <table class="table table-hover mt-3 ml-2 mr-3 h-50 rounded "  id="tableHistory" style="width:90%;font-size: 15px"  >
+            <thead >
+            <tr class="table-primary text-primary" th:each="score: ${sList}" >
+                <td  ><span  class="fa fa-user mr-1 pr-2"  ></span> <span  th:text="${score.username}"></span><span  class="number" th:text="${score.totalCorrect}"></span></td>
             </tr>
-            <tr class="table-primary text-primary">
-                <td><i class="fa fa-user mr-1" aria-hidden="true"></i></i>Laphuc <span class="number">200</span></td>
+<!--            <tr class="table-primary text-primary" th:each="score: ${sList}" th:if="${score.totalCorrect ge 8}">-->
+<!--                <td th:each="i:${score.totalCorrect}" th:text="${score.username}" ><i  class="fa fa-user mr-1" aria-hidden="true" ></i> <span   class="number" th:text="${score.totalCorrect}"></span></td>-->
 
-            </tr>
-            <tr class="table-primary text-primary">
-                <td><i class="fa fa-user mr-1" aria-hidden="true"></i></i>PhuNhuan <span class="number">180</span></td>
+<!--            </tr>-->
+<!--            <tr class="table-primary text-primary" th:each="score: ${sList}" th:if="${score.totalCorrect ge 7}">-->
+<!--                <td th:each="i:${score.totalCorrect}" th:text="${score.username}" ><i  class="fa fa-user mr-1" aria-hidden="true" ></i> <span   class="number" th:text="${score.totalCorrect}"></span></td>-->
 
-            </tr>
-            <tr class="table-primary text-primary">
-                <td><i class="fa fa-user mr-1" aria-hidden="true"></i></i>Vonghia <span class="number">150</span></td>
+<!--            </tr>-->
+<!--            <tr class="table-primary text-primary" th:each="score: ${sList}" th:if="${score.totalCorrect ge 6}">-->
+<!--                <td th:each="i:${score.totalCorrect}" th:text="${score.username} " ><i  class="fa fa-user mr-1" aria-hidden="true" ></i> <p   class="number" th:text="${score.totalCorrect}"></p></td>-->
 
-            </tr>
-            <tr class="table-primary text-primary">
-                <td><i class="fa fa-user mr-1" aria-hidden="true"></i></i>Demons <span class="number">100</span></td>
-            </tr>
+<!--            </tr>-->
+
             </thead>
             <tbody>
 

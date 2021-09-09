@@ -12,7 +12,8 @@
             integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
             src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <link href="../static/css/default-page.css" rel="stylesheet" th:href="@{/css/default-page.css}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
 
     <style>
@@ -27,7 +28,7 @@
             font-size: 14px
         }</style>
     <!-- Bootstrap CSS -->
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">-->
     <link rel="stylesheet" th:href="@{/style/index.css}">
     <title>Home Page</title>
 </head>
@@ -42,7 +43,8 @@
     <div class="row">
         <div class="d-none d-md-block col-md-3">
             <div class="card-left" th:fragment="card-left">
-                <div class="card text-primary bg-light mb-3" th:insert="~{Hau/ListInformation.html :: thong-ke}" style="max-width: 14rem;">
+                <div class="card text-primary bg-light mb-3" th:insert="~{Hau/ListInformation.html :: thong-ke}"
+                     style="max-width: 14rem;">
 
                     <!--                <div class="card-header"><i class="fa fa-fw fa-thumbs-o-up"></i>Vinh danh bang vang</div>-->
                     <!--                <div class="card-body bg-white ">-->
@@ -62,12 +64,17 @@
 
         <div class="col-6">
             <div class="card-main">
-                <form class="card bg-dark py-5 px-4" action="/quiz" method="POST">
-                    <p>Nhập Tên Tham Gia</p>
-                    <input type="text" name="username" />
-                    <p class="text-danger warning" th:if="${warning}" th:text="${warning}"></p>
-                    <button type="submit" class="btn btn-info">Bắt Đầu</button>
-                </form>
+                    <form class="card bg-dark py-5 px-4" action="/quiz" method="POST">
+                        <p>Tên Tham Gia</p>
+                        <div sec:authorize="isAuthenticated()">
+                        <input type="text" th:value="${userName}" name="username" class="form-control"/>
+                        </div>
+                        <div sec:authorize="!isAuthenticated()">
+                            <input type="text" name="username" class="form-control"/>
+                        </div>
+                        <p class="text-danger warning" th:if="${warning}" th:text="${warning}"></p>
+                        <button type="submit" class="btn btn-info">Bắt Đầu</button>
+                    </form>
             </div>
         </div>
 
@@ -87,18 +94,21 @@
                         </div>
                         <div class="card-body">
                             <div sec:authorize="isAuthenticated()">
-                                <span>Xin Chào :</span>   <span sec:authentication="name" style="color: red"></span><br>
+                                <span>Xin Chào :</span> <span sec:authentication="name" style="color: red"></span><br>
                                 <a th:href="@{/view/__${userName}__}" class="nav-link">Thông Tin Cá Nhân</a>
-                                <a href="/logout" class="mid_card-text pl-5"><button class="btn btn-primary">
-                                    Đăng xuất
-                                </button></a>
+                                <a href="/logout" class="mid_card-text pl-5">
+                                    <button class="btn btn-primary">
+                                        Đăng xuất
+                                    </button>
+                                </a>
                             </div>
                             <div sec:authorize="!isAuthenticated()">
                                 <span>Vui Lòng Đăng Nhập</span>
                             </div>
                         </div>
                     </div>
-                    <div class="card text-primary mb-3"  th:insert="~{Hau/HonorTheGoldBoard.html :: thong-ke-thanh-vien}" style="max-width: 14rem;background: #00BFFF;">
+                    <div class="card text-primary mb-3" th:insert="~{Hau/HonorTheGoldBoard.html :: thong-ke-thanh-vien}"
+                         style="max-width: 14rem;background: #00BFFF;">
 
                     </div>
 
@@ -113,12 +123,12 @@
                 </div>
             </div>
         </div>
-</div>
+    </div>
 
-<!-- Importing Footer -->
-<div th:insert="~{/default-page :: footer}"></div>
+    <!-- Importing Footer -->
+    <div th:insert="~{/default-page :: footer}"></div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

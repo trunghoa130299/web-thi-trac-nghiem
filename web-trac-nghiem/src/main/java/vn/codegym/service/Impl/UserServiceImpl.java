@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import org.springframework.stereotype.Service;
+import vn.codegym.model.Result;
 import vn.codegym.model.User;
 import vn.codegym.repository.UserRepository;
 import vn.codegym.service.UserService;
@@ -38,4 +39,7 @@ public class UserServiceImpl implements UserService {
     public void delete(User user) {
         userRepository.delete(user);
     }
+    @Override
+    public  Integer findByTotalUser(){return userRepository.findByTotalUser();}
+
 }

@@ -2,6 +2,7 @@ package vn.codegym.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import vn.codegym.model.Result;
 import vn.codegym.model.User;
 
 public interface UserService {
@@ -15,4 +16,6 @@ public interface UserService {
 
     void delete(User user);
 
+
+    Integer findByTotalUser();
 }

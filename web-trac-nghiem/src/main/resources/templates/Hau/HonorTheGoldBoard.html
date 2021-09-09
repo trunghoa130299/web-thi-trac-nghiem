@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Thông Kê</title>
     <style>
         .number {
+
             display: inline;
             border-radius: 15px;
-            padding: 3px;
+            padding: 3px 6px;
             background-color: gray;
             color: white;
             float: right;
@@ -29,7 +31,7 @@
             <thead>
             <tr class="bg-light text-primary">
 
-                <td ><i class="fa fa-user mr-1"  aria-hidden="true"></i></i>Tổng thành viên <span style="float: right;" class="number">220</span></td>
+                <td ><i class="fa fa-user mr-1"  aria-hidden="true"></i></i>Tổng thành viên <span style="float: right;" class="number" th:text="${total}"></span></td>
             </tr>
 
             <tr class="table-light  text-primary">
