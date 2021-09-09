@@ -22,7 +22,7 @@
         <div class="btn-group mb-3">
             <form>
                 <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="this.form.submit()" th:value ="${subjectId}" th:name="subjectId">
-                    <option value="" disabled selected> Choose here</option>
+                    <option value="" disabled selected> Chọn...</option>
                     <th:block class="dropdown-menu" th:each = "subject : ${subjects}">
                         <option class="dropdown-item" th:value="${subject.id}" th:text="${subject.name}" th:href="@{/exam/subject/${subject.getId()}}"></option>
                     </th:block>

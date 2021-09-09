@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
@@ -10,20 +10,22 @@
             integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
             src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <link href="../static/css/default-page.css" rel="stylesheet" th:href="@{/css/default-page.css}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
 </head>
 <body>
 <nav class="navbar p-0 navbar-expand-lg navbar-light bg-light mb-5 " th:fragment="navbarAdmin">
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ">
             <li class="nav-item active">
-                <a class="nav-link" href="#"><i class="fa fa-fw fa-home"></i>Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/default"><i class="fa fa-fw fa-home"></i>Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/user/list"><i class="fa fa-fw fa-eur"></i>Quản lí người dùng</a>
@@ -37,6 +39,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="/error"><i class="fa fa-fw fa-book"></i>Thông kê</a>
             </li>
+            <div sec:authorize="isAuthenticated()">
+                <li class="nav-item">
+                    <span class="nav-link">Xin Chào : <span sec:authentication="name" style="color: red"></span> <a
+                            href="/logout"><i class="fa fa-sign-out-alt" aria-hidden="true"></i>Thoát
+                    </a></span>
+                </li>
+            </div>
         </ul>
     </div>
 </nav>

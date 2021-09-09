@@ -12,19 +12,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link href="../static/css/default-page.css" rel="stylesheet" th:href="@{/css/default-page.css}">
-
 </head>
 <body>
 <div  th:insert="~{default-admin.html :: navbarAdmin}">
 
 </div>
 
-<table class="table table-bordered table-striped ">
-    <tr>
+<table class="table table-bordered table-striped " id="tableList">
+    <tr style="background-color: #27c9ff;">
         <th>STT</th>
         <th>Họ tên</th>
         <th>Địa chỉ</th>
-        <th>Sđt</th>
+        <th>Số Điện Thoại</th>
         <th></th>
         <th></th>
     </tr>

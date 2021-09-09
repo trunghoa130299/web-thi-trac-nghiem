@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,11 @@ public class UserController {
 
     @GetMapping("/user/list")
     public String showList(Model model, @PageableDefault(value = 5) Pageable pageable){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails){
+            String userName = ((UserDetails) principal).getUsername();
+            model.addAttribute("userName",userName);
+        }
         Page<User> users = userService.findAll(pageable);
         model.addAttribute("users", users);
         return "user/list";
