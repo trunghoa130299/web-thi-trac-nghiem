@@ -42,4 +42,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public  Integer findByTotalUser(){return userRepository.findByTotalUser();}
 
+    @Override
+    public String findByNewUser(){return userRepository.findByNewUser();}
 }

@@ -12,5 +12,7 @@ import vn.codegym.model.User;
 public interface  UserRepository  extends JpaRepository<User,String > {
     @Query(value = "select count(id) from user;",nativeQuery = true)
     Integer findByTotalUser();
+    @Query(value = "SELECT full_name FROM user order by id desc LIMIT 1;",nativeQuery = true)
+    String findByNewUser();
 
 }

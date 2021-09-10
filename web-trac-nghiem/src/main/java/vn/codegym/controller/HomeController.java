@@ -13,6 +13,7 @@ import vn.codegym.model.MyUserDetail;
 import vn.codegym.model.Result;
 import vn.codegym.model.Role;
 import vn.codegym.service.QuizService;
+import vn.codegym.service.ResultService;
 import vn.codegym.service.UserService;
 import org.springframework.security.core.userdetails.User;
 import java.security.Principal;
@@ -27,6 +28,8 @@ public class HomeController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    ResultService rService;
     @GetMapping("/role")
     public String redirectRole(){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -52,10 +55,12 @@ public class HomeController {
             String userName = ((UserDetails) principal).getUsername();
             model.addAttribute("userName",userName);
         }
-        List<Result> sList = qService.getTopScore();
+        List<Result> sList = rService.getTopFive();
         model.addAttribute("sList", sList);
         int total = userService.findByTotalUser();
+        String newUser = userService.findByNewUser();
         model.addAttribute("total", total);
+        model.addAttribute("newUser",newUser);
         return "default-page";
     }
 

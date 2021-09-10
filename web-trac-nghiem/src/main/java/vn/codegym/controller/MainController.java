@@ -60,10 +60,12 @@ public class MainController {
             String userName = ((UserDetails) principal).getUsername();
             m.addAttribute("userName", userName);
         }
-        List<Result> sList = qService.getTopScore();
+        List<Result> sList = rService.getTopFive();
         m.addAttribute("sList", sList);
         int total = userService.findByTotalUser();
+        String newUser = userService.findByNewUser();
         m.addAttribute("total", total);
+        m.addAttribute("newUser",newUser);
         return "exam/index";
     }
     @PostMapping("/quiz")
@@ -105,14 +107,14 @@ public class MainController {
 
     @GetMapping("/score")
     public String score (Model m){
-        List<Result> sList = rService.getTopScore();
+        List<Result> sList = qService.getTopScore();
         m.addAttribute("sList", sList);
 
         return "exam/scoreboard";
     }
     @GetMapping("/listInformation")
     public String listInformation (Model m){
-        List<Result> sList = qService.getTopScore();
+        List<Result> sList = rService.getTopFive();
         m.addAttribute("sList", sList);
 
         return "Hau/ListInformation";
@@ -120,7 +122,9 @@ public class MainController {
     @GetMapping("/honorthegoldboard")
     public String honorthegoldboard (Model m){
         int total = userService.findByTotalUser();
+        String newUser = userService.findByNewUser();
         m.addAttribute("total", total);
+        m.addAttribute("newUser",newUser);
         return "Hau/HonorTheGoldBoard";
     }
 }

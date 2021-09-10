@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ResultRepository extends JpaRepository<Result, Integer> {
     @Query(value = "SELECT * FROM result order by total_Correct desc limit 5",nativeQuery = true)
-    List<Result> findAll();
+    List<Result> findTopFive();
 }
