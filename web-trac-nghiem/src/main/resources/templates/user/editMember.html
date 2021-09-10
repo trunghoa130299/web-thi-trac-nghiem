@@ -13,7 +13,7 @@
             User information
         </div>
         <form class="mx-5 mb-3 mt-2" th:action="@{/user/update}" th:object="${user}" method="post">
-            <input th:type="hidden" name="id" th:field="*{user}">
+            <input th:type="hidden" name="id" th:field="*{id}">
             <div class="form-group row">
                 <label class="col-lg-2 col-sm-4 col-form-label" for="name">Full name<span class="text-danger">*</span></label>
                 <div class="col-lg-10 col-sm-8">
@@ -52,7 +52,7 @@
                 <label class="col-lg-2 col-sm-4 col-form-label hiden"></span></label>
                 <div class="col-lg-10 col-sm-8">
                     <button class="btn btn-warning " type="submit">Update</button>
-                    <a class="btn btn-primary" th:href="@{/user/editPass/{id}(id=${user.user})}">
+                    <a class="btn btn-primary" th:href="@{/user/editPass/{id}(id=${user.id})}">
                         Change Password
                     </a>
                 </div>
