@@ -19,7 +19,7 @@
         <div class="h3 text-center">
             Danh sách đề thi
         </div>
-        <div class="btn-group mb-3">
+        <div class="btn-group mb-3 d-flex justify-content-between">
             <form>
                 <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="this.form.submit()" th:value ="${subjectId}" th:name="subjectId">
                     <option value="" disabled selected> Chọn...</option>
@@ -29,6 +29,11 @@
                     <option value="">Hiện tất cả</option>
                 </select>
             </form>
+            <div class="">
+                <a href="/exam/create" class="btn btn-primary">
+                    Thêm mới
+                </a>
+            </div>
         </div>
         <table class="table table-striped table-bordered table-hover table-responsive-md">
             <thead>

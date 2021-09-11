@@ -50,4 +50,11 @@ public class QuestionController {
         return "redirect:/question/list";
     }
 
+    @GetMapping("/question/delete/{id}")
+    public String delete(@PathVariable("id") Integer id){
+        Question question = questionService.findById(id);
+        questionService.delete(question);
+        return "redirect:/question/list";
+    }
+
 }

@@ -30,10 +30,10 @@
             <td th:text="${user.fullName}"></td>
             <td th:text="${user.address}"></td>
             <td th:text="${user.phoneNumber}"></td>
-            <td>
-                <a class="btn btn-warning" th:href="@{/user/editMember/{id}(id=${user.id})}">Sửa</a>
+            <td class="text-center">
+                <a th:href="@{/user/editMember/{id}(id=${user.id})}"><i class="fas fa-edit text-primary"></i></a>
                 <span>&nbsp;&nbsp;</span>
-                <a class="btn btn-danger" th:href="@{/user/delete/{id}(id=${user.id})}" id="deleteButton">Xóa</a>
+                <a th:href="@{/user/delete/{id}(id=${user.id})}" id="deleteButton"><i class="far fa-trash-alt text-danger"></i></a>
             </td>
         </tr>
     </table>
