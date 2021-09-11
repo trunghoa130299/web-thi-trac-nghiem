@@ -14,36 +14,52 @@
     <link href="../static/css/default-page.css" rel="stylesheet" th:href="@{/css/default-page.css}">
 </head>
 <body>
-<div  th:insert="~{default-admin.html :: navbarAdmin}">
+<div  th:insert="~{default-admin.html :: navbarAdmin}"></div>
 
+<div class="container">
+    <table class="table table-bordered table-striped " id="tableList">
+        <tr style="background-color: #27c9ff;">
+            <th>STT</th>
+            <th>Họ tên</th>
+            <th>Địa chỉ</th>
+            <th>Số Điện Thoại</th>
+            <th></th>
+        </tr>
+        <tr th:each="user, count : ${users}">
+            <td th:text="${count.index + 1}"></td>
+            <td th:text="${user.fullName}"></td>
+            <td th:text="${user.address}"></td>
+            <td th:text="${user.phoneNumber}"></td>
+            <td>
+                <a class="btn btn-warning" th:href="@{/user/editMember/{id}(id=${user.id})}">Sửa</a>
+                <span>&nbsp;&nbsp;</span>
+                <a class="btn btn-danger" th:href="@{/user/delete/{id}(id=${user.id})}" id="deleteButton">Xóa</a>
+            </td>
+        </tr>
+    </table>
 </div>
 
-<table class="table table-bordered table-striped " id="tableList">
-    <tr style="background-color: #27c9ff;">
-        <th>STT</th>
-        <th>Họ tên</th>
-        <th>Địa chỉ</th>
-        <th>Số Điện Thoại</th>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr th:each="user, count : ${users}">
-        <td th:text="${count.index + 1}"></td>
-        <td th:text="${user.fullName}"></td>
-        <td th:text="${user.address}"></td>
-        <td th:text="${user.phoneNumber}"></td>
-        <td>
-            <a class="btn btn-warning" th:href="@{/user/editMember/{id}(id=${user.id})}">Sửa</a>
-            <span>&nbsp;&nbsp;</span>
-            <a class="btn btn-danger" th:href="@{/user/delete/{id}(id=${user.id})}" id="deleteButton">Xóa</a>
-        </td>
-    </tr>
-</table>
-<div>
-    <a th:href="@{'/user/list'(page=${users.number - 1})}" th:if="${users.hasPrevious()}">Previous</a>
-    <span th:text="${users.number + 1}"></span>/<span th:text="${users.totalPages}"></span>
-    <a th:href="@{'/user/list'(page=${users.number + 1})}" th:if="${users.hasNext()}">Next</a>
+<div class="table-pagination d-flex justify-content-center">
+    <ul class="pagination">
+        <li class="page-item" th:class="${users.number eq 0} ? 'disabled' : ''">
+            <a class="page-link" th:if="${users.hasPrevious()}" th:href="@{'/user/list'(page=${users.number - 1},size=${users.size})}">Previous</a>
+        </li>
+
+        <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, users.totalPages - 1)}" th:class="${users.number eq pageNo}? 'active' : ''">
+            <a class="page-link" th:if="${users.number  eq pageNo}" href="javascript:void(0);">
+                <span th:text="${pageNo + 1}"></span>
+            </a>
+            <a class="page-link" th:if="${not (users.number  eq pageNo)}" th:href="@{${'/user/list'}(page=${pageNo},size=${users.size})}">
+                <span th:text="${pageNo + 1}"></span>
+            </a>
+
+        </li>
+        <li class="page-item" th:class="${users.number + 1 ge users.totalPages} ? 'disabled' : ''">
+            <a class="page-link" th:if="${users.hasNext()}" th:href="@{'/user/list'(page=${users.number + 1},size=${users.size})}">Next</a>
+        </li>
+    </ul>
 </div>
+
 <div  th:insert="~{default-admin.html :: footer}"></div>
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

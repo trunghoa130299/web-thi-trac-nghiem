@@ -49,4 +49,5 @@ public class QuestionController {
         questionService.save(question);
         return "redirect:/question/list";
     }
+
 }

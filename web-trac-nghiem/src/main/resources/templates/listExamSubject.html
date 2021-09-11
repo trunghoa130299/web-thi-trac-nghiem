@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
@@ -32,8 +32,6 @@
     <title>Home Page</title>
 </head>
 <body>
-
-<!-- Importing NavBar -->
 <div th:insert="~{/default-page :: navbar}"></div>
 
 <!-- Main Container Start -->
@@ -45,11 +43,11 @@
                 <div class="card text-primary bg-light mb-3" th:insert="~{Hau/ListInformation.html :: thong-ke}"
                      style="max-width: 14rem;">
 
-                    <!--                <div class="card-header"><i class="fa fa-fw fa-thumbs-o-up"></i>Vinh danh bang vang</div>-->
-                    <!--                <div class="card-body bg-white ">-->
-                    <!--                    <h5 class="card-title">Primary card title</h5>-->
-                    <!--                    <p class="card-text">the card's content.</p>-->
-                    <!--                </div>-->
+<!--                        <div class="card-header"><i class="fa fa-fw fa-thumbs-o-up"></i>Vinh danh bang vang</div>-->
+<!--                        <div class="card-body bg-white ">-->
+<!--                            <h5 class="card-title">Primary card title</h5>-->
+<!--                            <p class="card-text">the card's content.</p>-->
+<!--                        </div>-->
                 </div>
                 <div class="card text-primary bg-light mb-3" style="max-width: 14rem;">
                     <div class="card-header"><i class="fas fa-phone-alt mr-1"></i>Ho Tro truc tuyen</div>
@@ -62,19 +60,28 @@
         </div>
 
         <div class="col-6">
-            <div class="card-main">
-                    <form class="card bg-dark py-5 px-4" action="/quiz" method="POST">
-                        <p>Tên Tham Gia</p>
-                        <div sec:authorize="isAuthenticated()">
-                        <input type="text" th:value="${userName}" name="username" class="form-control"/>
-                        </div>
-                        <div sec:authorize="!isAuthenticated()">
-                            <input type="text" name="username" class="form-control"/>
-                        </div>
-                        <p class="text-danger warning" th:if="${warning}" th:text="${warning}"></p>
-                        <button type="submit" class="btn btn-info">Bắt Đầu</button>
-                    </form>
-            </div>
+            <table class="table table-striped table-bordered table-hover table-responsive-md">
+                <thead>
+                <tr style="background-color: #27c9ff;">
+                    <th>STT</th>
+                    <th>Mã đề thi</th>
+                    <th>Tên đề thi</th>
+                    <th class="text-center">
+                        <i class="far fa-plus-square"></i>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="exam : ${exams}" th:if="${exam.subject.id == 0}">
+                    <td th:text="${exam.id}"></td>
+                    <td th:text="${exam.idName}"></td>
+                    <td th:text="${exam.nameExam}"></td>
+                    <td class="text-center">
+                        <a href="/" class="btn btn-primary" style="color: deepskyblue">Thi</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
         <div class="col-md-3 col-sm-6">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -24,7 +24,7 @@
                 <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="this.form.submit()" th:value ="${subjectId}" th:name="subjectId">
                     <option value="" disabled selected> Chọn...</option>
                     <th:block class="dropdown-menu" th:each = "subject : ${subjects}">
-                        <option class="dropdown-item" th:value="${subject.id}" th:text="${subject.name}" th:href="@{/exam/subject/${subject.getId()}}"></option>
+                        <option class="dropdown-item" th:value="${subject.id}" th:text="${subject.name}"></option>
                     </th:block>
                     <option value="">Hiện tất cả</option>
                 </select>
@@ -42,7 +42,6 @@
                 <th class="text-center">
                     <i class="far fa-plus-square"></i>
                 </th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -57,9 +56,6 @@
                     <a th:href="@{/exam/editExam/{id}(id=${exam.getId()})}"><i class="fas fa-edit text-primary"></i></a>
                     <a th:href="@{/exam/delete/{id}(id=${exam.getId()})}" id="deleteButton"><i class="far fa-trash-alt text-danger"></i></a>
                 </td>
-                <td class="text-center" >
-                    <a href="/question/list" class="btn btn-success">Thêm câu hỏi</a>
-                </td>
                 <td class="text-center">
                     <a href="#" class="link" style="color: deepskyblue">Xem</a>
                 </td>
@@ -68,10 +64,25 @@
         </table>
     </div>
 
-    <div>
-        <a class="btn btn-primary" th:href="@{'/exam/list'(page=${exams.number - 1})}" th:if="${exams.hasPrevious()}">Previous</a>
-        <span th:text="${exams.number + 1}"></span>/<span th:text="${exams.totalPages}"></span>
-        <a class="btn btn-primary" th:href="@{'/exam/list'(page=${exams.number + 1})}" th:if="${exams.hasNext()}">Next</a>
+    <div class="table-pagination d-flex justify-content-center">
+        <ul class="pagination">
+            <li class="page-item" th:class="${exams.number eq 0} ? 'disabled' : ''">
+                <a class="page-link" th:if="${exams.hasPrevious()}" th:href="@{'/exam/list'(page=${exams.number - 1},size=${exams.size})}">Previous</a>
+            </li>
+
+            <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, exams.totalPages - 1)}" th:class="${exams.number eq pageNo}? 'active' : ''">
+                <a class="page-link" th:if="${exams.number  eq pageNo}" href="javascript:void(0);">
+                    <span th:text="${pageNo + 1}"></span>
+                </a>
+                <a class="page-link" th:if="${not (exams.number  eq pageNo)}" th:href="@{${'/exam/list'}(page=${pageNo},size=${exams.size})}">
+                    <span th:text="${pageNo + 1}"></span>
+                </a>
+
+            </li>
+            <li class="page-item" th:class="${exams.number + 1 ge exams.totalPages} ? 'disabled' : ''">
+                <a class="page-link" th:if="${exams.hasNext()}" th:href="@{'/exam/list'(page=${exams.number + 1},size=${exams.size})}">Next</a>
+            </li>
+        </ul>
     </div>
 
 <div  th:insert="~{default-admin.html :: footer}"></div>

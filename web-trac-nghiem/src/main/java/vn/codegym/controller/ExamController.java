@@ -28,9 +28,6 @@ public class ExamController {
     private ClassesService classesService;
 
     @Autowired
-    private TestExamService testExamService;
-
-    @Autowired
     private QuestionService questionService;
 
     @ModelAttribute("subjects")
@@ -106,10 +103,6 @@ public class ExamController {
         return "redirect:/exam/list";
     }
 
-    @GetMapping("/exam/exam-test")
-    public String questionList(){
-        return "test";
-    }
 
     @GetMapping("/exam/exam-test/{id}")
     public String addTestExam(@PathVariable("id") Integer id, Model model)  {
@@ -120,13 +113,20 @@ public class ExamController {
         }
         return "exam/listExam";
     }
-//
-//    @PostMapping("/exam/test-exam")
-//    public String addExam(@PathVariable("id") Integer id, Model model){
-//        Exam exam = examService.findById(id);
-//        Question question = questionService.findById(id);
-//
-//       return "redirect:/exam/list";
-//    }
+
+    @GetMapping("/listExamSubject")
+    public String listExamSubject(@RequestParam("subjectId") Optional<Integer> subjectId, Model model, @PageableDefault(value = 5) Pageable pageable){
+        Page<Exam> exams;
+//        model.addAttribute("subjects", subjectService.findAll());
+//        if (subjectId.isPresent()){
+//            exams = examService.findAllBySubject(subjectId.get(), pageable);
+//            model.addAttribute("exams", exams);
+//            model.addAttribute("subjectId", subjectId.get());
+//            return "listExamSubject";
+//        }
+        exams = examService.findAll(pageable);
+        model.addAttribute("exams", exams);
+        return "listExamSubject";
+    }
 
 }
