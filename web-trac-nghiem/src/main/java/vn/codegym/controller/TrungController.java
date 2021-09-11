@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import vn.codegym.model.Exam;
+import vn.codegym.model.Result;
 import vn.codegym.model.User;
+import vn.codegym.service.ExamService;
+import vn.codegym.service.ResultService;
 import vn.codegym.service.UserService;
 
 import javax.validation.Valid;
@@ -20,6 +24,9 @@ public class    TrungController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    ResultService rService;
 
     @GetMapping("/signup")
     public String showSignUp(Model model) {
@@ -100,8 +107,16 @@ public class    TrungController {
             return "trung/editPass";
         }
     }
-    @GetMapping(value = "/history")
-    public String showHistory(){
+    @Autowired
+    private ExamService examService;
+    @ModelAttribute("exams")
+    public Iterable<Exam> showAll(){
+        return examService.findAll();
+    }
+    @GetMapping(value = "/history/{id}")
+    public String showHistory(@PathVariable("id") String id, Model model){
+        List<Result> results = rService.findByHistory(id);
+        model.addAttribute("results",results);
         return "trung/history";
     }
 }

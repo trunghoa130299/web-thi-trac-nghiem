@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ResultService {
     List<Result> getTopFive();
+
+    List<Result> findByHistory(String id);
 }

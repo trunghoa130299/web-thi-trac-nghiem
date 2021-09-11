@@ -17,4 +17,9 @@ public class ResultServiceImpl implements ResultService {
     public List<Result> getTopFive() {
         return resultRepository.findTopFive();
     }
+
+    @Override
+    public List<Result> findByHistory(String id) {
+        return resultRepository.findByHistory(id);
+    }
 }

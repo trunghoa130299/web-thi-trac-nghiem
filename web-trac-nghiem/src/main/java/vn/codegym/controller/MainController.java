@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.model.QuestionForm;
 import vn.codegym.model.Result;
+import vn.codegym.model.User;
 import vn.codegym.service.QuizService;
 import vn.codegym.service.ResultService;
 import vn.codegym.service.UserService;
@@ -75,7 +76,9 @@ public class MainController {
             return "redirect:/";
         }
         submitted = false;
+        User user1 = userService.findById(username);
         result.setUsername(username);
+        result.setUsers(user1);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         if (this.status){
             timer = new Date(System.currentTimeMillis());

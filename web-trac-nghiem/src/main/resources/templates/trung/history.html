@@ -20,45 +20,13 @@
                 <th>STT</th>
                 <th>Bài Thi</th>
                 <th>Điểm Số</th>
-                <th>Ngày Thi</th>
             </tr>
             </thead>
           <tbody>
-          <tr>
-              <td>001</td>
-              <td>Toán</td>
-              <td>7</td>
-              <td>20-08-2021</td>
-          </tr>
-          <tr>
-              <td>001</td>
-              <td>Toán</td>
-              <td>7</td>
-              <td>20-08-2021</td>
-          </tr>
-          <tr>
-              <td>001</td>
-              <td>Toán</td>
-              <td>7</td>
-              <td>20-08-2021</td>
-          </tr>
-          <tr>
-              <td>001</td>
-              <td>Toán</td>
-              <td>7</td>
-              <td>20-08-2021</td>
-          </tr>
-          <tr>
-              <td>001</td>
-              <td>Toán</td>
-              <td>7</td>
-              <td>20-08-2021</td>
-          </tr>
-          <tr>
-              <td>001</td>
-              <td>Toán</td>
-              <td>7</td>
-              <td>20-08-2021</td>
+          <tr th:each="history,index : ${results}">
+              <td th:text="${index.index+1}"></td>
+              <td th:text="${history.questions.exams.idName}"></td>
+              <td th:text="${history.totalCorrect}"></td>
           </tr>
           </tbody>
         </table>
@@ -66,7 +34,7 @@
             <span class="col-lg-2 hide"></span>
             <span class="col-lg-3">Tổng Điểm:</span><span style="color: red"></span>
             <span class="col-lg-3">Điểm trung bình:</span><span style="color: red"></span>
-            <span><button class="btn btn-primary">Đóng</button></span>
+            <span><a class="btn btn-primary" href="/default">Đóng</a></span>
         </div>
     </div>
 </div>

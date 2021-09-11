@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,10 +16,17 @@ import vn.codegym.model.*;
 import vn.codegym.service.*;
 
 import java.text.ParseException;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class ExamController {
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    ResultService rService;
+
     @Autowired
     private ExamService examService;
 
@@ -124,6 +133,17 @@ public class ExamController {
 //            model.addAttribute("subjectId", subjectId.get());
 //            return "listExamSubject";
 //        }
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails){
+            String userName = ((UserDetails) principal).getUsername();
+            model.addAttribute("userName",userName);
+        }
+        List<Result> sList = rService.getTopFive();
+        model.addAttribute("sList", sList);
+        int total = userService.findByTotalUser();
+        String newUser = userService.findByNewUser();
+        model.addAttribute("total", total);
+        model.addAttribute("newUser",newUser);
         exams = examService.findAll(pageable);
         model.addAttribute("exams", exams);
         return "listExamSubject";

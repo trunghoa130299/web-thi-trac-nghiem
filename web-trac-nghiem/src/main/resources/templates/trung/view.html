@@ -72,7 +72,7 @@
             <a th:href="@{/editMember/__${users.id}__}">
                 <button class="btn btn-primary" style="margin-left: 27em">Chỉnh Sửa</button>
             </a>&nbsp; <a href="#">
-            <button class="btn btn-primary">Lịch Sử</button>
+            <a class="btn btn-primary" th:href="@{/history/__${users.id}__}">Lịch Sử</a>
         </a>&nbsp; <a th:href="@{/default}">
             <button class="btn btn-danger">Đóng</button>
         </a>
