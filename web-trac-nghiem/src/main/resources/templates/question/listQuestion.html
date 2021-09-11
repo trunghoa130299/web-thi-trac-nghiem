@@ -41,7 +41,7 @@
             <td th:text="${question.exams.getIdName()}"></td>
             <td class="text-center">
                 <a th:href="@{/question/editQuest/{id}(id=${question.quesId})}"><i class="fas fa-edit text-primary"></i></a>
-                <i class="far fa-trash-alt text-danger"></i>
+                <a th:href="@{/question/delete/{id}(id=${question.quesId})}"><i class="far fa-trash-alt text-danger"></i></a>
             </td>
         </tr>
         </tbody>
