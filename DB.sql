@@ -69,7 +69,7 @@ CREATE TABLE `exam` (
 
 LOCK TABLES `exam` WRITE;
 /*!40000 ALTER TABLE `exam` DISABLE KEYS */;
-INSERT INTO `exam` VALUES (1,'jv','java',1,1,'admin'),(2,'pth','python',2,2,'trung'),(3,'vatly12c3','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 3',2,2,'admin'),(4,'vatly12c4','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 4',2,2,'trung'),(5,'vatly12c5','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 5',2,3,'admin'),(6,'vatly12c6','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 6',3,3,'trung'),(7,'vatly12c7','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 7',3,2,'admin'),(8,'vatly12c8','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 8',1,3,'trung'),(9,'vatly12c9','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 9',2,3,'admin'),(10,'vatly12c10','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 10',1,2,'trung'),(11,'vatly12c11','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 11',2,3,'admin'),(12,'vatly12c12','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 12',3,2,'trung'),(13,'vatly12c13','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 13',2,3,'trung'),(14,'vatly12c14','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 14',3,4,'admin'),(15,'vatly12c15','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 15',3,2,'trung'),(16,'vatly12c16','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 16',2,3,'admin'),(17,'vatly12c17','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 17',1,4,'trung'),(18,'vatly12c18','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 18',1,2,'admin'),(19,'vatly12c19','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 19',2,1,'trung'),(20,'vatly12c20','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 20',3,3,'trung');
+INSERT INTO `exam` VALUES (1,'t001','Đề toán 2021',1,0,NULL),(2,'t002','Toán đại cương 2020',2,0,NULL),(3,'vatly12c3','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 3',2,2,'admin'),(4,'vatly12c4','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 4',2,2,'trung'),(5,'vatly12c5','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 5',2,3,'admin'),(6,'vatly12c6','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 6',3,3,'trung'),(7,'vatly12c7','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 7',3,2,'admin'),(8,'vatly12c8','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 8',1,3,'trung'),(9,'vatly12c9','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 9',2,3,'admin'),(10,'vatly12c10','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 10',1,2,'trung'),(11,'vatly12c11','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 11',2,3,'admin'),(12,'vatly12c12','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 12',3,2,'trung'),(13,'vatly12c13','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 13',2,3,'trung'),(14,'vatly12c14','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 14',3,3,'admin'),(15,'vatly12c15','Câu hỏi trắc nghiệm lý thuyết vật lý 12 chương 15',3,2,'trung');
 /*!40000 ALTER TABLE `exam` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +145,7 @@ CREATE TABLE `result` (
   KEY `FKdjvgll8a3pvda9f9jthb2xvs1` (`users_user`),
   CONSTRAINT `FK8qjtmwcpdxr2l8tkd0j3syilo` FOREIGN KEY (`questions_ques_id`) REFERENCES `question` (`ques_id`),
   CONSTRAINT `FKdjvgll8a3pvda9f9jthb2xvs1` FOREIGN KEY (`users_user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +154,7 @@ CREATE TABLE `result` (
 
 LOCK TABLES `result` WRITE;
 /*!40000 ALTER TABLE `result` DISABLE KEYS */;
-INSERT INTO `result` VALUES (1,5,1,'admin','hoa'),(2,4,2,'trung','hoa1'),(3,2,NULL,NULL,'hoa11'),(4,3,NULL,NULL,'Trung');
+INSERT INTO `result` VALUES (1,5,1,'admin','hoa'),(2,4,2,'trung','hoa1'),(3,2,NULL,NULL,'hoa11'),(4,3,NULL,NULL,'Trung'),(5,1,NULL,NULL,'trung'),(6,2,NULL,NULL,'trung');
 /*!40000 ALTER TABLE `result` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,4 +304,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-09 20:31:40
+-- Dump completed on 2021-09-11 23:24:27
