@@ -8,4 +8,8 @@ public interface ResultService {
     List<Result> getTopFive();
 
     List<Result> findByHistory(String id);
+
+    Object findSum(String id);
+
+    Object findAvg(String id);
 }

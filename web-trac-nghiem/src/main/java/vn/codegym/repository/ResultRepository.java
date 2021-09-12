@@ -14,4 +14,12 @@ public interface ResultRepository extends JpaRepository<Result, Integer> {
     List<Result> findTopFive();
     @Query(value = "SELECT * FROM result where users_user = :id ",nativeQuery = true)
     List<Result> findByHistory(@Param("id") String id);
+    @Query(value = "SELECT SUM(total_correct)\n" +
+            "FROM result\n" +
+            "WHERE users_user= :id ",nativeQuery = true)
+    Object findSum(@Param("id") String id);
+    @Query(value = "SELECT AVG (total_correct)\n" +
+            "FROM result\n" +
+            "WHERE users_user= :id ",nativeQuery = true)
+    Object findAvg(@Param("id") String id);
 }

@@ -22,4 +22,14 @@ public class ResultServiceImpl implements ResultService {
     public List<Result> findByHistory(String id) {
         return resultRepository.findByHistory(id);
     }
+
+    @Override
+    public Object findSum(String id) {
+        return resultRepository.findSum(id);
+    }
+
+    @Override
+    public Object findAvg(String id) {
+        return resultRepository.findAvg(id);
+    }
 }

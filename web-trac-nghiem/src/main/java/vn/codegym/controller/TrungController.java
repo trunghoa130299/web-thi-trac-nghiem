@@ -117,6 +117,8 @@ public class    TrungController {
     public String showHistory(@PathVariable("id") String id, Model model){
         List<Result> results = rService.findByHistory(id);
         model.addAttribute("results",results);
+        model.addAttribute("sum",rService.findSum(id));
+        model.addAttribute("avg",rService.findAvg(id));
         return "trung/history";
     }
 }
