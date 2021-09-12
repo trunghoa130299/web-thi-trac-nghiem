@@ -149,4 +149,23 @@ public class ExamController {
         return "listExamSubject";
     }
 
+    @GetMapping("/listExamSubjectLy")
+    public String listExamSubjectLy(@RequestParam("subjectId") Optional<Integer> subjectId, Model model, @PageableDefault(value = 5) Pageable pageable){
+        Page<Exam> exams;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails){
+            String userName = ((UserDetails) principal).getUsername();
+            model.addAttribute("userName",userName);
+        }
+        List<Result> sList = rService.getTopFive();
+        model.addAttribute("sList", sList);
+        int total = userService.findByTotalUser();
+        String newUser = userService.findByNewUser();
+        model.addAttribute("total", total);
+        model.addAttribute("newUser",newUser);
+        exams = examService.findAll(pageable);
+        model.addAttribute("exams", exams);
+        return "listExamSubjectLy";
+    }
+
 }
