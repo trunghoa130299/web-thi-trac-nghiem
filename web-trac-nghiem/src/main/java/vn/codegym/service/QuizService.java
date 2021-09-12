@@ -43,6 +43,22 @@ public class QuizService {
 
         return qForm;
     }
+    public QuestionForm getQuestionss(int id) {
+        List<Question> allQues = qRepo.findAllId(id);
+        List<Question> qList = new ArrayList<Question>();
+
+        Random random = new Random();
+
+        for(int i=0; i<10; i++) {
+            int rand = random.nextInt(allQues.size());
+            qList.add(allQues.get(rand));
+            allQues.remove(rand);
+        }
+
+        qForm.setQuestions(qList);
+
+        return qForm;
+    }
 
     public int getResult(QuestionForm qForm) {
         int correct = 0;
