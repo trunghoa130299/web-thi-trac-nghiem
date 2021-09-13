@@ -61,6 +61,10 @@ public class HomeController {
         String newUser = userService.findByNewUser();
         model.addAttribute("total", total);
         model.addAttribute("newUser",newUser);
+        model.addAttribute("toan",0);
+        model.addAttribute("ly",1);
+        model.addAttribute("hoa",2);
+        model.addAttribute("anh",3);
         return "default-page";
     }
 
