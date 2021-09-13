@@ -72,12 +72,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="exam,index : ${exams}" th:if="${exam.subject.id == 1}">
-                    <td th:text="${index.index+1}"></td>
+                <tr th:each="exam : ${exams}" th:if="${exam.subject.id == 1}">
+                    <td th:text="${exam.id}"></td>
                     <td th:text="${exam.idName}"></td>
                     <td th:text="${exam.nameExam}"></td>
                     <td class="text-center">
-                        <a th:href="@{/quiz1/__${userName}__/__${exam.id}__}" class="btn btn-primary">Thi</a>
+                        <a href="/" class="btn btn-primary">Thi</a>
                     </td>
                 </tr>
                 </tbody>
