@@ -19,10 +19,20 @@
     <div class="h3 text-center">
         Danh sách câu hỏi
     </div>
+    <div class="btn-group mb-3 d-flex justify-content-between">
+        <form>
+            <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="this.form.submit()" th:value ="${examId}" th:name="examId">
+                <option value="" disabled selected> Chọn...</option>
+                <th:block class="dropdown-menu" th:each = "exam : ${exams}">
+                    <option class="dropdown-item" th:value="${exam.id}" th:text="${exam.nameExam}"></option>
+                </th:block>
+                <option value="">Hiện tất cả</option>
+            </select>
+        </form>
+    </div>
     <table class="table table-striped table-bordered table-hover table-responsive-md">
         <thead>
         <tr style="background-color: #27c9ff;">
-            <th>STT</th>
             <th>Mã câu hỏi</th>
             <th>Câu hỏi</th>
             <th>Đáp án</th>
@@ -33,8 +43,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="question,count : ${questions}">
-            <td th:text="${count.index + 1}"></td>
+        <tr th:each="question: ${questions}">
             <td th:text="${question.quesId}"></td>
             <td th:text="${question.title}"></td>
             <td th:text="${question.ans}"></td>
