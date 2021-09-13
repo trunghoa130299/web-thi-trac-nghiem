@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,13 +36,25 @@ public class    TrungController {
     }
 
     @PostMapping("/signup")
-    public String signUp(@Valid @ModelAttribute User user,BindingResult bindingResult) {
+    public String signUp(@Valid @ModelAttribute User user,BindingResult bindingResult,Model model) {
+        if (userService.userExists(user.getId())){
+            bindingResult.addError(new FieldError("user","id","Tài khoản đã tồn tại."));
+        }
+        if (userService.userExistss(user.getEmail())){
+            bindingResult.addError(new FieldError("user","email","Email đã tồn tại."));
+        }
+        if (user.getPassWord() != null && user.getRePassWord() != null){
+            if (!user.getPassWord().equals(user.getRePassWord())){
+                bindingResult.addError(new FieldError("user","rePassWord","Mật khẩu phải trùng nhau"));
+            }
+        }
         if (bindingResult.hasErrors()){
             return "register";
         }
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassWord(passwordEncoder.encode(user.getPassWord()));
         user.setRePassWord(user.getPassWord());
+        model.addAttribute("message","Đăng kí thành công !");
         userService.save(user);
         return "login";
     }

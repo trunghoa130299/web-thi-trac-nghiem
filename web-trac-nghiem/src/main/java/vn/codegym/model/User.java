@@ -1,34 +1,41 @@
 package vn.codegym.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 public class User {
     @Id
-    @NotBlank(message = "Tài Khoản Không Được Để Trống")
+    @Column(unique = true)
+    @NotBlank(message = "Tài khoản không được để trống.")
     private String id;
 
-    @NotBlank(message = "Mật Khẩu Không Được Để Trống")
+    @Length(min = 6,message = "Không được ít hơn 6 kí tự.")
+    @NotBlank(message = "Mật khẩu không được để trống.")
     private String passWord;
 
-    @NotBlank(message = " Không Được Để Trống")
+    @Length(min = 6,message = "Không được ít hơn 6 kí tự.")
+    @NotBlank(message = "Mật khẩu không được để trống.")
     private String rePassWord;
 
-    @NotBlank(message = "Tên Không Được Để Trống")
+    @NotBlank(message = "Tên không được để trống.")
     private String fullName;
 
-    @Pattern(regexp = "^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$", message = "Sai định dạng")
-    @NotBlank(message = " Email Không được để trống")
+    @Pattern(regexp = "^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$", message = "Sai định dạng.")
+    @NotBlank(message = " Email không được để trống.")
     private String email;
 
-    @NotBlank(message = "Địa Chỉ Được Để Trống")
+    @NotBlank(message = "Địa chỉ  không được để trống")
     private String address;
 
-    @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng")
+    @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng.")
     private String phoneNumber;
 
     private String img;
@@ -50,16 +57,11 @@ public class User {
     public User() {
     }
 
-    public User(@NotBlank(message = "Tài Khoản Không Được Để Trống") String user,
-                @NotBlank(message = "Mật Khẩu Không Được Để Trống") String passWord,
-                @NotBlank(message = " Không Được Để Trống") String rePassWord,
-                @NotBlank(message = "Tên Không Được Để Trống") String fullName,
-                @Pattern(regexp = "^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$", message = "Sai định dạng")
-                @NotBlank(message = " Email Không được để trống") String email,
-                @NotBlank(message = "Địa Chỉ Được Để Trống") String address,
-                @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng") String phoneNumber,
-                String img, Set<Role> roles, List<Exam> exams, List<TestExam> testExams, Result result) {
-        this.id = user;
+    public User(@NotBlank(message = "Tài khoản không được để trống.") String id,
+                @Length(min = 6,message = "Không được ít hơn 6 kí tự.") @NotBlank(message = "Mật khẩu không được để trống.") String passWord,
+                @Length(min = 6,message = "Không được ít hơn 6 kí tự.") @NotBlank(message = "Mật khẩu không được để trống.") String rePassWord,
+                 @NotBlank(message = "Tên không được để trống.") String fullName, @Pattern(regexp = "^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$", message = "Sai định dạng.") @NotBlank(message = " Email không được để trống.") String email, @NotBlank(message = "Địa chỉ  không được để trống") String address, @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng.") String phoneNumber, String img, Set<Role> roles, List<Exam> exams, List<TestExam> testExams, Result result) {
+        this.id = id;
         this.passWord = passWord;
         this.rePassWord = rePassWord;
         this.fullName = fullName;

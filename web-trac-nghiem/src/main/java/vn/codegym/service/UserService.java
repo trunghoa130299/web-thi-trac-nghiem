@@ -20,4 +20,9 @@ public interface UserService {
     Integer findByTotalUser();
 
     String findByNewUser();
+
+
+    boolean userExists(String id);
+
+    boolean userExistss(String email);
 }

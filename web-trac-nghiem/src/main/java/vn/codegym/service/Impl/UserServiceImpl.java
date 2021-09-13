@@ -44,4 +44,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String findByNewUser(){return userRepository.findByNewUser();}
+
+    @Override
+    public boolean userExists(String username){
+        return userRepository.findById(username).isPresent();
+    }
+
+    @Override
+    public boolean userExistss(String email) {
+        return userRepository.findById(email).isPresent();
+    }
+
 }

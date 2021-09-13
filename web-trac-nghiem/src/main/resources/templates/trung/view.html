@@ -25,7 +25,7 @@
     </div>
     <div class="card mt-5 row" style="border-color: #00BFFF">
         <div class="card-header col-lg-12" style="background: #00BFFF">
-            <label class="col-form-label">Thông Tin Cá Nhân</label>
+            <label class="col-form-label"><h4><strong>Thông Tin Cá Nhân</strong></h4></label>
         </div>
         <form class="form-group row col-lg-12" th:object="${users}" th:method="post" th:action="@{/edit}">
             <input type="hidden" th:field="*{passWord}">
