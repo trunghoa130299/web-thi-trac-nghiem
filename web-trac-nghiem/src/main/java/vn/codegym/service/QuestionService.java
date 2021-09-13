@@ -2,6 +2,8 @@ package vn.codegym.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
+import vn.codegym.model.Exam;
 import vn.codegym.model.Question;
 
 public interface QuestionService {
@@ -14,4 +16,6 @@ public interface QuestionService {
     void save(Question question);
 
     void delete(Question question);
+
+    Page<Question> findAllByExams(int id, Pageable pageable);
 }

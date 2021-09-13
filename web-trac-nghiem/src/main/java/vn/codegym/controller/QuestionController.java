@@ -6,14 +6,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import vn.codegym.model.Exam;
 import vn.codegym.model.Question;
 import vn.codegym.service.ExamService;
 import vn.codegym.service.QuestionService;
+
+import java.util.Optional;
 
 
 @Controller
@@ -31,8 +30,16 @@ public class QuestionController {
     }
 
     @GetMapping("/question/list")
-    public String showList(Model model, @PageableDefault(value = 5) Pageable pageable){
-        Page<Question> questions = questionService.findAll(pageable);
+    public String showList(@RequestParam("examId") Optional<Integer> examId, Model model, @PageableDefault(value = 5) Pageable pageable){
+        Page<Question> questions;
+        model.addAttribute("exams", examService.findAll());
+        if (examId.isPresent()){
+            questions = questionService.findAllByExams(examId.get(), pageable);
+            model.addAttribute("questions", questions);
+            model.addAttribute("examId", examId.get());
+            return "question/listQuestion";
+        }
+        questions = questionService.findAll(pageable);
         model.addAttribute("questions", questions);
         return "question/listQuestion";
     }
