@@ -123,16 +123,9 @@ public class ExamController {
         return "exam/listExam";
     }
 
-    @GetMapping("/listExamSubject")
-    public String listExamSubject(@RequestParam("subjectId") Optional<Integer> subjectId, Model model, @PageableDefault(value = 5) Pageable pageable){
+    @GetMapping("/listExamSubject/{id}")
+    public String listExamSubject(@PathVariable int id, Model model, @PageableDefault(value = 5) Pageable pageable){
         Page<Exam> exams;
-//        model.addAttribute("subjects", subjectService.findAll());
-//        if (subjectId.isPresent()){
-//            exams = examService.findAllBySubject(subjectId.get(), pageable);
-//            model.addAttribute("exams", exams);
-//            model.addAttribute("subjectId", subjectId.get());
-//            return "listExamSubject";
-//        }
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails){
             String userName = ((UserDetails) principal).getUsername();
@@ -144,28 +137,8 @@ public class ExamController {
         String newUser = userService.findByNewUser();
         model.addAttribute("total", total);
         model.addAttribute("newUser",newUser);
-        exams = examService.findAll(pageable);
+        exams = examService.findAllBySubject(id,pageable);
         model.addAttribute("exams", exams);
         return "listExamSubject";
     }
-
-    @GetMapping("/listExamSubjectLy")
-    public String listExamSubjectLy(@RequestParam("subjectId") Optional<Integer> subjectId, Model model, @PageableDefault(value = 5) Pageable pageable){
-        Page<Exam> exams;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails){
-            String userName = ((UserDetails) principal).getUsername();
-            model.addAttribute("userName",userName);
-        }
-        List<Result> sList = rService.getTopFive();
-        model.addAttribute("sList", sList);
-        int total = userService.findByTotalUser();
-        String newUser = userService.findByNewUser();
-        model.addAttribute("total", total);
-        model.addAttribute("newUser",newUser);
-        exams = examService.findAll(pageable);
-        model.addAttribute("exams", exams);
-        return "listExamSubjectLy";
-    }
-
 }
