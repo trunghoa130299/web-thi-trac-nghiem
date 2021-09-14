@@ -17,7 +17,7 @@
 <div  th:insert="~{default-admin.html :: navbarAdmin}"></div>
     <div class="container-fluid">
         <div class="h4 text-center mb-4">
-            Update Exam
+           Cật Nhật Đề Thi
         </div>
         <form style="max-width: 600px; margin: 0 auto; background-color: #d8f5ff;" th:action="@{/exam/update}" th:object="${exam}" method="post">
             <input th:type="hidden" name="id" th:field="*{id}">
