@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" xmlns:>
 <head th:fragment="head">
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
@@ -37,22 +37,28 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/default"><i class="fa fa-fw fa-home"></i>Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-fw fa-eur"></i>Khối A</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-fw fa-cloud"></i>Khối B</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-fw fa-wrench"></i>Khối D</a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="#"><i class="fa fa-fw fa-eur"></i>Khối A</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="#"><i class="fa fa-fw fa-cloud"></i>Khối B</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="#"><i class="fa fa-fw fa-wrench"></i>Khối D</a>-->
+<!--            </li>-->
             <li class="nav-item">
                 <a class="nav-link" href="/"><i class="fa fa-fw fa-book"></i>IQ Test</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a class="nav-link" href="#"><i class="fa fa-fw fa-globe"></i>About Us</a>
             </li>
-
+            <div th:switch="${userName}">
+                <div th:case="'admin'">
+            <li class="nav-item ">
+                <a class="nav-link"  th:text="${userName=='admin' ?'Quản lí':''}" href="/user/list"><i class="fa fa-fw fa-globe"></i>Quản lí</a>
+            </li>
+            </div>
+            </div>
         </ul>
 
     </div>
@@ -61,7 +67,7 @@
 <br>
 
 <div class="container-fluid">
-<div class="row">
+<div class="row" style="margin-bottom: 100px">
     <div class="d-none d-md-block col-md-3">
         <div class="card-left" th:fragment="card-left">
             <div class="card text-primary bg-light mb-3" th:insert="~{Hau/ListInformation.html :: thong-ke}" style="max-width: 14rem;">

@@ -25,26 +25,29 @@
         <div class="card-header col-lg-12" style="background: #00BFFF">
             <label class="col-form-label">Lịch Sử</label>
         </div>
-        <table class="table mt-3 table-striped" id="tableHistory">
-            <thead>
-            <tr class="table-success">
-                <th>STT</th>
-                <th>Bài Thi</th>
-                <th>Điểm Số</th>
-            </tr>
-            </thead>
-          <tbody>
-          <tr th:each="history,index : ${results}">
-              <td th:text="${index.index+1}"></td>
-              <td th:text="${history.questions.exams.idName}"></td>
-              <td th:text="${history.totalCorrect}"></td>
-          </tr>
-          </tbody>
-        </table>
+        <div class="p-2">
+            <table class="table mt-3 table-striped" id="tableHistory">
+                <thead>
+                <tr style="background-color: deepskyblue">
+                    <th>STT</th>
+                    <th>Bài Thi</th>
+                    <th>Điểm Số</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="history,index : ${results}">
+                    <td th:text="${index.index+1}"></td>
+                    <td th:text="${history.questions.exams.nameExam}"></td>
+                    <td th:text="${history.totalCorrect}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
         <div class="row mt-3">
             <span class="col-lg-2 hide"></span>
             <span class="col-lg-3">Tổng Điểm: <span style="color: red" th:text="${sum}"></span></span>
-            <span class="col-lg-3">Điểm trung bình: <span style="color: red" th:text="${avg}"></span></span>
+            <span class="col-lg-3">Điểm trung bình: <span style="color: red" th:text="${#numbers.formatDecimal(avg, 0, 'COMMA', 2, 'POINT')}"></span></span>
             <span><a class="btn btn-primary" href="/default">Đóng</a></span>
         </div>
     </div>

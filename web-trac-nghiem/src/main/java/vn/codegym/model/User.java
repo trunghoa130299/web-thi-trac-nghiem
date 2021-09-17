@@ -35,7 +35,7 @@ public class User {
     @NotBlank(message = "Địa chỉ  không được để trống")
     private String address;
 
-    @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng.")
+    @Pattern(regexp = "^((\\(84\\)\\+)|(0))((91)|(90))[\\d]{7}$", message = "Sai định dạng .")
     private String phoneNumber;
 
     private String img;
