@@ -42,4 +42,5 @@ public class ExamServiceImpl implements ExamService {
     public Page<Exam> findAllBySubject(int id, Pageable pageable) {
         return examRepository.findAllBySubject(id, pageable);
     }
+
 }

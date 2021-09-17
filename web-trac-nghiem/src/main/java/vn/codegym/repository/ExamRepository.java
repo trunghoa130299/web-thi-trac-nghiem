@@ -11,4 +11,8 @@ public interface ExamRepository extends JpaRepository<Exam, Integer> {
    @Query(value = "SELECT * FROM exam join subject where exam.subject_id = subject.id and subject.id = :id",
            nativeQuery = true)
    Page<Exam> findAllBySubject(@Param("id") int id, Pageable pageable);
+
+   @Query(value = "select * from exam_question join question on exam_question.ques_id = question.ques_id where exam_question.exam_id = :id",
+           nativeQuery = true)
+   Page<Exam> findAllByQuestions(@Param("id") int id, Pageable pageable);
 }

@@ -31,7 +31,10 @@ public class Exam {
     @OneToMany(mappedBy = "exams")
     private List<TestExam> testExams;
 
-    @OneToMany(mappedBy="exams")
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinTable(name = "exam_question",
+            joinColumns = @JoinColumn(name = "examId"),
+            inverseJoinColumns = @JoinColumn(name = "quesId"))
     private List<Question> questions;
 
     public Exam() {

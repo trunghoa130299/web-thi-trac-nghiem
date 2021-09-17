@@ -2,6 +2,7 @@ package vn.codegym.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import vn.codegym.model.Exam;
 
 public interface ExamService {
@@ -16,4 +17,5 @@ public interface ExamService {
     void delete(Exam exam);
 
     Page<Exam> findAllBySubject(int id, Pageable pageable);
+
 }
