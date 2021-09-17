@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Component
 @Entity
@@ -19,9 +20,8 @@ public class Question {
     private int ans;
     private int chose;
 
-    @ManyToOne(targetEntity = Exam.class)
-    @JoinColumn(name = "exams_id", referencedColumnName = "id")
-    private Exam exams;
+    @ManyToMany(mappedBy = "questions")
+    private Set<Exam> exams;
 
     @OneToMany(mappedBy="questions")
     private List<Result> results;
@@ -30,7 +30,7 @@ public class Question {
         super();
     }
 
-    public Question(int quesId, String title, String optionA, String optionB, String optionC, int ans, int chose, Exam exams, List<Result> results) {
+    public Question(int quesId, String title, String optionA, String optionB, String optionC, int ans, int chose, Set<Exam> exams, List<Result> results) {
         this.quesId = quesId;
         this.title = title;
         this.optionA = optionA;
@@ -98,11 +98,11 @@ public class Question {
         this.chose = chose;
     }
 
-    public Exam getExams() {
+    public Set<Exam> getExams() {
         return exams;
     }
 
-    public void setExams(Exam exams) {
+    public void setExams(Set<Exam> exams) {
         this.exams = exams;
     }
 

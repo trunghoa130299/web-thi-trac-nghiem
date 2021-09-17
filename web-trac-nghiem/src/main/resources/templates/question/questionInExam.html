@@ -47,8 +47,9 @@
             <td th:text="${question.title}"></td>
             <td th:text="${question.ans}"></td>
             <td class="text-center">
-                <a th:href="@{/question/editQuest/{id}(id=${question.quesId})}"><i class="fas fa-edit text-primary"></i></a>
-                <a th:href="@{/question/delete/{id}(id=${question.quesId})}" id="deleteButton"><i class="far fa-trash-alt text-danger"></i></a>
+                <form th:action="@{/questionInExam/create}" th:object="${exam}" method="post">
+                    <input type="checkbox" th:field="*{question}"> Add
+                </form>
             </td>
         </tr>
         </tbody>
@@ -58,42 +59,21 @@
 <div class="table-pagination d-flex justify-content-center">
     <ul class="pagination">
         <li class="page-item" th:class="${questions.number eq 0} ? 'disabled' : ''">
-            <a class="page-link" th:if="${questions.hasPrevious()}" th:href="@{'/question/list'(page=${questions.number - 1},size=${questions.size})}">Previous</a>
+            <a class="page-link" th:if="${questions.hasPrevious()}" th:href="@{'/questionInExam'(page=${questions.number - 1},size=${questions.size})}">Previous</a>
         </li>
 
         <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, questions.totalPages - 1)}" th:class="${questions.number eq pageNo}? 'active' : ''">
             <a class="page-link" th:if="${questions.number  eq pageNo}" href="javascript:void(0);">
                 <span th:text="${pageNo + 1}"></span>
             </a>
-            <a class="page-link" th:if="${not (questions.number  eq pageNo)}" th:href="@{${'/question/list'}(page=${pageNo},size=${questions.size})}">
+            <a class="page-link" th:if="${not (questions.number  eq pageNo)}" th:href="@{${'/questionInExam'}(page=${pageNo},size=${questions.size})}">
                 <span th:text="${pageNo + 1}"></span>
             </a>
-
         </li>
         <li class="page-item" th:class="${questions.number + 1 ge questions.totalPages} ? 'disabled' : ''">
-            <a class="page-link" th:if="${questions.hasNext()}" th:href="@{'/question/list'(page=${questions.number + 1},size=${questions.size})}">Next</a>
+            <a class="page-link" th:if="${questions.hasNext()}" th:href="@{'/questionInExam'(page=${questions.number + 1},size=${questions.size})}">Next</a>
         </li>
     </ul>
-</div>
-
-<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-info">
-                <h5 class="modal-title">Confirm delete</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Do you want to delete this exam?<a></a></p>
-            </div>
-            <div class="modal-footer">
-                <a href="" type="button" class="btn btn-primary" id="delRef">Yes, delete</a>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div  th:insert="~{default-admin.html :: footer}"></div>

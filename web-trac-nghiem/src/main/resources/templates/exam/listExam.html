@@ -43,7 +43,6 @@
                 <th>Tên đề thi</th>
                 <th>Môn học</th>
                 <th>Khối học</th>
-                <th></th>
                 <th class="text-center">
                     <i class="far fa-plus-square"></i>
                 </th>
@@ -56,14 +55,13 @@
                 <td th:text="${exam.nameExam}"></td>
                 <td th:text="${exam.subject.name}"></td>
                 <td th:text="${exam.classes.nameClass}"></td>
-<!--                <td th:text="${exam.questions}"></td>-->
                 <td class="text-center">
                     <a th:href="@{/exam/editExam/{id}(id=${exam.getId()})}"><i class="fas fa-edit text-primary"></i></a>
                     <a th:href="@{/exam/delete/{id}(id=${exam.getId()})}" id="deleteButton"><i class="far fa-trash-alt text-danger"></i></a>
                 </td>
-                <td class="text-center">
-                    <a href="#" class="link" style="color: deepskyblue">Xem</a>
-                </td>
+<!--                <td class="text-center">-->
+<!--                    <a href="/listQuestInExam" class="btn btn-primary">Câu hỏi</a>-->
+<!--                </td>-->
             </tr>
             </tbody>
         </table>

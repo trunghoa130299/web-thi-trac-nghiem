@@ -16,6 +16,7 @@ import vn.codegym.model.*;
 import vn.codegym.service.*;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,7 +50,7 @@ public class ExamController {
         return classesService.findAll();
     }
 
-    @ModelAttribute("question")
+    @ModelAttribute("questions")
     public Iterable<Question> questions(){
         return questionService.findAll();
     }
@@ -77,7 +78,7 @@ public class ExamController {
     }
 
     @PostMapping("/exam/create")
-    public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult) throws ParseException {
+    public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult){
         if (bindingResult.hasFieldErrors()){
             return "exam/createExam";
         }
@@ -112,17 +113,6 @@ public class ExamController {
         return "redirect:/exam/list";
     }
 
-
-    @GetMapping("/exam/exam-test/{id}")
-    public String addTestExam(@PathVariable("id") Integer id, Model model)  {
-        Exam exam = examService.findById(id);
-        Question question = questionService.findById(id);
-        if (question.getExams().getId() == exam.getId()){
-            model.addAttribute("question", question);
-        }
-        return "exam/listExam";
-    }
-
     @GetMapping("/listExamSubject/{id}")
     public String listExamSubject(@PathVariable int id, Model model, @PageableDefault(value = 5) Pageable pageable){
         Page<Exam> exams;
@@ -141,4 +131,6 @@ public class ExamController {
         model.addAttribute("exams", exams);
         return "listExamSubject";
     }
+
+
 }
