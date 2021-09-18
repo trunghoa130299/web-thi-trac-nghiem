@@ -72,9 +72,18 @@ public class ExamController {
     }
 
     @GetMapping("/exam/create")
-    public String showCreateForm(Model model){
+    public String showCreateForm(@RequestParam(value = "subjectId",required = false) Optional<Integer> subjectId,Model model){
+        if (subjectId.isPresent()){
+            List<Question> questions1 = questionService.findAllBySubject(subjectId);
+        model.addAttribute("subjects", subjectService.findAll());
+        model.addAttribute("question1", questions1);
+        model.addAttribute("exam", new Exam());
+        model.addAttribute("subjectId", subjectId.get());
+        return "exam/createExam";}
+        model.addAttribute("subjects", subjectService.findAll());
         model.addAttribute("exam", new Exam());
         return "exam/createExam";
+
     }
 
     @PostMapping("/exam/create")

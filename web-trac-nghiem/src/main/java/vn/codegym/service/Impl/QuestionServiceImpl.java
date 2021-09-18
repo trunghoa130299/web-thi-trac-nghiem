@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import vn.codegym.model.Exam;
 import vn.codegym.model.Question;
 import vn.codegym.repository.QuestionRepository;
 import vn.codegym.service.QuestionService;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
@@ -42,5 +44,10 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public Page<Question> findAllByExams(int id, Pageable pageable) {
         return questionRepository.findAllByExams(id, pageable);
+    }
+
+    @Override
+    public List<Question> findAllBySubject(Optional<Integer> id) {
+        return questionRepository.findAllSub(id.get());
     }
 }
