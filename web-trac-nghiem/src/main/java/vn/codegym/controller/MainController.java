@@ -125,9 +125,9 @@ public class MainController {
         if (!submitted) {
             result.setTotalCorrect(qService.getResult(qForm));
             qService.saveScore(result);
+            m.addAttribute("qForm", qForm);
             submitted = true;
         }
-
         return "exam/result";
     }
     @PostMapping("/submit1")
@@ -164,5 +164,9 @@ public class MainController {
         m.addAttribute("total", total);
         m.addAttribute("newUser",newUser);
         return "Hau/HonorTheGoldBoard";
+    }
+    @GetMapping("/aboutus")
+    public String aboutUS(){
+        return "aboutAs";
     }
 }

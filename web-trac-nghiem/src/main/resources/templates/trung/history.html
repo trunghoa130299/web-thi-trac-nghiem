@@ -37,7 +37,7 @@
                 <tbody>
                 <tr th:each="history,index : ${results}">
                     <td th:text="${index.index+1}"></td>
-                    <td th:text="${history.questions.exams.nameExam}"></td>
+                    <td th:text="${history.questions.quesId}"></td>
                     <td th:text="${history.totalCorrect}"></td>
                 </tr>
                 </tbody>

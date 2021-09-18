@@ -25,11 +25,15 @@
             </div>
         </div>
     </div>
-    <h1 class="bg-info text-light">Mời Bạn Chọn Đáp Án Đúng</h1>
+    <h1 class="bg-info text-light"><span th:text="${ 'Đề thi gồm có '+qForm.questions.size()}+' câu'"></span><br>
+
+        Mời Bạn Chọn Đáp Án Đúng
+    </h1>
 
     <form action="submit" method="POST" th:object="${qForm}" id="formQuestion">
         <div class="ques-box bg-dark text-light" th:each="ques, i: ${qForm.questions}">
-            <p class="title" th:text="${ques.title}"></p>
+            <p class="title" th:text="${'Câu '+i.count+': '+ ques.title}"></p>
+
 
             <div class="option">
                 <input type="radio" th:name="|questions[${i.index}].chose|" th:value="1" />
