@@ -136,6 +136,7 @@ public class MainController {
         if (!submitted) {
             result.setTotalCorrect(qService.getResult(qForm));
             qService.saveScore(result);
+            m.addAttribute("qForm", qForm);
             submitted = true;
         }
 

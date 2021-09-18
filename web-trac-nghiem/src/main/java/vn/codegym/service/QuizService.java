@@ -46,10 +46,12 @@ public class QuizService {
     public QuestionForm getQuestionss(int id) {
         List<Question> allQues = qRepo.findAllId(id);
         List<Question> qList = new ArrayList<Question>();
-
+int fag=10;
         Random random = new Random();
-
-        for(int i=0; i<10; i++) {
+         if(allQues.size()<10){
+             fag=allQues.size();
+         }
+        for(int i=0; i<fag; i++) {
             int rand = random.nextInt(allQues.size());
             qList.add(allQues.get(rand));
             allQues.remove(rand);

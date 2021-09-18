@@ -15,7 +15,7 @@
 </head>
 <body>
 <div  th:insert="~{default-admin.html :: navbarAdmin}"></div>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-bottom: 150px">
         <div class="h4 text-center mb-4">
             Tạo đề thi mới
         </div>
@@ -25,7 +25,7 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Mã đề thi</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{idName}">
+                            <input type="text" class="form-control" th:field="*{idName}" required>
                             <div th:if="${#fields.hasErrors('idName')}" th:errors="*{idName}" style="color: red"></div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         <div class="col-sm-8 pt-2">
                             <div class="form-check form-check-inline" th:each="subject : ${subjects}">
                                 <input class="form-check-input" type="radio"
-                                       th:value="${subject.id}" th:field="*{subject}">
+                                       th:value="${subject.id}" th:field="*{subject}" required>
                                 <label class="form-check-label" th:value="${subject.id}"  th:text="${subject.name}"></label>
                             </div>
                             <div th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" style="color: red"></div>
@@ -43,8 +43,8 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Tên đề thi</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{nameExam}">
-                            <div th:if="${#fields.hasErrors('nameExam')}" th:errors="*{nameExam}" style="color: red"></div>
+                            <input type="text" class="form-control" th:field="*{nameExam}" required>
+                            <div th:if="${#fields.hasErrors('nameExam')}" th:errors="*{nameExam}" style="color: red" ></div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -52,7 +52,7 @@
                         <div class="col-sm-8 pt-2">
                             <div class="form-check form-check-inline" th:each="class : ${classes}">
                                 <input class="form-check-input" type="radio" name="A"
-                                       th:value="${class.id}" th:field="*{classes}">
+                                       th:value="${class.id}" th:field="*{classes}" required>
                                 <label class="form-check-label" th:value="${class.id}"  th:text="${class.nameClass}"></label>
                             </div>
                             <div th:if="${#fields.hasErrors('classes')}" th:errors="*{classes}" style="color: red"></div>
@@ -61,10 +61,10 @@
                     <button type="button" onclick="displayFormQuestion()" class="btn btn-primary">Thêm Câu hỏi</button>
                 </div>
             </div>
-            <div id="wrapFormQuestion">
+            <div id="wrapFormQuestion" style="    background-color: white">
                 <table class="table table-striped table-bordered table-hover table-responsive-md">
-                    <thead>
-                    <tr style="background-color: #27c9ff;">
+                    <thead style="    background-color: deepskyblue;">
+                    <tr >
                         <th>Mã câu hỏi</th>
                         <th>Câu hỏi</th>
                         <th>Option A</th>
@@ -85,10 +85,13 @@
                         <td th:text="${question.optionC}"></td>
                         <td th:text="${question.ans}"></td>
                         <td class="text-center">
-                            <input class="form-check-input" type="checkbox" name="A"
-                                   th:value="${question.quesId}" th:field="*{questions}">
-                            <label class="form-check-label" th:value="${question.quesId}"></label>
-                            <div th:if="${#fields.hasErrors('questions')}" th:errors="*{questions}" style="color: red"></div>
+                            <div class="justify-content-center">
+                             <input  type="checkbox" name="A"
+                                       th:value="${question.quesId}" th:field="*{questions}">
+                                <label class="form-check-label" th:value="${question.quesId}"></label>
+                                <div th:if="${#fields.hasErrors('questions')}" th:errors="*{questions}" style="color: red"></div>
+                            </div>
+
                         </td>
                     </tr>
                     </tbody>
