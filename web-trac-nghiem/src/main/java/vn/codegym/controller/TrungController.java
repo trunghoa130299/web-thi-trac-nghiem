@@ -6,10 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import vn.codegym.model.Exam;
 import vn.codegym.model.Result;
 import vn.codegym.model.User;
@@ -107,6 +104,11 @@ public class    TrungController {
     }
     @PostMapping("/editPass")
     public String editPass(@Valid @ModelAttribute("users") User users , BindingResult bindingResult, Model model){
+        if (users.getPassWord() != null && users.getRePassWord() != null){
+            if (!users.getPassWord().equals(users.getRePassWord())){
+                bindingResult.addError(new FieldError("users","rePassWord","Mật khẩu phải trùng nhau"));
+            }
+        }
         if (bindingResult.hasErrors()){
             model.addAttribute("userName",users.getId());
             return "trung/editPass";

@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import vn.codegym.model.User;
 import vn.codegym.service.UserService;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 
 @Controller
@@ -89,15 +91,20 @@ public class UserController {
     }
 
     @PostMapping("/user/updatePass")
-    public String updatePass(@Validated User user, BindingResult bindingResult){
+    public String updatePass(@Valid @ModelAttribute  User user, BindingResult bindingResult, Model model){
+        if (user.getPassWord() != null && user.getRePassWord() != null){
+            if (!user.getPassWord().equals(user.getRePassWord())){
+                bindingResult.addError(new FieldError("user","rePassWord","Mật khẩu phải trùng nhau"));
+            }
+        }
         if (bindingResult.hasFieldErrors()){
             return "user/editPass";
         }
-        else {
-            String newPass = user.getPassWord();
-            user.setPassWord(newPass);
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            user.setPassWord(passwordEncoder.encode(user.getPassWord()));
+            user.setRePassWord(passwordEncoder.encode(user.getRePassWord()));
             userService.save(user);
-            return "redirect:/user/list";
-        }
+            model.addAttribute("message","Cập Nhật Thành Công !");
+            return "user/editPass";
     }
 }
