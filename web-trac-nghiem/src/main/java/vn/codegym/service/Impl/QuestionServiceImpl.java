@@ -43,4 +43,9 @@ public class QuestionServiceImpl implements QuestionService {
     public Page<Question> findAllByExams(int id, Pageable pageable) {
         return questionRepository.findAllByExams(id, pageable);
     }
+
+    @Override
+    public Page<Question> findAllByTitle(String title, Pageable pageable) {
+        return questionRepository.findAllByTitle(title, pageable);
+    }
 }

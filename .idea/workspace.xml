@@ -23,8 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c48e2570-9f8d-4539-b9e9-4b9f191ad156" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/controller/ExamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/controller/ExamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/repository/QuestionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/repository/QuestionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/service/Impl/QuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/service/Impl/QuestionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/service/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/templates/exam/createExam.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/templates/exam/createExam.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +101,7 @@
       <workItem from="1631109908328" duration="1683000" />
       <workItem from="1631461804623" duration="12000" />
       <workItem from="1631882043013" duration="112000" />
+      <workItem from="1632234158110" duration="18000" />
     </task>
     <servers />
   </component>

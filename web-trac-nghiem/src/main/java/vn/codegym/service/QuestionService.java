@@ -18,4 +18,6 @@ public interface QuestionService {
     void delete(Question question);
 
     Page<Question> findAllByExams(int id, Pageable pageable);
+
+    Page<Question> findAllByTitle(String title, Pageable pageable);
 }

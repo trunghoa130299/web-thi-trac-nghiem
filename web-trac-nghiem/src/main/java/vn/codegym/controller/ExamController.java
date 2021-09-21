@@ -72,7 +72,16 @@ public class ExamController {
     }
 
     @GetMapping("/exam/create")
-    public String showCreateForm(Model model){
+    public String showCreateForm(@RequestParam("keyword") Optional<String> title, Model model, @PageableDefault(value = 10) Pageable pageable){
+        Page<Question> questions;
+        if (!title.isPresent()){
+            questions = questionService.findAll(pageable);
+        }
+        else {
+            questions = questionService.findAllByTitle(title.get(), pageable);
+        }
+        model.addAttribute("questions", questions);
+        model.addAttribute("disableSecondButton", true);
         model.addAttribute("exam", new Exam());
         return "exam/createExam";
     }
@@ -131,6 +140,5 @@ public class ExamController {
         model.addAttribute("exams", exams);
         return "listExamSubject";
     }
-
 
 }

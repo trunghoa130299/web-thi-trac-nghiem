@@ -25,7 +25,7 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Mã đề thi</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{idName}" required>
+                            <input type="text" class="form-control" th:field="*{idName}" name="idName" id="idName" onblur="validate()" required>
                             <div th:if="${#fields.hasErrors('idName')}" th:errors="*{idName}" style="color: red"></div>
                         </div>
                     </div>
@@ -33,8 +33,8 @@
                         <label class="col-sm-3 col-form-label">Môn học</label>
                         <div class="col-sm-8 pt-2">
                             <div class="form-check form-check-inline" th:each="subject : ${subjects}">
-                                <input class="form-check-input" type="radio"
-                                       th:value="${subject.id}" th:field="*{subject}" required>
+                                <input class="form-check-input" type="radio" onblur="validate()"
+                                       th:value="${subject.id}" th:field="*{subject}" name="subject" id="subject"  required>
                                 <label class="form-check-label" th:value="${subject.id}"  th:text="${subject.name}"></label>
                             </div>
                             <div th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" style="color: red"></div>
@@ -43,7 +43,7 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Tên đề thi</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{nameExam}" required>
+                            <input type="text" class="form-control" th:field="*{nameExam}" name="nameExam" id="nameExam" onblur="validate()" required>
                             <div th:if="${#fields.hasErrors('nameExam')}" th:errors="*{nameExam}" style="color: red" ></div>
                         </div>
                     </div>
@@ -51,14 +51,16 @@
                         <label class="col-sm-3 col-form-label">Khối học</label>
                         <div class="col-sm-8 pt-2">
                             <div class="form-check form-check-inline" th:each="class : ${classes}">
-                                <input class="form-check-input" type="radio" name="A"
-                                       th:value="${class.id}" th:field="*{classes}" required>
+                                <input class="form-check-input" type="radio" onblur="validate()"
+                                       th:value="${class.id}" th:field="*{classes}" name="classes" id="classes" required>
                                 <label class="form-check-label" th:value="${class.id}"  th:text="${class.nameClass}"></label>
                             </div>
                             <div th:if="${#fields.hasErrors('classes')}" th:errors="*{classes}" style="color: red"></div>
                         </div>
                     </div>
-                    <button type="button" onclick="displayFormQuestion()" class="btn btn-primary">Thêm Câu hỏi</button>
+                    <div>
+                        <button type="button" onclick="displayFormQuestion()" class="btn btn-primary" id="btn-submit" name="btn-submit" disabled="disabled">Thêm Câu hỏi</button>
+                    </div>
                 </div>
             </div>
             <div id="wrapFormQuestion" style="    background-color: white">
@@ -91,13 +93,33 @@
                                 <label class="form-check-label" th:value="${question.quesId}"></label>
                                 <div th:if="${#fields.hasErrors('questions')}" th:errors="*{questions}" style="color: red"></div>
                             </div>
-
                         </td>
                     </tr>
                     </tbody>
                 </table>
                 <div class="text-center">
-                    <button type="submit" class="btn m-2" style="background-color: #3bceff">Save</button>
+                    <button type="submit" class="btn m-2" style="background-color: #3bceff">Thêm</button>
+                    <a href="/exam/create" class="btn btn-warning">Quay lại</a>
+                </div>
+
+                <div class="table-pagination d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item" th:class="${questions.number eq 0} ? 'disabled' : ''">
+                            <a class="page-link" th:if="${questions.hasPrevious()}" th:href="@{'/exam/create'(page=${questions.number - 1},size=${questions.size})}">Previous</a>
+                        </li>
+
+                        <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, questions.totalPages - 1)}" th:class="${questions.number eq pageNo}? 'active' : ''">
+                            <a class="page-link" th:if="${questions.number  eq pageNo}" href="javascript:void(0);">
+                                <span th:text="${pageNo + 1}"></span>
+                            </a>
+                            <a class="page-link" th:if="${not (questions.number  eq pageNo)}" th:href="@{${'/exam/create'}(page=${pageNo},size=${questions.size})}">
+                                <span th:text="${pageNo + 1}"></span>
+                            </a>
+                        </li>
+                        <li class="page-item" th:class="${questions.number + 1 ge questions.totalPages} ? 'disabled' : ''">
+                            <a class="page-link" th:if="${questions.hasNext()}" th:href="@{'/exam/create'(page=${questions.number + 1},size=${questions.size})}">Next</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </form>
@@ -108,6 +130,7 @@
 <script src="/js/jquery-3.6.0.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script>
+
     function displayFormExam() {
         document.getElementById("wrapFormExam").style.display = "block";
         document.getElementById("wrapFormQuestion").style.display = "none";
@@ -118,6 +141,28 @@
         document.getElementById("wrapFormQuestion").style.display = "block";
         document.getElementById("step2").classList.add("active");
     }
+
+    function validate() {
+
+        var valid = true;
+        valid = checkEmpty($("#idName"));
+        valid = valid && checkEmpty($("#subject"));
+        valid = valid && checkEmpty($("#nameExam"));
+        valid = valid && checkEmpty($("#classes"));
+
+        $("#btn-submit").attr("disabled",true);
+        if(valid) {
+            $("#btn-submit").attr("disabled",false);
+        }
+    }
+    function checkEmpty(obj) {
+        if($(obj).val() == "") {
+            return false;
+        }
+
+        return true;
+    }
+
     displayFormExam();
 </script>
 
