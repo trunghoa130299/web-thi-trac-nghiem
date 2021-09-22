@@ -15,8 +15,6 @@ import vn.codegym.model.*;
 
 import vn.codegym.service.*;
 
-import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,18 +70,21 @@ public class ExamController {
     }
 
     @GetMapping("/exam/create")
-    public String showCreateForm(@RequestParam("keyword") Optional<String> title, Model model, @PageableDefault(value = 10) Pageable pageable){
-        Page<Question> questions;
-        if (!title.isPresent()){
-            questions = questionService.findAll(pageable);
+    public String showCreateForm(@RequestParam(value = "subjectId",required = false) Optional<Integer> subjectId,
+                                 @RequestParam("keyword") Optional<String> title, Model model,
+                                 @PageableDefault(value = 10) Pageable pageable){
+        if (subjectId.isPresent()){
+            Page<Question> questions1 = questionService.findAllBySubject(subjectId, pageable);
+            model.addAttribute("subjects", subjectService.findAll());
+            model.addAttribute("question1", questions1);
+            model.addAttribute("exam", new Exam());
+            model.addAttribute("subjectId", subjectId.get());
+            return "exam/createExam";
         }
-        else {
-            questions = questionService.findAllByTitle(title.get(), pageable);
-        }
-        model.addAttribute("questions", questions);
-        model.addAttribute("disableSecondButton", true);
+        model.addAttribute("subjects", subjectService.findAll());
         model.addAttribute("exam", new Exam());
         return "exam/createExam";
+
     }
 
     @PostMapping("/exam/create")
