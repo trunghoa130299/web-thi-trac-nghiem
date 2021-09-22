@@ -10,6 +10,7 @@ import vn.codegym.service.SubjectService;
 public class SubjectServiceImpl implements SubjectService {
     @Autowired
     private SubjectRepository subjectRepository;
+
     @Override
     public Iterable<Subject> findAll() {
         return subjectRepository.findAll();

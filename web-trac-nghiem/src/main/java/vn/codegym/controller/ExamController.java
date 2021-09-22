@@ -141,5 +141,4 @@ public class ExamController {
         model.addAttribute("exams", exams);
         return "listExamSubject";
     }
-
 }

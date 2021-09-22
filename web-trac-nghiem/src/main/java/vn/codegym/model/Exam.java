@@ -2,6 +2,7 @@ package vn.codegym.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
@@ -11,6 +12,7 @@ public class Exam {
     private int id;
 
     @NotBlank()
+    @Pattern(regexp = "^MD-[\\d]{4}$",message = "Mã đề thì phải là định dạng MD-XXXX(XXXX là số)")
     private String idName;
 
     @NotBlank()
