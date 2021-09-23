@@ -33,6 +33,9 @@ public class Exam {
     @OneToMany(mappedBy = "exams")
     private List<TestExam> testExams;
 
+    @OneToMany(mappedBy = "questions")
+    private List<Result> results;
+
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name = "exam_question",
             joinColumns = @JoinColumn(name = "examId"),
@@ -123,5 +126,25 @@ public class Exam {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public Exam(int id, @NotBlank() @Pattern(regexp = "^MD-[\\d]{4}$", message = "Mã đề thì phải là định dạng MD-XXXX(XXXX là số)") String idName, @NotBlank() String nameExam, Classes classes, Subject subject, User users, List<TestExam> testExams, List<Result> results, List<Question> questions) {
+        this.id = id;
+        this.idName = idName;
+        this.nameExam = nameExam;
+        this.classes = classes;
+        this.subject = subject;
+        this.users = users;
+        this.testExams = testExams;
+        this.results = results;
+        this.questions = questions;
+    }
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
     }
 }
