@@ -20,14 +20,15 @@ public class Result {
     private User users;
 
 
-    @ManyToOne(targetEntity = Question.class)
-    private Question questions;
+    @ManyToOne(targetEntity = Exam.class)
+    @JoinColumn(name = "id_exam",referencedColumnName = "id")
+    private Exam questions;
 
     public Result() {
         super();
     }
 
-    public Result(int id, String username, int totalCorrect, User users, Question questions) {
+    public Result(int id, String username, int totalCorrect, User users, Exam questions) {
         this.id = id;
         this.username = username;
         this.totalCorrect = totalCorrect;
@@ -59,11 +60,11 @@ public class Result {
         this.users = users;
     }
 
-    public Question getQuestions() {
+    public Exam getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Question questions) {
+    public void setQuestions(Exam questions) {
         this.questions = questions;
     }
 
