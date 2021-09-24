@@ -23,25 +23,24 @@
 <div class="container">
     <div class="row card mt-5" style="border-color: #00BFFF">
         <div class="card-header col-lg-12" style="background: #00BFFF">
-            <label class="col-form-label">Lịch Sử</label>
+            <label class="col-form-label"><h4><strong>Lịch Sử</strong></h4></label>
         </div>
         <div class="p-2">
             <table class="table mt-3 table-striped" id="tableHistory">
                 <thead>
                 <tr style="background-color: deepskyblue">
                     <th>STT</th>
-                    <th>Bài Thi</th>
+                    <th>Mã Đề Thi</th>
+                    <th>Tên Đề Thi</th>
                     <th>Điểm Số</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="history,index : ${results}">
                     <td th:text="${index.index+1}"></td>
-<<<<<<< HEAD
-                    <td th:text="${history.questions.getTitle()}"></td>
-=======
+                    <td th:text="${history.questions.idName}"></td>
+<!--                    <td th:text="${history.questions.getTitle()}"></td>-->
                     <td th:text="${history.questions.nameExam}"></td>
->>>>>>> bfeec0edfc149ba46585bce2ae5f69cb4117e3cd
                     <td th:text="${history.totalCorrect}"></td>
                 </tr>
                 </tbody>

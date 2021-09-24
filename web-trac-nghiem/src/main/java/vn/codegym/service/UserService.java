@@ -25,4 +25,6 @@ public interface UserService {
     boolean userExists(String id);
 
     boolean userExistss(String email);
+
+    String findByPass(String id);
 }

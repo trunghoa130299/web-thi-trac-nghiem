@@ -23,9 +23,15 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="card row" style="border-color: #00BFFF">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${messages}">
+        <strong th:text="${messages}"></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="row card" style="border-color: #00BFFF">
         <div class="alert" role="alert" style="background: #00BFFF">
-            Đổi mật khẩu
+            <h4><strong> Đổi mật khẩu</strong></h4>
         </div>
         <form class="mx-5 mb-3 mt-2" method="post" th:object="${users}" th:action="@{/editPass}">
             <input type="hidden" th:field="*{id}">
@@ -35,31 +41,36 @@
             <input type="hidden" th:field="*{email}">
             <input type="hidden" th:field="*{phoneNumber}">
             <div class="form-group row">
-                <label class="col-lg-2 col-sm-4 col-form-label" for="email">Mật khẩu mới<span class="text-danger">*</span></label>
-                <div class="col-lg-10 col-sm-8">
+                <label class="col-lg-4 col-sm-4 col-form-label" for="mk">Mật khẩu cũ<span class="text-danger">*</span></label>
+                <div class="col-lg-8 col-sm-8">
+                    <input type="password" class="form-control" id="mk" name="oldPass">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-4 col-sm-4 col-form-label" for="email">Mật khẩu mới<span class="text-danger">*</span></label>
+                <div class="col-lg-8 col-sm-8">
                     <input type="password" class="form-control" id="email" th:field="*{passWord}">
                     <label th:if="${#fields.hasErrors('passWord')}" th:errors="*{passWord}" style="color: red"></label>
                 </div>
             </div>
-
             <div class="form-group row">
-                <label class="col-lg-2 col-sm-4 col-form-label" for="address">Nhập lại mật khẩu<span class="text-danger" >*</span></label>
-                <div class="col-lg-10 col-sm-8">
+                <label class="col-lg-4 col-sm-4 col-form-label" for="address">Nhập lại mật khẩu<span class="text-danger" >*</span></label>
+                <div class="col-lg-8 col-sm-8">
                     <input type="password" class="form-control" id="address" th:field="*{rePassWord}">
                     <label th:if="${#fields.hasErrors('rePassWord')}" th:errors="*{rePassWord}" style="color: red"></label>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-2 col-sm-4 col-form-label hiden"></span></label>
-                <div class="col-lg-10 col-sm-8">
+                <label class="col-lg-4 col-sm-4 col-form-label hiden"></span></label>
+                <div class="col-lg-8 col-sm-8">
                     <label class="col-lg-10 col-sm-12 col-form-label "><span class="text-danger mr-1">*</span>Các trường
                         bắt buộc điền</label>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-2 col-sm-4 col-form-label hiden"></span></label>
-                <div class="col-lg-10 col-sm-8">
-                    <button class="btn btn-light " type="submit">Gửi</button>
+                <label class="col-lg-4 col-sm-4 col-form-label hiden"></span></label>
+                <div class="col-lg-81 col-sm-8">
+                    <button class="btn btn-primary " type="submit">Gửi</button>
                     <a th:href="@{/editMember/__${users.id}__}" class="btn btn-primary">
                         Đóng
                     </a>
@@ -69,6 +80,11 @@
     </div>
 </div>
 <th:block th:insert="~{/default-page :: footer}"></th:block>
+<script>
+    $(document).ready(function () {
+        $('#')
+    })
+</script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

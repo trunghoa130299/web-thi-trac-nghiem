@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.model.Exam;
 import vn.codegym.model.Result;
 import vn.codegym.model.User;
@@ -103,7 +104,16 @@ public class    TrungController {
         return "trung/editPass";
     }
     @PostMapping("/editPass")
-    public String editPass(@Valid @ModelAttribute("users") User users , BindingResult bindingResult, Model model){
+    public String editPass(@Valid @ModelAttribute("users") User users , BindingResult bindingResult, Model model,
+                           @RequestParam("oldPass") String oldPass, RedirectAttributes redirectAttributes){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String oldPass1 = passwordEncoder.encode(oldPass);
+        System.out.println(oldPass1);
+        String oldPass2 = userService.findByPass(users.getId());
+        System.out.println(oldPass2);
+        if (!oldPass1.equals(oldPass2)){
+            model.addAttribute("messages","Mật Khẩu Không Đúng !");
+        }
         if (users.getPassWord() != null && users.getRePassWord() != null){
             if (!users.getPassWord().equals(users.getRePassWord())){
                 bindingResult.addError(new FieldError("users","rePassWord","Mật khẩu phải trùng nhau"));
@@ -113,13 +123,16 @@ public class    TrungController {
             model.addAttribute("userName",users.getId());
             return "trung/editPass";
         }else {
-            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             users.setPassWord(passwordEncoder.encode(users.getPassWord()));
             users.setRePassWord(passwordEncoder.encode(users.getRePassWord()));
             userService.save(users);
-            model.addAttribute("message","Cập Nhật Thành Công !");
-            model.addAttribute("userName",users.getId());
-            return "trung/editPass";
+            redirectAttributes.addAttribute("userName", users.getId());
+            redirectAttributes.addAttribute("id", users.getId()).
+                    addFlashAttribute("message","Cập nhật thành công ! ");
+            return "redirect:/editMember/{id}";
+//            model.addAttribute("message","Cập Nhật Thành Công !");
+//            model.addAttribute("userName",users.getId());
+//            return "trung/editPass";
         }
     }
     @Autowired
