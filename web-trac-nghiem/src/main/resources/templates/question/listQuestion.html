@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <title>listExamQuestion</title>
+    <title><img src="https://aztest.vn/uploads/news/2019/1_6.jpg">Trắc nghiệm Codegym</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@
                 <th:block class="dropdown-menu" th:each = "exam : ${exams}">
                     <option class="dropdown-item" th:value="${exam.id}" th:text="${exam.nameExam}"></option>
                 </th:block>
-                <option value="">Hiện tất cả</option>
+                <option value="">Hiển thị tất cả</option>
             </select>
         </form>
     </div>
@@ -58,7 +58,7 @@
 <div class="table-pagination d-flex justify-content-center " style="margin-bottom: 150px">
     <ul class="pagination">
         <li class="page-item" th:class="${questions.number eq 0} ? 'disabled' : ''">
-            <a class="page-link" th:if="${questions.hasPrevious()}" th:href="@{'/question/list'(page=${questions.number - 1},size=${questions.size})}">Previous</a>
+            <a class="page-link" th:if="${questions.hasPrevious()}" th:href="@{'/question/list'(page=${questions.number - 1},size=${questions.size})}">Trước</a>
         </li>
 
         <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, questions.totalPages - 1)}" th:class="${questions.number eq pageNo}? 'active' : ''">
@@ -71,7 +71,7 @@
 
         </li>
         <li class="page-item" th:class="${questions.number + 1 ge questions.totalPages} ? 'disabled' : ''">
-            <a class="page-link" th:if="${questions.hasNext()}" th:href="@{'/question/list'(page=${questions.number + 1},size=${questions.size})}">Next</a>
+            <a class="page-link" th:if="${questions.hasNext()}" th:href="@{'/question/list'(page=${questions.number + 1},size=${questions.size})}">Sau</a>
         </li>
     </ul>
 </div>

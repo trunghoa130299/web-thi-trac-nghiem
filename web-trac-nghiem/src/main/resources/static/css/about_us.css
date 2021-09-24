@@ -75,14 +75,7 @@
     }
   }
   
-  .about-us-image {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    overflow: hidden;
-  }
-  
+
   @media screen and (max-width: 860px) {
     .about-us-image {
       position: relative;
@@ -221,14 +214,23 @@
   
   .history-image {
     position: absolute;
-    top: 0;
-    left: 0;
-    max-width: 820px;
-    height: 100%;
+    top: 50px;
+    left: 10px;
+    width: 650px;
+    /*width: 500px;*/
+    height: 1000px;
     overflow: hidden;
   }
-  
-  @media screen and (max-width: 860px) {
+  .about-us-image {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 650px;
+    height: 1000px;
+    overflow: hidden;
+  }
+
+@media screen and (max-width: 860px) {
     .history-image {
       position: relative;
       width: 100%;

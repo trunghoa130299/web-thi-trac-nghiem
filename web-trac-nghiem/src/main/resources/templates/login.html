@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
+    <title><img src="https://aztest.vn/uploads/news/2019/1_6.jpg">Trắc nghiệm Codegym</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -10,7 +10,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="login/css/style.css">
+    <script>
+        function InvalidMsg(textbox) {
+            if (textbox.value == '') {
+                textbox.setCustomValidity('Trường này bắt buộc điền!!');
+            }
+            else if (textbox.validity.typeMismatch){
+                textbox.setCustomValidity('Vui lòng nhập thông tin đúng!!');
+            }
+            else {
+                textbox.setCustomValidity('');
+            }
+            return true;
+        }
 
+    </script>
 </head>
 <body style="background-image: url(https://www.techrepublic.com/a/hub/i/r/2021/06/11/6202ed00-be97-4478-b1cb-267d036360b3/resize/1200x/a85d214f6d48b1b81ba9109eb1f5797b/coding.jpg);background-repeat: repeat-x;" >
 <section class="ftco-section">
@@ -54,11 +68,13 @@
                         <form action="/login"  method="post" class="signin-form">
                             <div class="form-group mb-3">
                                 <label class="label" id="name">Tài Khoản</label>
-                                <input type="text" class="form-control" placeholder="Username" name="username" required>
+                                <input type="text" class="form-control" placeholder="Username" name="username"
+                                       oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required="required">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="label" id="password">Mật Khẩu</label>
-                                <input type="password" class="form-control" placeholder="Password" name="password" required>
+                                <input type="password" class="form-control" placeholder="Password" name="password"
+                                       oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required="required">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="form-control btn btn-primary submit px-3">Đăng Nhập</button>
@@ -71,7 +87,21 @@
         </div>
     </div>
 </section>
+<!--<script>-->
+<!--    function InvalidMsg(textbox) {-->
+<!--        if (textbox.value == '') {-->
+<!--            textbox.setCustomValidity('Trường này bắt buộc điền!!');-->
+<!--        }-->
+<!--        else if (textbox.validity.typeMismatch){-->
+<!--            textbox.setCustomValidity('Vui lòng nhập thông tin đúng!!');-->
+<!--        }-->
+<!--        else {-->
+<!--                textbox.setCustomValidity('');-->
+<!--            }-->
+<!--        return true;-->
+<!--    }-->
 
+<!--</script>-->
 <script src="login/js/jquery.min.js"></script>
 <script src="login/js/popper.js"></script>
 <script src="login/js/bootstrap.min.js"></script>
