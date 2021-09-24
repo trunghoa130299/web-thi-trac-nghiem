@@ -25,7 +25,8 @@
     </div>
     <div class="card row" style="border-color: #00BFFF">
         <div class="alert" role="alert" style="background: #00BFFF">
-            Thông tin cá nhân
+            <h4><strong>
+                Thông tin cá nhân</strong></h4>
         </div>
         <form class="mx-5 mb-3 mt-2" method="post" th:object="${users}" th:action="@{/editMember}">
             <input type="hidden" th:field="*{id}">

@@ -54,8 +54,13 @@
                 <div class="card text-primary bg-light mb-3" style="max-width: 14rem;" >
                     <div class="card-header"><i class="fas fa-phone-alt mr-1"></i>Hỗ trợ trực tuyến</div>
                     <div class="card-body bg-white ">
+<<<<<<< HEAD
                         <span class="card-title">Gmail: <span class=""><b>team@gmail.com</b></span></span>
                         <p class="card-text"></p><span class="card-title">Phone: <span class=""><b>0337885199</b></span></span>
+=======
+                        <span class="card-title">Gmail: <span class="">team@gmail.com</span></span>
+                        <p class="card-text"></p><span class="card-title">Phone: <span class="">0337885199</span></span>
+>>>>>>> 363a8ad9516388c592073f41774bf15e39f1b452
                         </p>
                     </div>
                 </div>
@@ -94,7 +99,7 @@
                         </div>
                         <div class="card-body">
                             <div sec:authorize="isAuthenticated()">
-                                <span>Xin Chào :</span> <span sec:authentication="name" style="color: red"></span><br>
+                                <span>Xin Chào:</span> <span sec:authentication="name" style="color: red"></span><br>
                                 <a th:href="@{/view/__${userName}__}" class="nav-link">Thông Tin Cá Nhân</a>
                                 <a href="/logout" class="mid_card-text pl-5">
                                     <button class="btn btn-primary">
