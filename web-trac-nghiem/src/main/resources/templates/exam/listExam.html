@@ -70,25 +70,60 @@
         </table>
     </div>
 
-    <div class="table-pagination d-flex justify-content-center">
-        <ul class="pagination">
-            <li class="page-item" th:class="${exams.number eq 0} ? 'disabled' : ''">
-                <a class="page-link" th:if="${exams.hasPrevious()}" th:href="@{'/exam/list'(page=${exams.number - 1},size=${exams.size})}">Trước</a>
-            </li>
+<!--    <div class="table-pagination d-flex justify-content-center">-->
+<!--        <ul class="pagination">-->
+<!--            <li class="page-item" th:class="${exams.number eq 0} ? 'disabled' : ''">-->
+<!--                <a class="page-link" th:if="${exams.hasPrevious()}" th:href="@{'/exam/list'(page=${exams.number - 1},size=${exams.size})}">Trước</a>-->
+<!--            </li>-->
 
-            <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, exams.totalPages - 1)}" th:class="${exams.number eq pageNo}? 'active' : ''">
-                <a class="page-link" th:if="${exams.number  eq pageNo}" href="javascript:void(0);">
-                    <span th:text="${pageNo + 1}"></span>
-                </a>
-                <a class="page-link" th:if="${not (exams.number  eq pageNo)}" th:href="@{${'/exam/list'}(page=${pageNo},size=${exams.size})}">
-                    <span th:text="${pageNo + 1}"></span>
-                </a>
+<!--            <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, exams.totalPages - 1)}" th:class="${exams.number eq pageNo}? 'active' : ''">-->
+<!--                <a class="page-link" th:if="${exams.number  eq pageNo}" href="javascript:void(0);">-->
+<!--                    <span th:text="${pageNo + 1}"></span>-->
+<!--                </a>-->
+<!--                <a class="page-link" th:if="${not (exams.number  eq pageNo)}" th:href="@{${'/exam/list'}(page=${pageNo},size=${exams.size})}">-->
+<!--                    <span th:text="${pageNo + 1}"></span>-->
+<!--                </a>-->
 
-            </li>
-            <li class="page-item" th:class="${exams.number + 1 ge exams.totalPages} ? 'disabled' : ''">
-                <a class="page-link" th:if="${exams.hasNext()}" th:href="@{'/exam/list'(page=${exams.number + 1},size=${exams.size})}">Sau</a>
-            </li>
-        </ul>
+<!--            </li>-->
+<!--            <li class="page-item" th:class="${exams.number + 1 ge exams.totalPages} ? 'disabled' : ''">-->
+<!--                <a class="page-link" th:if="${exams.hasNext()}" th:href="@{'/exam/list'(page=${exams.number + 1},size=${exams.size})}">Sau</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" th:href="@{'/exam/list'(page=${exams.number - 1})}"
+                       th:if="${exams.hasPrevious()}" aria-label="Previous">
+                        <span aria-hidden="true">Trước</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:text="${exams.number -1}" th:if="${exams.hasPrevious()}"
+                       th:href="@{'/exam/list'(page=${exams.number - 1})}">
+
+                    </a>
+                </li>
+                <li class="page-item active">
+                    <a class="page-link" th:text="${exams.number}" th:href="@{'/exam/list'(page=${exams.number})}">
+
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:text="${exams.number +1}" th:if="${exams.hasNext()}"
+                       th:href="@{'/exam/list'(page=${exams.number + 1})}">
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:href="@{'/exam/list'(page=${exams.number + 1})}"
+                       th:if="${exams.hasNext()}" aria-label="Next">
+                        <span aria-hidden="true">Sau</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 
 <div  th:insert="~{default-admin.html :: footer}"></div>
