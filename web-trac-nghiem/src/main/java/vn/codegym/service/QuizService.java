@@ -76,6 +76,8 @@ int fag=10;
         Result saveResult = new Result();
         saveResult.setUsername(result.getUsername());
         saveResult.setTotalCorrect(result.getTotalCorrect());
+        saveResult.setUsers(result.getUsers());
+        saveResult.setQuestions(result.getQuestions());
         rRepo.save(saveResult);
     }
 

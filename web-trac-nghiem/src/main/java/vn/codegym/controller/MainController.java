@@ -66,19 +66,11 @@ public class MainController {
         m.addAttribute("newUser",newUser);
         return "exam/index";
     }
+
     @GetMapping("/quiz1/{userName}")
-    public String beforeQuiz(@PathVariable("userName") String username,RedirectAttributes ra){
-        if (username.equals("")) {
-            ra.addFlashAttribute("warning", "Bạn Phải đăng nhập ");
-            return "redirect:/";
-        }
-        this.status = true;
-        return "redirect:/quiz/" + username ;
-    }
-    @GetMapping("/quiz/{userName}")
     public String quiz (@PathVariable("userName") String username, Model m, RedirectAttributes ra) throws ParseException {
-        if (username.equals("")) {
-            ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
+        if (username.equals("null") ) {
+            ra.addFlashAttribute("warning", "Bạn Phải đăng nhập ");
             return "redirect:/";
         }
         submitted = false;
