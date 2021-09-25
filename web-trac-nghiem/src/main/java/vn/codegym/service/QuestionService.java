@@ -14,6 +14,8 @@ public interface QuestionService {
 
     Question findById(Integer id);
 
+//    boolean existById(String question);
+
     void save(Question question);
 
     void delete(Question question);

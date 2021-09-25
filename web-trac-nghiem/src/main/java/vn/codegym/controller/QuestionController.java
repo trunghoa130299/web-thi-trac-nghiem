@@ -6,12 +6,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import vn.codegym.model.Exam;
 import vn.codegym.model.Question;
 import vn.codegym.service.ExamService;
 import vn.codegym.service.QuestionService;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 
@@ -63,5 +66,24 @@ public class QuestionController {
         questionService.delete(question);
         return "redirect:/question/list";
     }
+    @GetMapping("/question/create")
+    public String create(Model model) {
+//        ModelAndView modelAndView = new ModelAndView("question/createQuestion");
+        model.addAttribute("question", new Question());
+        return "question/createQuestion";
+    }
 
+    @PostMapping("/question/create")
+    public String save(@Valid @ModelAttribute Question question, BindingResult bindingResult, Model model) {
+//        if (questionService.existById(id) {
+//            bindingResult.addError(new FieldError("question", "id", "Cau hoi đã tồn tại"));
+//        }
+
+        if (bindingResult.hasFieldErrors()) {
+            return "question/createQuestion";
+        }
+        questionService.save(question);
+        return "redirect:/question/list";
+    }
 }
+

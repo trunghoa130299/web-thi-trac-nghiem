@@ -20,8 +20,8 @@ public class Question {
     private int ans;
     private int chose;
 
-    @ManyToMany(mappedBy = "questions")
-    private Set<Exam> exams;
+//    @ManyToMany(mappedBy = "questions")
+//    private Set<Exam> exams;
 
     @OneToMany(mappedBy="questions")
     private List<Result> results;
@@ -38,7 +38,7 @@ public class Question {
         this.optionC = optionC;
         this.ans = ans;
         this.chose = chose;
-        this.exams = exams;
+//        this.exams = exams;
         this.results = results;
     }
 
@@ -98,13 +98,13 @@ public class Question {
         this.chose = chose;
     }
 
-    public Set<Exam> getExams() {
-        return exams;
-    }
-
-    public void setExams(Set<Exam> exams) {
-        this.exams = exams;
-    }
+//    public Set<Exam> getExams() {
+//        return exams;
+//    }
+//
+//    public void setExams(Set<Exam> exams) {
+//        this.exams = exams;
+//    }
 
     public List<Result> getResults() {
         return results;
@@ -124,7 +124,7 @@ public class Question {
                 ", optionC='" + optionC + '\'' +
                 ", ans=" + ans +
                 ", chose=" + chose +
-                ", exams=" + exams +
+//                ", exams=" + exams +
                 ", results=" + results +
                 '}';
     }
