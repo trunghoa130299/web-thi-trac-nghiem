@@ -6,7 +6,10 @@
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <title>questionList</title>
+    <title>Trắc nghiệm Codegym</title>
+    <link rel = "icon" href =
+            "https://aztest.vn/uploads/news/2019/1_6.jpg"
+          type = "image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -70,7 +73,7 @@
     <div class="table-pagination d-flex justify-content-center">
         <ul class="pagination">
             <li class="page-item" th:class="${exams.number eq 0} ? 'disabled' : ''">
-                <a class="page-link" th:if="${exams.hasPrevious()}" th:href="@{'/exam/list'(page=${exams.number - 1},size=${exams.size})}">Previous</a>
+                <a class="page-link" th:if="${exams.hasPrevious()}" th:href="@{'/exam/list'(page=${exams.number - 1},size=${exams.size})}">Trước</a>
             </li>
 
             <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, exams.totalPages - 1)}" th:class="${exams.number eq pageNo}? 'active' : ''">
@@ -83,7 +86,7 @@
 
             </li>
             <li class="page-item" th:class="${exams.number + 1 ge exams.totalPages} ? 'disabled' : ''">
-                <a class="page-link" th:if="${exams.hasNext()}" th:href="@{'/exam/list'(page=${exams.number + 1},size=${exams.size})}">Next</a>
+                <a class="page-link" th:if="${exams.hasNext()}" th:href="@{'/exam/list'(page=${exams.number + 1},size=${exams.size})}">Sau</a>
             </li>
         </ul>
     </div>
@@ -95,13 +98,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-info">
-                    <h5 class="modal-title">Confirm delete</h5>
+                    <h5 class="modal-title">Xác nhận xóa</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Bạn có muốn xoá đề này không ?<a></a></p>
+                    <p>Bạn có muốn xoá đề thi này không ?<a></a></p>
                 </div>
                 <div class="modal-footer">
                     <a href="" type="button" class="btn btn-primary" id="delRef">Có</a>

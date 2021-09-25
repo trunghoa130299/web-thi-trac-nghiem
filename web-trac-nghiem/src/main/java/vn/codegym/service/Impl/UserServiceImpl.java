@@ -55,4 +55,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(email).isPresent();
     }
 
+    @Override
+    public String findByPass(String id) {
+        return userRepository.findByPass(id);
+    }
+
 }

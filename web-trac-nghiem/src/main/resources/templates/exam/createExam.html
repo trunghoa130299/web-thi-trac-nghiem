@@ -6,8 +6,10 @@
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <title>questionList</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Trắc nghiệm Codegym</title>
+    <link rel = "icon" href =
+            "https://aztest.vn/uploads/news/2019/1_6.jpg"
+          type = "image/x-icon">    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -26,9 +28,9 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Mã đề thi</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{idName}" name="idName" id="idName" onblur="validate()" required>
-                            <div th:if="${#fields.hasErrors('idName')}" th:errors="*{idName}" style="color: red"></div>
-                            <div><span class="col-sm-3 col-form-label">Mã đề thi định dang MD-XXXX(XXXX là số)</span></div>
+                            <input type="text" class="form-control" th:field="*{idName}" name="idName" id="idName" onchange="return validate()" required>
+                            <div th:if="${#fields.hasErrors('idName')}" th:errors="*{idName}" style="color: red" ></div>
+                            <span id="idNameError" style="color: red"></span>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -72,9 +74,9 @@
                     <tr >
                         <th>Mã câu hỏi</th>
                         <th>Câu hỏi</th>
-                        <th>Option A</th>
-                        <th>Option B</th>
-                        <th>Option C</th>
+                        <th>Đáp án A</th>
+                        <th>Đáp án B</th>
+                        <th>Đáp án C</th>
                         <th>Đáp án</th>
                         <th class="text-center">
                             <i class="far fa-plus-square"></i>
@@ -187,10 +189,11 @@
         result = email_regex.test($(obj).val());
 
         if(!result) {
+            document.getElementById("idNameError").innerHTML = "Mã đề thi phải là định dạng MD-XXXX (XXXX là số)";
             return false;
         }
 
-        return result;
+        return true;
     }
 
     displayFormExam();

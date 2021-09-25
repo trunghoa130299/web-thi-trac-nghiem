@@ -66,8 +66,17 @@ public class MainController {
         m.addAttribute("newUser",newUser);
         return "exam/index";
     }
-    @PostMapping("/quiz")
-    public String quiz (@RequestParam String username, Model m, RedirectAttributes ra) throws ParseException {
+    @GetMapping("/quiz1/{userName}")
+    public String beforeQuiz(@PathVariable("userName") String username,RedirectAttributes ra){
+        if (username.equals("")) {
+            ra.addFlashAttribute("warning", "Bạn Phải đăng nhập ");
+            return "redirect:/";
+        }
+        this.status = true;
+        return "redirect:/quiz/" + username ;
+    }
+    @GetMapping("/quiz/{userName}")
+    public String quiz (@PathVariable("userName") String username, Model m, RedirectAttributes ra) throws ParseException {
         if (username.equals("")) {
             ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
             return "redirect:/";
@@ -79,7 +88,7 @@ public class MainController {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         if (this.status){
             timer = new Date(System.currentTimeMillis());
-            timer.setMinutes(timer.getMinutes()+2);
+            timer.setMinutes(timer.getMinutes()+5);
             System.out.println(formatter.format(timer));
             this.status = false;
         }
