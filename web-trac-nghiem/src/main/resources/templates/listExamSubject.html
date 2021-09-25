@@ -68,7 +68,7 @@
                 <thead>
                 <tr style="background-color: #27c9ff;">
                     <th>STT</th>
-<!--                    <th>Mã đề thi</th>-->
+                    <th>Mã đề thi</th>
                     <th>Tên đề thi</th>
                     <th class="text-center">
                         <i class="far fa-plus-square"></i>
@@ -78,7 +78,7 @@
                 <tbody>
                 <tr th:each="exam,index : ${exams}">
                     <td th:text="${index.count}"></td>
-<!--                //    <td th:text="${exam.idName}"></td>-->
+                   <td th:text="${exam.idName}"></td>
                     <td th:text="${exam.nameExam}"></td>
                     <td class="text-center">
                         <a th:href="@{/quiz11/__${userName}__/__${exam.id}__}" class="btn btn-primary">Thi</a>

@@ -33,10 +33,9 @@
         Mời Bạn Chọn Đáp Án Đúng
     </h1>
 
-    <form action="submit" method="POST" th:object="${qForm}" id="formQuestion">
+    <form th:action="@{/submit1}" method="POST" th:object="${qForm}" id="formQuestion">
         <div class="ques-box bg-dark text-light" th:each="ques, i: ${qForm.questions}">
             <p class="title" th:text="${'Câu '+i.count+': '+ ques.title}"></p>
-
 
             <div class="option">
                 <input type="radio" th:name="|questions[${i.index}].chose|" th:value="1" />
@@ -56,13 +55,16 @@
             <input type="hidden" th:name="|questions[${i.index}].quesId|" th:value="${ques.quesId}" />
             <input type="hidden" th:name="|questions[${i.index}].title|" th:value="${ques.title}" />
             <input type="hidden" th:name="|questions[${i.index}].ans|" th:value="${ques.ans}" />
+            <p class="alert alert-danger d-none" th:id="${'alert' + i.index}" role="alert">
+                Hãy chọn một đáp án!!!
+            </p>
         </div>
 
-        <button type="submit" class="btn btn-info d-block mx-auto mt-4">Nộp Bài</button>
+        <button type="submit" class="btn btn-info d-block mx-auto mt-4" >Nộp bài</button>
     </form>
 </div>
 <!-- Importing Footer -->
-<div class="page-footer" id="footer" th:fragment="footer">
+<div class="page-footer" id="footer" >
     <p CLASS="text-area text-light">@Codegym.vn - 2021</p>
 </div>
 
@@ -75,6 +77,7 @@
     $(document).ready(function () {
         let futureValue = [[${#calendars.format(futureDate,'yyyy/MM/dd HH:mm:ss')}]];
         let futureDate = new Date(futureValue.toString())
+        countdown();
         function countdown() {
             let now = new Date().getTime();
             let distance = futureDate - now;
@@ -93,6 +96,46 @@
                 $('#formQuestion').submit();
             }
         }
+        $("#formQuestion").submit(function (event) {
+            // event.preventDefault();
+            let isSubmit = true;
+            let listQuestion = $('.ques-box');
+            for(let i=0; i<listQuestion.length; i++){
+                let answer = listQuestion[i].childNodes;
+                let statusCheck = false;
+                for (let k=0; k<answer.length; k++){
+                    let check = true;
+                    if (answer[k].nodeName === 'DIV'){
+                        let option = answer[k].childNodes;
+                        for(let j=0; j<option.length; j++){
+                            if (option[j].nodeName === 'INPUT'){
+                                if (option[j].checked === true){
+                                    break;
+                                }
+                                check = false;
+                            }
+                        }
+                        if (check){
+                            statusCheck = true;
+                            break;
+                        }
+                    }
+                }
+                if (!statusCheck){
+                    listQuestion[i].querySelector('#alert' + i).classList.add('d-block')
+                    listQuestion[i].querySelector('#alert' + i).classList.remove('d-none')
+                    isSubmit = false;
+                }else{
+                    listQuestion[i].querySelector('#alert' + i).classList.remove('d-block')
+                    listQuestion[i].querySelector('#alert' + i).classList.add('d-none')
+                }
+                statusCheck = true;
+            }
+            if (!isSubmit){
+                event.preventDefault();
+            }
+        })
+
         let timer = setInterval(function () {
             countdown();
         }, 1000);
