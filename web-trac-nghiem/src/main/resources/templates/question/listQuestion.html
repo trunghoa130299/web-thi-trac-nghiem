@@ -23,15 +23,7 @@
         Danh sách câu hỏi
     </div>
     <div class="btn-group mb-3 d-flex justify-content-between">
-        <form>
-            <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="this.form.submit()" th:value ="${examId}" th:name="examId">
-                <option value="" disabled selected> Chọn...</option>
-                <th:block class="dropdown-menu" th:each = "exam : ${exams}">
-                    <option class="dropdown-item" th:value="${exam.id}" th:text="${exam.nameExam}"></option>
-                </th:block>
-                <option value="">Hiển thị tất cả</option>
-            </select>
-        </form>
+
         <div class="">
 <!--            <a href="/question/create" class="btn btn-primary">-->
             <a th:href="@{/question/create}">

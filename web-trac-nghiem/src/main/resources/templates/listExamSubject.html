@@ -46,13 +46,13 @@
                 <div class="card text-primary bg-light mb-3" th:insert="~{Hau/ListInformation.html :: thong-ke}"
                      style="max-width: 14rem;">
 
-<!--                        <div class="card-header"><i class="fa fa-fw fa-thumbs-o-up"></i>Vinh danh bang vang</div>-->
-<!--                        <div class="card-body bg-white ">-->
-<!--                            <h5 class="card-title">Primary card title</h5>-->
-<!--                            <p class="card-text">the card's content.</p>-->
-<!--                        </div>-->
+                    <!--                        <div class="card-header"><i class="fa fa-fw fa-thumbs-o-up"></i>Vinh danh bang vang</div>-->
+                    <!--                        <div class="card-body bg-white ">-->
+                    <!--                            <h5 class="card-title">Primary card title</h5>-->
+                    <!--                            <p class="card-text">the card's content.</p>-->
+                    <!--                        </div>-->
                 </div>
-                <div class="card text-primary bg-light mb-3" style="max-width: 14rem;" >
+                <div class="card text-primary bg-light mb-3" style="max-width: 14rem;">
                     <div class="card-header"><i class="fas fa-phone-alt mr-1"></i>Hỗ trợ trực tuyến</div>
                     <div class="card-body bg-white ">
                         <span class="card-title">Gmail: <span class="">team@gmail.com</span></span>
@@ -64,6 +64,7 @@
         </div>
 
         <div class="col-6">
+            <p th:text="${warning}"></p>
             <table class="table table-striped table-bordered table-hover table-responsive-md">
                 <thead>
                 <tr style="background-color: #27c9ff;">
@@ -78,7 +79,11 @@
                 <tbody>
                 <tr th:each="exam,index : ${exams}">
                     <td th:text="${index.count}"></td>
+<<<<<<< HEAD
+                    <td th:text="${exam.idName}"></td>
+=======
                    <td th:text="${exam.idName}"></td>
+>>>>>>> fdea281c268636e071bc90ea4fa0746d4bd968ee
                     <td th:text="${exam.nameExam}"></td>
                     <td class="text-center">
                         <a th:href="@{/quiz11/__${userName}__/__${exam.id}__}" class="btn btn-primary">Thi</a>
@@ -122,23 +127,15 @@
 
                     </div>
 
-<!--                    <div class="card " style="max-width: 14rem;">-->
-<!--                        <div class="card-body">-->
-<!--                            <h5 class="card-title">Tìm Kiếm</h5>-->
-<!--                            <p class="card-text">With supporting text below as a natural lead-in to additional-->
-<!--                                content.</p>-->
-<!--                            <a class="btn btn-primary" href="#">Go somewhere</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
                 </div>
             </div>
         </div>
     </div>
 </div>
-    <!-- Importing Footer -->
-    <div th:insert="~{/default-page :: footer}"></div>
+<!-- Importing Footer -->
+<div th:insert="~{/default-page :: footer}"></div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

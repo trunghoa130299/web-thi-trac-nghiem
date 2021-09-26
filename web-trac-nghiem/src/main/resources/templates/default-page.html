@@ -85,8 +85,7 @@
                 <div class="card-header"><i class="fas fa-phone-alt mr-1"></i>Hỗ trợ trực tuyến</div>
                 <div class="card-body bg-white ">
 
-                    <p class="card-text"></p><span class="card-title">Phone: <span class=""><b>0337885199</b></span></span>
-
+                    <span class="card-title">Gmail: <span class="">team@gmail.com</span></span>
                     <p class="card-text"></p><span class="card-title">Phone: <span class="">0337885199</span></span>
 
                     </p>
@@ -98,6 +97,7 @@
 
     <div class="col-md-6 col-sm-6" th:fragment="card-mid">
         <div class="container-fluid">
+            <p class="text-danger warning" th:if="${warning}" th:text="${warning}"></p>
             <div class="row">
                 <a class="mid_card card-block col-sm-12 col-lg-6 mb-2 rounded btn" th:href="@{/listExamSubject/__${toan}__}">
                     <img alt="Photo of math"
@@ -139,7 +139,8 @@
                                   fill-rule="evenodd"/>
                             <path d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
                                   fill-rule="evenodd"/>
-                        </svg></span> &nbsp;<a th:href="@{/login}">Đăng Nhập</a>
+                        </svg></span> &nbsp;  <a th:if="${userName == null }" th:href="@{/login}">Đăng Nhập</a>
+                        <a th:if="${userName !=null }" href="/logout">Đăng Xuất</a>
                     </div>
                     <div class="card-body">
                         <div sec:authorize="isAuthenticated()">
@@ -154,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card text-primary mb-3"  th:insert="~{Hau/HonorTheGoldBoard.html :: thong-ke-thanh-vien}" style="max-width: 14rem;background: #00BFFF;">
+                <div class="card text-primary mb-3"  th:insert="~{Hau/HonorTheGoldBoard.html :: thong-ke-thanh-vien}" style="max-width: 14rem;background: #b8daff;">
 
                 </div>
 
