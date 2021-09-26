@@ -43,4 +43,9 @@ public class ExamServiceImpl implements ExamService {
         return examRepository.findAllBySubject(id, pageable);
     }
 
+    @Override
+    public Page<Exam> findAllByNameExamContaining(String name, Pageable pageable) {
+        return examRepository.findAllByNameExamContaining(name, pageable);
+    }
+
 }

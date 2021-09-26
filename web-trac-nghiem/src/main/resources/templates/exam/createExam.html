@@ -22,7 +22,16 @@
             Tạo đề thi mới
         </div>
 
-        <form style="max-width: 600px; margin: 0 auto; background-color: #d8f5ff;" th:action="@{/exam/create}" th:object="${exam}" method="post">
+        <form id="forms1" name="forms1" th:action="@{/exam/create}" class="d-flex justify-content-center">
+            <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="a()" th:value ="${subjectId}" th:name="subjectId">
+                <option value="" disabled selected> Chọn...</option>
+                <th:block class="dropdown-menu" th:each = "subject : ${subjects}">
+                    <option class="dropdown-item" th:value="${subject.id}" th:text="${subject.name}"></option>
+                </th:block>
+            </select>
+        </form>
+
+        <form style="max-width: 1200px; margin: 0 auto; background-color: #d8f5ff;" th:action="@{/exam/create}" th:object="${exam}" method="post">
             <div id="wrapFormExam">
                 <div class="border border-secondary rounded p-3 pt-5">
                     <div class="form-group row">
@@ -72,19 +81,19 @@
                 <table class="table table-striped table-bordered table-hover table-responsive-md">
                     <thead style="    background-color: deepskyblue;">
                     <tr >
-                        <th>Mã câu hỏi</th>
+                        <th>STT</th>
                         <th>Câu hỏi</th>
                         <th>Đáp án A</th>
                         <th>Đáp án B</th>
                         <th>Đáp án C</th>
-                        <th>Đáp án</th>
+                        <th class="col-1">Đáp án</th>
                         <th class="text-center">
                             <i class="far fa-plus-square"></i>
                         </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="question ,i: ${questions}">
+                    <tr th:each="question ,i: ${question1}">
                         <td th:text="${i.count}"></td>
                         <td th:text="${question.title}"></td>
                         <td th:text="${question.optionA}"></td>
@@ -139,7 +148,6 @@
 <!--                            <li class="page-item">-->
 <!--                                <a class="page-link" th:text="${questions.number -1}" th:if="${questions.hasPrevious()}"-->
 <!--                                                     th:href="@{'/exam/create'(page=${questions.number - 1})}">-->
-
 <!--                                </a>-->
 <!--                            </li>-->
 <!--                            <li class="page-item active">-->

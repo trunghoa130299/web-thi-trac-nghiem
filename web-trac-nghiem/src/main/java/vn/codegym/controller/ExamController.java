@@ -60,16 +60,22 @@ public class ExamController {
 
     @GetMapping("/exam/list")
     public String showList(@RequestParam("subjectId") Optional<Integer> subjectId,
+                           @RequestParam("keyword") Optional<String> name,
                            Model model, @PageableDefault(value = 5) Pageable pageable){
         Page<Exam> exams;
         model.addAttribute("subjects", subjectService.findAll());
-        if (subjectId.isPresent()){
-            exams = examService.findAllBySubject(subjectId.get(), pageable);
-            model.addAttribute("exams", exams);
-            model.addAttribute("subjectId", subjectId.get());
-            return "exam/listExam";
+        if (!name.isPresent()){
+            if (subjectId.isPresent()){
+                exams = examService.findAllBySubject(subjectId.get(), pageable);
+                model.addAttribute("exams", exams);
+                model.addAttribute("subjectId", subjectId.get());
+                return "exam/listExam";
+            }
+            exams = examService.findAll(pageable);
         }
-        exams = examService.findAll(pageable);
+        else {
+            exams = examService.findAllByNameExamContaining(name.get(), pageable);
+        }
         model.addAttribute("exams", exams);
         return "exam/listExam";
     }
@@ -77,10 +83,10 @@ public class ExamController {
     @GetMapping("/exam/create")
     public String showCreateForm(@RequestParam(value = "subjectId",required = false) Optional<Integer> subjectId,
                                  @RequestParam("keyword") Optional<String> title, Model model,
-                                 @PageableDefault(value = 10) Pageable pageable){
+                                 @PageableDefault(value = 100) Pageable pageable){
+        model.addAttribute("subjects", subjectService.findAll());
         if (subjectId.isPresent()){
             Page<Question> questions1 = questionService.findAllBySubject(subjectId, pageable);
-            model.addAttribute("subjects", subjectService.findAll());
             model.addAttribute("question1", questions1);
             model.addAttribute("exam", new Exam());
             model.addAttribute("subjectId", subjectId.get());

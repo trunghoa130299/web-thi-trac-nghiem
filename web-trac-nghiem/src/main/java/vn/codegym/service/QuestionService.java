@@ -22,7 +22,7 @@ public interface QuestionService {
 
     Page<Question> findAllByExams(int id, Pageable pageable);
 
-    Page<Question> findAllByTitle(String title, Pageable pageable);
+    Page<Question> findAllByTitleContaining(String title, Pageable pageable);
 
     Page<Question> findAllBySubject(Optional<Integer> id, Pageable pageable);
 

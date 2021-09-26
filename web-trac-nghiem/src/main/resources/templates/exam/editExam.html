@@ -21,7 +21,8 @@
         <div class="h4 text-center mb-4">
            Cật Nhật Đề Thi
         </div>
-        <form style="max-width: 600px; margin: 0 auto; background-color: #d8f5ff;" th:action="@{/exam/update}" th:object="${exam}" method="post">
+
+        <form style="max-width: 1200px; margin: 0 auto; background-color: #d8f5ff;" th:action="@{/exam/update}" th:object="${exam}" method="post">
             <div id="wrapFormExam">
                 <input th:type="hidden" name="id" th:field="*{id}">
                 <div class="border border-secondary rounded p-3 pt-5">
@@ -66,12 +67,12 @@
                 <table class="table table-striped table-bordered table-hover table-responsive-md" >
                     <thead style="background-color: deepskyblue">
                     <tr style="background-color: #27c9ff;">
-                        <th>Mã câu hỏi</th>
+                        <th>STT</th>
                         <th>Câu hỏi</th>
                         <th>Đáp án A</th>
                         <th>Đáp án B</th>
                         <th>Đáp án C</th>
-                        <th>Đáp án</th>
+                        <th class="col-2">Đáp án</th>
                         <th class="text-center">
                             <i class="far fa-plus-square"></i>
                         </th>
@@ -141,6 +142,7 @@
 <script src="/js/jquery-3.6.0.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script>
+
     function displayFormExam() {
         document.getElementById("wrapFormExam").style.display = "block";
         document.getElementById("wrapFormQuestion").style.display = "none";

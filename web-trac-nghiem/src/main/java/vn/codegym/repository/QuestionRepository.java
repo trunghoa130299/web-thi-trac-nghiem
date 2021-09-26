@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import vn.codegym.model.Exam;
 import vn.codegym.model.Question;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
@@ -20,8 +20,9 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
             nativeQuery = true)
     Page<Question> findAllByExams(@Param("id") int id, Pageable pageable);
 
-    Page<Question> findAllByTitle(String title, Pageable pageable);
-
     @Query(value = "select * from question join exam_question on exam_question.ques_id = question.ques_id join exam on exam.id=exam_question.exam_id where exam.subject_id =:id ",nativeQuery = true)
-    Page<Question> findAllSub(@Param("id") int i, Pageable pageable);
+    Page<Question> findAllBySubject(@Param("id") Optional<Integer> id, Pageable pageable);
+
+    Page<Question> findAllByTitleContaining(String title, Pageable pageable);
+
 }

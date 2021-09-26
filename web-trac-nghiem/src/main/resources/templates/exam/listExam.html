@@ -23,16 +23,23 @@
             Danh sách đề thi
         </div>
         <div class="btn-group mb-3 d-flex justify-content-between">
-            <form>
-                <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="this.form.submit()" th:value ="${subjectId}" th:name="subjectId">
-                    <option value="" disabled selected> Chọn...</option>
-                    <th:block class="dropdown-menu" th:each = "subject : ${subjects}">
-                        <option class="dropdown-item" th:value="${subject.id}" th:text="${subject.name}"></option>
-                    </th:block>
-                    <option value="">Hiện tất cả</option>
-                </select>
-            </form>
-            <div class="">
+            <div class="d-inline-flex">
+                <form class="d-inline-flex mr-5">
+                    <input type="text" class="form-control" name="keyword" placeholder="Tìm kiếm theo tên đề thi">
+                    <button type="submit" class="btn btn-default">Tìm kiếm</button>
+                </form>
+
+                <form action="/exam/list" method="get">
+                    <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="this.form.submit()" th:value ="${subjectId}" th:name="subjectId">
+                        <option value="" disabled selected> Chọn...</option>
+                        <th:block class="dropdown-menu" th:each = "subject : ${subjects}">
+                            <option class="dropdown-item" th:value="${subject.id}" th:text="${subject.name}"></option>
+                        </th:block>
+                        <option value="">Hiện tất cả</option>
+                    </select>
+                </form>
+            </div>
+            <div>
                 <a href="/exam/create" class="btn btn-primary">
                     Thêm mới
                 </a>
