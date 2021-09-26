@@ -52,8 +52,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="exam : ${exams}">
-                <td th:text="${exam.id}"></td>
+            <tr th:each="exam ,i: ${exams}">
+                <td th:text="${i.count}"></td>
                 <td th:text="${exam.idName}"></td>
                 <td th:text="${exam.nameExam}"></td>
                 <td th:text="${exam.subject.name}"></td>

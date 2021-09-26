@@ -19,9 +19,16 @@
 <div  th:insert="~{default-admin.html :: navbarAdmin}"></div>
     <div class="container-fluid" style="margin-bottom: 150px">
         <div class="h4 text-center mb-4">
-            Tạo đề thi mới
+            <p id="de">       Tạo đề thi mới</p>
         </div>
-
+        <form id="forms1" name="forms1" th:action="@{/exam/create}" >
+            <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="a()" th:value ="${subjectId}" th:name="subjectId">
+                <option value="" disabled selected> Chọn...</option>
+                <th:block class="dropdown-menu" th:each = "subject : ${subjects}">
+                    <option class="dropdown-item" th:value="${subject.id}" th:text="${subject.name}"></option>
+                </th:block>
+            </select>
+        </form>
         <form style="max-width: 600px; margin: 0 auto; background-color: #d8f5ff;" th:action="@{/exam/create}" th:object="${exam}" method="post">
             <div id="wrapFormExam">
                 <div class="border border-secondary rounded p-3 pt-5">
@@ -72,7 +79,7 @@
                 <table class="table table-striped table-bordered table-hover table-responsive-md">
                     <thead style="    background-color: deepskyblue;">
                     <tr >
-                        <th>Mã câu hỏi</th>
+                        <th>STT</th>
                         <th>Câu hỏi</th>
                         <th>Đáp án A</th>
                         <th>Đáp án B</th>
@@ -84,7 +91,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="question ,i: ${questions}">
+                    <tr th:each="question ,i: ${question}">
                         <td th:text="${i.count}"></td>
                         <td th:text="${question.title}"></td>
                         <td th:text="${question.optionA}"></td>
@@ -151,6 +158,7 @@
     }
 
     function displayFormQuestion() {
+        document.getElementById("de").innerText="Thêm câu hỏi vào đề";
         document.getElementById("wrapFormExam").style.display = "none";
         document.getElementById("wrapFormQuestion").style.display = "block";
         document.getElementById("step2").classList.add("active");
