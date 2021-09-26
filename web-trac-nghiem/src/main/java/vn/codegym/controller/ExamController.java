@@ -53,6 +53,11 @@ public class ExamController {
         return questionService.findAll();
     }
 
+//    @ModelAttribute("questions")
+//    public Page<Question> questions(@PageableDefault(value = 10) Pageable pageable){
+//        return questionService.findAll(pageable);
+//    }
+
     @GetMapping("/exam/list")
     public String showList(@RequestParam("subjectId") Optional<Integer> subjectId,
                            Model model, @PageableDefault(value = 5) Pageable pageable){

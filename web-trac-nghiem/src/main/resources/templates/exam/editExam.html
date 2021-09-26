@@ -97,6 +97,42 @@
                     <button type="submit" class="btn m-2" style="background-color: #3bceff">Cập nhập</button>
                     <a href="/exam/list" class="btn btn-primary m-2" style="background-color: #3bceff">Hủy</a>
                 </div>
+
+<!--                <div class="d-flex justify-content-center">-->
+<!--                    <nav aria-label="Page navigation example">-->
+<!--                        <ul class="pagination">-->
+<!--                            <li class="page-item">-->
+<!--                                <a class="page-link btnPrevious" th:href="@{'/exam/editExam/__${id}__'(page=${questions.number - 1})}"-->
+<!--                                   th:if="${questions.hasPrevious()}" aria-label="Previous">-->
+<!--                                    <span aria-hidden="true">Trước</span>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="page-item">-->
+<!--                                <a class="page-link" th:text="${questions.number -1}" th:if="${questions.hasPrevious()}"-->
+<!--                                   th:href="@{'/exam/editExam/__${id}__'(page=${questions.number - 1})}">-->
+
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="page-item active">-->
+<!--                                <a class="page-link" th:text="${questions.number}" th:href="@{'/exam/editExam/__${id}__'(page=${questions.number})}">-->
+
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="page-item">-->
+<!--                                <a class="page-link" th:text="${questions.number +1}" th:if="${questions.hasNext()}"-->
+<!--                                   th:href="@{'/exam/editExam/__${id}__'(page=${questions.number + 1})}">-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="page-item">-->
+<!--                                <a class="page-link btnNext" th:href="@{'/exam/editExam/__${id}__'(page=${questions.number + 1})}"-->
+<!--                                   th:if="${questions.hasNext()}" aria-label="Next">-->
+<!--                                    <span aria-hidden="true">Sau</span>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </nav>-->
+<!--                </div>-->
+
             </div>
         </form>
     </div>
