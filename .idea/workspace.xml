@@ -23,9 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c48e2570-9f8d-4539-b9e9-4b9f191ad156" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/templates/question/createQuestion.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/controller/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/controller/QuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/model/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/model/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/java/vn/codegym/service/QuestionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/templates/exam/createExam.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/templates/exam/createExam.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/templates/question/editQuestion.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/templates/question/editQuestion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/templates/question/listQuestion.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-trac-nghiem/src/main/resources/templates/question/listQuestion.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +54,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -61,6 +73,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -70,13 +84,16 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web-trac-nghiem" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SpringBoot/MultipleChoiceQuiz/web-thi-trac-nghiem" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
@@ -93,12 +110,17 @@
       </method>
     </configuration>
     <configuration name="WebThiTracNghiemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="web-thi-trac-nghiem.main" />
+      <module name="vn.codegym.web-thi-trac-nghiem.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="vn.codegym.WebThiTracNghiemApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.WebThiTracNghiemApplication" />
+      <item itemvalue="Spring Boot.WebThiTracNghiemApplication (1)" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
@@ -118,9 +140,14 @@
       <workItem from="1631882043013" duration="112000" />
       <workItem from="1632234158110" duration="18000" />
       <workItem from="1632284583840" duration="2862000" />
-      <workItem from="1632287925613" duration="4677000" />
-      <workItem from="1632394424342" duration="1439000" />
-      <workItem from="1632397680443" duration="2273000" />
+      <workItem from="1632287925613" duration="4170000" />
+      <workItem from="1632392050661" duration="543000" />
+      <workItem from="1632401806153" duration="1229000" />
+      <workItem from="1632414250484" duration="115000" />
+      <workItem from="1632449190979" duration="4091000" />
+      <workItem from="1632475189952" duration="14070000" />
+      <workItem from="1632506292564" duration="1043000" />
+      <workItem from="1632532093684" duration="6160000" />
     </task>
     <servers />
   </component>
@@ -140,41 +167,58 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1632284722541">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1632402066792">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1632402066792" />
+    <state x="526" y="193" key="FileChooserDialogImpl" timestamp="1632495809965">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="526" y="193" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1632495809965" />
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1632284722541" />
-    <state width="1309" height="240" key="GridCell.Tab.0.bottom" timestamp="1632399978415">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="57" key="GridCell.Tab.0.bottom" timestamp="1632543815467">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1309" height="240" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1632399978415" />
-    <state width="1309" height="240" key="GridCell.Tab.0.center" timestamp="1632399978415">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="57" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632543815467" />
+    <state width="1271" height="254" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1632292672227" />
+    <state width="1323" height="57" key="GridCell.Tab.0.center" timestamp="1632543815467">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1309" height="240" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1632399978415" />
-    <state width="1309" height="240" key="GridCell.Tab.0.left" timestamp="1632399978415">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="57" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1632543815467" />
+    <state width="1271" height="254" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1632292672227" />
+    <state width="1323" height="57" key="GridCell.Tab.0.left" timestamp="1632543815467">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1309" height="240" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1632399978415" />
-    <state width="1309" height="240" key="GridCell.Tab.0.right" timestamp="1632399978415">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="57" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1632543815467" />
+    <state width="1271" height="254" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1632292672227" />
+    <state width="1323" height="57" key="GridCell.Tab.0.right" timestamp="1632543815467">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1309" height="240" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1632399978415" />
-    <state width="1309" height="240" key="GridCell.Tab.1.bottom" timestamp="1632399978415">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="57" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1632543815467" />
+    <state width="1271" height="254" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1632292672227" />
+    <state width="1323" height="57" key="GridCell.Tab.1.bottom" timestamp="1632543815468">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1309" height="240" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1632399978415" />
-    <state width="1309" height="240" key="GridCell.Tab.1.center" timestamp="1632399978415">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="57" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1632543815468" />
+    <state width="1271" height="254" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1632292672227" />
+    <state width="1323" height="57" key="GridCell.Tab.1.center" timestamp="1632543815467">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1309" height="240" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1632399978415" />
-    <state width="1309" height="240" key="GridCell.Tab.1.left" timestamp="1632399978415">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="57" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1632543815467" />
+    <state width="1271" height="254" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1632292672227" />
+    <state width="1323" height="57" key="GridCell.Tab.1.left" timestamp="1632543815467">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1309" height="240" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1632399978415" />
-    <state width="1309" height="240" key="GridCell.Tab.1.right" timestamp="1632399978415">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="57" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1632543815467" />
+    <state width="1271" height="254" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1632292672227" />
+    <state width="1323" height="57" key="GridCell.Tab.1.right" timestamp="1632543815468">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1309" height="240" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1632399978415" />
+    <state width="1323" height="57" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1632543815468" />
+    <state width="1271" height="254" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1632292672227" />
+    <state x="163" y="0" key="SettingsEditor" timestamp="1632402053473">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1632402053473" />
   </component>
 </project>

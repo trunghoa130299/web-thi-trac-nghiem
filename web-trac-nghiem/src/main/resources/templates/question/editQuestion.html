@@ -6,7 +6,10 @@
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <title>listExamQuestion</title>
+    <title>Trắc nghiệm Codegym</title>
+    <link rel = "icon" href =
+            "https://aztest.vn/uploads/news/2019/1_6.jpg"
+          type = "image/x-icon">
     <link href="../static/css/default-page.css" rel="stylesheet" th:href="@{/css/page1.css}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -18,7 +21,7 @@
 <div  th:insert="~{default-admin.html :: navbarAdmin}"></div>
 <div class="container-fluid " style="margin-bottom: 110px">
     <div class="h4 text-center mb-4">
-       Cật Nhật Câu Hỏi
+       Cập Nhật Câu Hỏi
     </div>
     <form style="max-width: 600px; margin: 0 auto; background-color: #d8f5ff;" th:action="@{/question/update}" th:object="${question}" method="post">
         <input th:type="hidden" name="id" th:field="*{quesId}">
@@ -62,16 +65,16 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Đề thi</label>
-                <div class="col-sm-8 pt-2">
-                    <div class="form-check form-check-inline">
-                        <select th:field="*{exams}">
-                            <option th:each="exam : ${exams}" th:value="${exam.id}" th:text="${exam.idName}"></option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="form-group row">-->
+<!--                <label class="col-sm-3 col-form-label">Đề thi</label>-->
+<!--                <div class="col-sm-8 pt-2">-->
+<!--                    <div class="form-check form-check-inline">-->
+<!--                        <select th:field="*{exams}">-->
+<!--                            <option th:each="exam : ${exams}" th:value="${exam.id}" th:text="${exam.idName}"></option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="text-center">
                 <button type="submit" class="btn m-2" style="background-color: #3bceff">Cật nhật</button>
                 <a href="/question/list" type="button" class="btn m-2 btn btn-primary" style="background-color: #3bceff">Quay về</a>

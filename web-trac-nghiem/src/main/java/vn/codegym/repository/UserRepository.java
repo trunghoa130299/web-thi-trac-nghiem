@@ -17,5 +17,8 @@ public interface  UserRepository  extends JpaRepository<User,String > {
     Integer findByTotalUser();
     @Query(value = "SELECT full_name FROM user order by id desc LIMIT 1;",nativeQuery = true)
     String findByNewUser();
-
+    @Query(value = "select pass_word\n" +
+            "from user\n" +
+            "where id =:id",nativeQuery = true)
+    String findByPass(@Param("id") String id);
 }

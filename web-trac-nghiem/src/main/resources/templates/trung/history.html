@@ -2,7 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lịch Sử</title>
+    <title>Trắc nghiệm Codegym</title>
+    <link rel = "icon" href =
+            "https://aztest.vn/uploads/news/2019/1_6.jpg"
+          type = "image/x-icon">
     <link rel="stylesheet" href="bootstrap413/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="datatables/css/dataTables.bootstrap4.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -23,26 +26,37 @@
 <div class="container">
     <div class="row card mt-5" style="border-color: #00BFFF">
         <div class="card-header col-lg-12" style="background: #00BFFF">
-            <label class="col-form-label">Lịch Sử</label>
+            <label class="col-form-label"><h4><strong>Lịch Sử</strong></h4></label>
         </div>
         <div class="p-2">
             <table class="table mt-3 table-striped" id="tableHistory">
                 <thead>
                 <tr style="background-color: deepskyblue">
                     <th>STT</th>
+<<<<<<< HEAD
                     <th>Mã Đề</th>
                     <th>Bài Thi</th>
+=======
+                    <th>Mã Đề Thi</th>
+                    <th>Tên Đề Thi</th>
+>>>>>>> fdea281c268636e071bc90ea4fa0746d4bd968ee
                     <th>Điểm Số</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="history,index : ${results}">
                     <td th:text="${index.index+1}"></td>
+<<<<<<< HEAD
 
                     <td th:text="${history.questions.idName}"></td>
 
                     <td th:text="${history.questions.nameExam}"></td>
 
+=======
+                    <td th:text="${history.questions.idName}"></td>
+<!--                    <td th:text="${history.questions.getTitle()}"></td>-->
+                    <td th:text="${history.questions.nameExam}"></td>
+>>>>>>> fdea281c268636e071bc90ea4fa0746d4bd968ee
                     <td th:text="${history.totalCorrect}"></td>
                 </tr>
                 </tbody>
