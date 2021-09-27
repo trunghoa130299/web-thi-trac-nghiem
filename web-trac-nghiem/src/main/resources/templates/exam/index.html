@@ -27,7 +27,7 @@
             color: white;
             float: right;
             margin-right: 20px;
-            font-size: 14px
+            font-size: 12px
         }</style>
     <!-- Bootstrap CSS -->
     <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">-->
@@ -70,6 +70,7 @@
         <div class="col-6">
             <div class="card-main">
                     <form class="card bg-dark py-5 px-4" action="" method="Get">
+                        <p style="text-align: center">Bài thi kiểm tra IQ</p>
                         <div sec:authorize="isAuthenticated()">
                           <input type="hidden"  th:value="${userName}" name="username" class="form-control" />
                         </div>
@@ -84,7 +85,7 @@
 
         <div class="col-md-3 col-sm-6">
             <div class="card-right" style="max-width: fit-content;" th:fragment="card-right">
-                <div class="card-header">Khách Hàng</div>
+
                 <div class="card-body">
                     <div class="card" style="max-width: 14rem;">
                         <div class="card-header">

@@ -24,7 +24,7 @@
             color: white;
             float: right;
             margin-right: 20px;
-            font-size: 14px
+            font-size: 12px
         }</style>
 </head>
 <body>
@@ -58,7 +58,7 @@
             <div th:switch="${userName}">
                 <div th:case="'admin'">
             <li class="nav-item ">
-                <a class="nav-link"  th:text="${userName=='admin' ?'Quản lí':''}" href="/user/list"><i class="fa fa-fw fa-globe"></i>Quản lí</a>
+                <a class="nav-link"  th:text="${userName=='admin' ?'Quản Lí':''}" href="/user/list"><i class="fa fa-fw fa-globe"></i>Quản lí</a>
             </li>
             </div>
             </div>
@@ -97,7 +97,7 @@
 
     <div class="col-md-6 col-sm-6" th:fragment="card-mid">
         <div class="container-fluid">
-            <p class="text-danger warning" th:if="${warning}" th:text="${warning}"></p>
+            <h4 class="text-danger warning" th:if="${warning}" th:text="${warning}"></h4>
             <div class="row">
                 <a class="mid_card card-block col-sm-12 col-lg-6 mb-2 rounded btn" th:href="@{/listExamSubject/__${toan}__}">
                     <img alt="Photo of math"

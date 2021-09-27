@@ -100,6 +100,7 @@ public class ExamController {
 
     @PostMapping("/exam/create")
     public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult){
+
         if (bindingResult.hasFieldErrors()){
             return "exam/createExam";
         }

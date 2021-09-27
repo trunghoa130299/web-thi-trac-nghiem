@@ -70,7 +70,7 @@ public class MainController {
     @GetMapping("/quiz1/{userName}")
     public String quiz (@PathVariable("userName") String username, Model m, RedirectAttributes ra) throws ParseException {
         if (username.equals("null") ) {
-            ra.addFlashAttribute("warning", "Bạn Phải đăng nhập ");
+            ra.addFlashAttribute("warning", "Vui Lòng Đăng nhập ");
             return "redirect:/";
         }
         submitted = false;
@@ -123,7 +123,7 @@ public class MainController {
     @GetMapping("/quiz11/{userName}/{id}")
     public String beforeQuiz(@PathVariable("userName") String username,@PathVariable("id") int id, RedirectAttributes ra){
         if (username.equals("null")) {
-            ra.addFlashAttribute("warning", "Bạn Đăng nhập ");
+            ra.addFlashAttribute("warning", "Vui Lòng Đăng nhập ");
             return "redirect:/default";
         }
         this.status = true;
