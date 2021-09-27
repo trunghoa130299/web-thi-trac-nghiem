@@ -14,13 +14,17 @@ public class Subject {
     @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
     private Set<Exam> exams;
 
+    @OneToMany(mappedBy = "subjects",cascade = CascadeType.ALL)
+    private Set<Question> questions;
+
     public Subject() {
     }
 
-    public Subject(Integer id, String name, Set<Exam> exams) {
+    public Subject(Integer id, String name, Set<Exam> exams, Set<Question> questions) {
         this.id = id;
         this.name = name;
         this.exams = exams;
+        this.questions = questions;
     }
 
     public Integer getId() {
@@ -45,5 +49,13 @@ public class Subject {
 
     public void setExams(Set<Exam> exams) {
         this.exams = exams;
+    }
+
+    public Set<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<Question> questions) {
+        this.questions = questions;
     }
 }

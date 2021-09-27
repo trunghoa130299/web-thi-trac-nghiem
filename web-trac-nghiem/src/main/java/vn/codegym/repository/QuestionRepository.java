@@ -20,9 +20,12 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
             nativeQuery = true)
     Page<Question> findAllByExams(@Param("id") int id, Pageable pageable);
 
-    @Query(value = "select * from question join exam_question on exam_question.ques_id = question.ques_id join exam on exam.id=exam_question.exam_id where exam.subject_id =:id ",nativeQuery = true)
+//    @Query(value = "select * from question join exam_question on exam_question.ques_id = question.ques_id join exam on exam.id=exam_question.exam_id where exam.subject_id =:id ",nativeQuery = true)
+    @Query(value = "select * from question where id_subject =:id ",nativeQuery = true)
     Page<Question> findAllBySubject(@Param("id") Optional<Integer> id, Pageable pageable);
 
     Page<Question> findAllByTitleContaining(String title, Pageable pageable);
+
+//    select * from question where id_subject =
 
 }

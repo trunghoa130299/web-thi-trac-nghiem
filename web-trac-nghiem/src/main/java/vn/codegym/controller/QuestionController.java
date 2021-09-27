@@ -13,6 +13,7 @@ import vn.codegym.model.Exam;
 import vn.codegym.model.Question;
 import vn.codegym.service.ExamService;
 import vn.codegym.service.QuestionService;
+import vn.codegym.service.SubjectService;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -20,7 +21,8 @@ import java.util.Optional;
 
 @Controller
 public class QuestionController {
-
+    @Autowired
+    private SubjectService subjectService;
     @Autowired
     private QuestionService questionService;
 
@@ -70,6 +72,7 @@ public class QuestionController {
     public String create(Model model) {
 //        ModelAndView modelAndView = new ModelAndView("question/createQuestion");
         model.addAttribute("question", new Question());
+        model.addAttribute("subjects", subjectService.findAll());
         return "question/createQuestion";
     }
 
