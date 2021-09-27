@@ -27,7 +27,7 @@
             color: white;
             float: right;
             margin-right: 20px;
-            font-size: 14px
+            font-size: 12px
         }</style>
     <!-- Bootstrap CSS -->
     <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">-->
@@ -64,7 +64,7 @@
         </div>
 
         <div class="col-6">
-            <p th:text="${warning}"></p>
+
             <table class="table table-striped table-bordered table-hover table-responsive-md">
                 <thead>
                 <tr style="background-color: #27c9ff;">
@@ -79,11 +79,8 @@
                 <tbody>
                 <tr th:each="exam,index : ${exams}">
                     <td th:text="${index.count}"></td>
-<<<<<<< HEAD
                     <td th:text="${exam.idName}"></td>
-=======
-                   <td th:text="${exam.idName}"></td>
->>>>>>> fdea281c268636e071bc90ea4fa0746d4bd968ee
+
                     <td th:text="${exam.nameExam}"></td>
                     <td class="text-center">
                         <a th:href="@{/quiz11/__${userName}__/__${exam.id}__}" class="btn btn-primary">Thi</a>
@@ -95,7 +92,7 @@
 
         <div class="col-md-3 col-sm-6">
             <div class="card-right" style="max-width: fit-content;" th:fragment="card-right">
-                <div class="card-header">Khách Hàng</div>
+
                 <div class="card-body">
                     <div class="card" style="max-width: 14rem;">
                         <div class="card-header">

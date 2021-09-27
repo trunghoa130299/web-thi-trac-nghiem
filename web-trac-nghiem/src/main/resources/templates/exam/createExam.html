@@ -17,6 +17,30 @@
 </head>
 <body>
 <div  th:insert="~{default-admin.html :: navbarAdmin}"></div>
+<<<<<<< HEAD
+<div class="container-fluid" style="margin-bottom: 150px">
+    <div class="h4 text-center mb-4">
+        <p id="de">       Tạo đề thi mới</p>
+    </div>
+    <form id="forms1" name="forms1" th:action="@{/exam/create}" class="d-flex justify-content-center">
+        <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="a()" th:value ="${subjectId}" th:name="subjectId">
+            <option value="" disabled selected> Chọn...</option>
+            <th:block class="dropdown-menu" th:each = "subject : ${subjects}">
+                <option class="dropdown-item" th:value="${subject.id}" th:text="${subject.name}"></option>
+            </th:block>
+        </select>
+    </form>
+
+    <form style="max-width: 1200px; margin: 0 auto; background-color: #d8f5ff;" th:action="@{/exam/create}" th:object="${exam}" method="post">
+        <div id="wrapFormExam">
+            <div class="border border-secondary rounded p-3 pt-5">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Mã đề thi</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{idName}" name="idName" id="idName" onchange="return validate()" required>
+                        <div th:if="${#fields.hasErrors('idName')}" th:errors="*{idName}" style="color: red" ></div>
+                        <span id="idNameError" style="color: red"></span>
+=======
     <div class="container-fluid" style="margin-bottom: 150px">
         <div class="h4 text-center mb-4">
             <p id="de">       Tạo đề thi mới</p>
@@ -40,40 +64,42 @@
                             <div th:if="${#fields.hasErrors('idName')}" th:errors="*{idName}" style="color: red" ></div>
                             <span id="idNameError" style="color: red"></span>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Môn học</label>
-                        <div class="col-sm-8 pt-2">
-                            <div class="form-check form-check-inline" th:each="subject : ${subjects}">
-                                <input class="form-check-input" type="radio" onblur="validate()"
-                                       th:value="${subject.id}" th:field="*{subject}" name="subject" id="subject"  required>
-                                <label class="form-check-label" th:value="${subject.id}"  th:text="${subject.name}"></label>
-                            </div>
-                            <div th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" style="color: red"></div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Tên đề thi</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{nameExam}" name="nameExam" id="nameExam" onblur="validate()" required>
-                            <div th:if="${#fields.hasErrors('nameExam')}" th:errors="*{nameExam}" style="color: red" ></div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Khối học</label>
-                        <div class="col-sm-8 pt-2">
-                            <div class="form-check form-check-inline" th:each="class : ${classes}">
-                                <input class="form-check-input" type="radio" onblur="validate()"
-                                       th:value="${class.id}" th:field="*{classes}" name="classes" id="classes" required>
-                                <label class="form-check-label" th:value="${class.id}"  th:text="${class.nameClass}"></label>
-                            </div>
-                            <div th:if="${#fields.hasErrors('classes')}" th:errors="*{classes}" style="color: red"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <button type="button" onclick="displayFormQuestion()"  class="btn btn-primary" id="btn-submit" name="btn-submit" disabled="disabled">Thêm Câu hỏi</button>
+>>>>>>> 70eda6e77d47b1b8afd58998e53bc2a03a8662be
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Môn học</label>
+                    <div class="col-sm-8 pt-2">
+                        <div class="form-check form-check-inline" th:each="subject : ${subjects}">
+                            <input class="form-check-input" type="radio" onblur="validate()"
+                                   th:value="${subject.id}" th:field="*{subject}" name="subject" id="subject"  required>
+                            <label class="form-check-label" th:value="${subject.id}"  th:text="${subject.name}"></label>
+                        </div>
+                        <div th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" style="color: red"></div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Tên đề thi</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{nameExam}" name="nameExam" id="nameExam" onblur="validate()" required>
+                        <div th:if="${#fields.hasErrors('nameExam')}" th:errors="*{nameExam}" style="color: red" ></div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Khối học</label>
+                    <div class="col-sm-8 pt-2">
+                        <div class="form-check form-check-inline" th:each="class : ${classes}">
+                            <input class="form-check-input" type="radio" onblur="validate()"
+                                   th:value="${class.id}" th:field="*{classes}" name="classes" id="classes" required>
+                            <label class="form-check-label" th:value="${class.id}"  th:text="${class.nameClass}"></label>
+                        </div>
+                        <div th:if="${#fields.hasErrors('classes')}" th:errors="*{classes}" style="color: red"></div>
+                    </div>
+                </div>
+<<<<<<< HEAD
+                <div>
+                    <button type="button" onclick="displayFormQuestion()"  class="btn btn-primary" id="btn-submit" name="btn-submit" disabled="disabled">Thêm Câu hỏi</button>
+=======
             </div>
 
             <div id="wrapFormQuestion" style="background-color: white">
@@ -114,66 +140,109 @@
                 <div class="text-center">
                     <button type="submit" class="btn m-2" style="background-color: #3bceff">Thêm</button>
                     <a href="/exam/create" class="btn btn-warning">Quay lại</a>
+>>>>>>> 70eda6e77d47b1b8afd58998e53bc2a03a8662be
                 </div>
-
-<!--                <div class="table-pagination d-flex justify-content-center">-->
-<!--                    <ul class="pagination">-->
-<!--                        <li class="page-item" th:class="${questions.number eq 0} ? 'disabled' : ''">-->
-<!--                            <a class="page-link" th:if="${questions.hasPrevious()}" th:href="@{'/exam/create'(page=${questions.number - 1},size=${questions.size})}">Trước</a>-->
-<!--                        </li>-->
-
-<!--                        <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, questions.totalPages - 1)}" th:class="${questions.number eq pageNo}? 'active' : ''">-->
-<!--                            <a class="page-link" th:if="${questions.number  eq pageNo}" href="javascript:void(0);">-->
-<!--                                <span th:text="${pageNo + 1}"></span>-->
-<!--                            </a>-->
-<!--                            <a class="page-link" th:if="${not (questions.number  eq pageNo)}" th:href="@{${'/exam/create'}(page=${pageNo},size=${questions.size})}">-->
-<!--                                <span th:text="${pageNo + 1}"></span>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                        <li class="page-item" th:class="${questions.number + 1 ge questions.totalPages} ? 'disabled' : ''">-->
-<!--                            <a class="page-link" th:if="${questions.hasNext()}" th:href="@{'/exam/create'(page=${questions.number + 1},size=${questions.size})}">Sau</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-
-<!--                <div class="d-flex justify-content-center">-->
-<!--                    <nav aria-label="Page navigation example">-->
-<!--                        <ul class="pagination">-->
-<!--                            <li class="page-item">-->
-<!--                                <a class="page-link btnPrevious" th:href="@{'/exam/create'(page=${questions.number - 1})}"-->
-<!--                                   th:if="${questions.hasPrevious()}" aria-label="Previous">-->
-<!--                                    <span aria-hidden="true">Trước</span>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="page-item">-->
-<!--                                <a class="page-link" th:text="${questions.number -1}" th:if="${questions.hasPrevious()}"-->
-<!--                                                     th:href="@{'/exam/create'(page=${questions.number - 1})}">-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="page-item active">-->
-<!--                                <a class="page-link" th:text="${questions.number}" th:href="@{'/exam/create'(page=${questions.number})}">-->
-
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="page-item">-->
-<!--                                <a class="page-link" th:text="${questions.number +1}" th:if="${questions.hasNext()}"-->
-<!--                                                     th:href="@{'/exam/create'(page=${questions.number + 1})}">-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="page-item">-->
-<!--                                <a class="page-link btnNext" th:href="@{'/exam/create'(page=${questions.number + 1})}"-->
-<!--                                   th:if="${questions.hasNext()}" aria-label="Next">-->
-<!--                                    <span aria-hidden="true">Sau</span>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </nav>-->
-<!--                </div>-->
-
-
             </div>
-        </form>
-    </div>
+        </div>
+
+        <div id="wrapFormQuestion" style="background-color: white">
+            <table class="table table-striped table-bordered table-hover table-responsive-md">
+                <thead style="    background-color: deepskyblue;">
+                <tr >
+                    <th>STT</th>
+                    <th>Câu hỏi</th>
+                    <th>Đáp án A</th>
+                    <th>Đáp án B</th>
+                    <th>Đáp án C</th>
+                    <th class="col-1">Đáp án</th>
+                    <th class="text-center">
+                        <i class="far fa-plus-square"></i>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="question ,i: ${question1}">
+                    <td th:text="${i.count}"></td>
+                    <td th:text="${question.title}"></td>
+                    <td th:text="${question.optionA}"></td>
+                    <td th:text="${question.optionB}"></td>
+                    <td th:text="${question.optionC}"></td>
+                    <td th:text="${question.ans}"></td>
+                    <td class="text-center">
+                        <div class="justify-content-center">
+                            <input type="checkbox" name="A" class="check"
+                                   th:value="${question.quesId}" th:field="*{questions}">
+                            <label class="form-check-label" th:value="${question.quesId}"></label>
+                            <div th:if="${#fields.hasErrors('questions')}" th:errors="*{questions}" style="color: red"></div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <button type="submit" class="btn m-2" style="background-color: #3bceff">Thêm</button>
+                <a href="/exam/create" class="btn btn-warning">Quay lại</a>
+            </div>
+
+            <!--                <div class="table-pagination d-flex justify-content-center">-->
+            <!--                    <ul class="pagination">-->
+            <!--                        <li class="page-item" th:class="${questions.number eq 0} ? 'disabled' : ''">-->
+            <!--                            <a class="page-link" th:if="${questions.hasPrevious()}" th:href="@{'/exam/create'(page=${questions.number - 1},size=${questions.size})}">Trước</a>-->
+            <!--                        </li>-->
+
+            <!--                        <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, questions.totalPages - 1)}" th:class="${questions.number eq pageNo}? 'active' : ''">-->
+            <!--                            <a class="page-link" th:if="${questions.number  eq pageNo}" href="javascript:void(0);">-->
+            <!--                                <span th:text="${pageNo + 1}"></span>-->
+            <!--                            </a>-->
+            <!--                            <a class="page-link" th:if="${not (questions.number  eq pageNo)}" th:href="@{${'/exam/create'}(page=${pageNo},size=${questions.size})}">-->
+            <!--                                <span th:text="${pageNo + 1}"></span>-->
+            <!--                            </a>-->
+            <!--                        </li>-->
+            <!--                        <li class="page-item" th:class="${questions.number + 1 ge questions.totalPages} ? 'disabled' : ''">-->
+            <!--                            <a class="page-link" th:if="${questions.hasNext()}" th:href="@{'/exam/create'(page=${questions.number + 1},size=${questions.size})}">Sau</a>-->
+            <!--                        </li>-->
+            <!--                    </ul>-->
+            <!--                </div>-->
+
+            <!--                <div class="d-flex justify-content-center">-->
+            <!--                    <nav aria-label="Page navigation example">-->
+            <!--                        <ul class="pagination">-->
+            <!--                            <li class="page-item">-->
+            <!--                                <a class="page-link btnPrevious" th:href="@{'/exam/create'(page=${questions.number - 1})}"-->
+            <!--                                   th:if="${questions.hasPrevious()}" aria-label="Previous">-->
+            <!--                                    <span aria-hidden="true">Trước</span>-->
+            <!--                                </a>-->
+            <!--                            </li>-->
+            <!--                            <li class="page-item">-->
+            <!--                                <a class="page-link" th:text="${questions.number -1}" th:if="${questions.hasPrevious()}"-->
+            <!--                                                     th:href="@{'/exam/create'(page=${questions.number - 1})}">-->
+            <!--                                </a>-->
+            <!--                            </li>-->
+            <!--                            <li class="page-item active">-->
+            <!--                                <a class="page-link" th:text="${questions.number}" th:href="@{'/exam/create'(page=${questions.number})}">-->
+
+            <!--                                </a>-->
+            <!--                            </li>-->
+            <!--                            <li class="page-item">-->
+            <!--                                <a class="page-link" th:text="${questions.number +1}" th:if="${questions.hasNext()}"-->
+            <!--                                                     th:href="@{'/exam/create'(page=${questions.number + 1})}">-->
+            <!--                                </a>-->
+            <!--                            </li>-->
+            <!--                            <li class="page-item">-->
+            <!--                                <a class="page-link btnNext" th:href="@{'/exam/create'(page=${questions.number + 1})}"-->
+            <!--                                   th:if="${questions.hasNext()}" aria-label="Next">-->
+            <!--                                    <span aria-hidden="true">Sau</span>-->
+            <!--                                </a>-->
+            <!--                            </li>-->
+            <!--                        </ul>-->
+            <!--                    </nav>-->
+            <!--                </div>-->
+
+
+        </div>
+    </form>
+</div>
 
 <div  th:insert="~{default-admin.html :: footer}"></div>
 
@@ -183,13 +252,13 @@
     function a(){
         document.getElementById('forms1').submit();
     }
-  // function  subchage(id){
-  //
-  //
-  //     if(id!=null){
-  //     document.getElementsByName("forms").action="/exam/create?subjectId="+id;
-  //     document.getElementById("forms").submit();}
-  // }
+    // function  subchage(id){
+    //
+    //
+    //     if(id!=null){
+    //     document.getElementsByName("forms").action="/exam/create?subjectId="+id;
+    //     document.getElementById("forms").submit();}
+    // }
     function displayFormExam() {
         document.getElementById("wrapFormExam").style.display = "block";
         document.getElementById("wrapFormQuestion").style.display = "none";
