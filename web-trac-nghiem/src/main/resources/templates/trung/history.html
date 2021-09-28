@@ -33,29 +33,16 @@
                 <thead>
                 <tr style="background-color: deepskyblue">
                     <th>STT</th>
-
-                    <th>Mã Đề</th>
-                    <th>Bài Thi</th>
                     <th>Mã Đề Thi</th>
                     <th>Tên Đề Thi</th>
-
                     <th>Điểm Số</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="history,index : ${results}">
                     <td th:text="${index.index+1}"></td>
-
-
                     <td th:text="${history.questions.idName}"></td>
-
                     <td th:text="${history.questions.nameExam}"></td>
-
-
-                    <td th:text="${history.questions.idName}"></td>
-<!--                    <td th:text="${history.questions.getTitle()}"></td>-->
-                    <td th:text="${history.questions.nameExam}"></td>
-
                     <td th:text="${history.totalCorrect}"></td>
                 </tr>
                 </tbody>

@@ -78,11 +78,8 @@
                 </thead>
                 <tbody>
                 <tr th:each="exam,index : ${exams}">
-
-
                     <td th:text="${index.count}"></td>
                     <td th:text="${exam.idName}"></td>
-
                     <td th:text="${exam.nameExam}"></td>
                     <td class="text-center">
                         <div th:if="${normal==1}">

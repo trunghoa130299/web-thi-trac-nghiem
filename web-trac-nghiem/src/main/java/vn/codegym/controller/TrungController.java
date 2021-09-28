@@ -108,9 +108,7 @@ public class    TrungController {
                            @RequestParam("oldPass") String oldPass, RedirectAttributes redirectAttributes){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String oldPass1 = passwordEncoder.encode(oldPass);
-        System.out.println(oldPass1);
         String oldPass2 = userService.findByPass(users.getId());
-        System.out.println(oldPass2);
         if (!oldPass1.equals(oldPass2)){
             model.addAttribute("messages","Mật Khẩu Không Đúng !");
         }

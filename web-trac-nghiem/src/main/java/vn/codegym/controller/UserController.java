@@ -12,12 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.model.User;
 import vn.codegym.service.UserService;
 
@@ -30,11 +28,11 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/user/list")
-    public String showList(Model model, @PageableDefault(value = 5) Pageable pageable){
+    public String showList(Model model, @PageableDefault(value = 5) Pageable pageable) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails){
+        if (principal instanceof UserDetails) {
             String userName = ((UserDetails) principal).getUsername();
-            model.addAttribute("userName",userName);
+            model.addAttribute("userName", userName);
         }
         Page<User> users = userService.findAll(pageable);
         model.addAttribute("users", users);
@@ -42,69 +40,80 @@ public class UserController {
     }
 
     @GetMapping("/user/create")
-    public String showCreateForm(Model model){
+    public String showCreateForm(Model model) {
         model.addAttribute("user", new User());
         return "user/create";
     }
 
     @PostMapping("/user/create")
     public String saveUser(@Validated @ModelAttribute("user") User user, BindingResult bindingResult) throws ParseException {
-        if (bindingResult.hasFieldErrors()){
+        if (bindingResult.hasFieldErrors()) {
             return "user/create";
-        }
-        else {
+        } else {
             userService.save(user);
             return "redirect:/user/list";
         }
     }
 
     @GetMapping("/user/editMember/{id}")
-    public String editMember(@PathVariable("id") String id, Model model)  {
+    public String editMember(@PathVariable("id") String id, Model model) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
         return "user/editMember";
     }
 
     @PostMapping("/user/update")
-    public String update(@Validated User user, BindingResult bindingResult){
-        if (bindingResult.hasFieldErrors()){
+    public String update(@Validated User user, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasFieldErrors()) {
             return "user/editMember";
-        }
-        else {
-            userService.save(user);
+        } else {
+            User user1 = userService.findById(user.getId());
+            user1.setFullName(user.getFullName());
+            user1.setEmail(user.getEmail());
+            user1.setAddress(user.getAddress());
+            user1.setPhoneNumber(user.getPhoneNumber());
+            userService.save(user1);
+            redirectAttributes.addFlashAttribute("message", "Cập Nhật Thành Công !");
             return "redirect:/user/list";
         }
     }
 
     @GetMapping("/user/delete/{id}")
-    public String delete(@PathVariable("id") String id){
+    public String delete(@PathVariable("id") String id) {
         User user = userService.findById(id);
         userService.delete(user);
         return "redirect:/user/list";
     }
 
     @GetMapping("/user/editPass/{id}")
-    public String editPass(@PathVariable("id") String id, Model model)  {
+    public String editPass(@PathVariable("id") String id, Model model) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
         return "user/editPass";
     }
 
     @PostMapping("/user/updatePass")
-    public String updatePass(@Valid @ModelAttribute  User user, BindingResult bindingResult, Model model){
-        if (user.getPassWord() != null && user.getRePassWord() != null){
-            if (!user.getPassWord().equals(user.getRePassWord())){
-                bindingResult.addError(new FieldError("user","rePassWord","Mật khẩu phải trùng nhau"));
+    public String updatePass(@Valid @ModelAttribute User user, BindingResult bindingResult, Model model,
+                             @RequestParam("oldPass") String oldPass,RedirectAttributes redirectAttributes) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String oldPass1 = passwordEncoder.encode(oldPass);
+        String oldPass2 = userService.findByPass(user.getId());
+        if (!oldPass1.equals(oldPass2)){
+            model.addAttribute("messages","Mật Khẩu Không Đúng !");
+        }
+        if (user.getPassWord() != null && user.getRePassWord() != null) {
+            if (!user.getPassWord().equals(user.getRePassWord())) {
+                bindingResult.addError(new FieldError("user", "rePassWord", "Mật khẩu phải trùng nhau"));
             }
         }
-        if (bindingResult.hasFieldErrors()){
+        if (bindingResult.hasFieldErrors()) {
             return "user/editPass";
         }
-            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            user.setPassWord(passwordEncoder.encode(user.getPassWord()));
-            user.setRePassWord(passwordEncoder.encode(user.getRePassWord()));
-            userService.save(user);
-            model.addAttribute("message","Cập Nhật Thành Công !");
-            return "user/editPass";
+        User user1 = userService.findById(user.getId());
+        user1.setPassWord(passwordEncoder.encode(user.getPassWord()));
+        user1.setRePassWord(passwordEncoder.encode(user.getRePassWord()));
+        userService.save(user1);
+        redirectAttributes.addFlashAttribute("message", "Cập Nhật Thành Công !");
+        return "redirect:/user/list";
     }
 }
