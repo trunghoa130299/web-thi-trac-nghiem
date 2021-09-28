@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.model.*;
 
 import vn.codegym.service.*;
@@ -99,12 +100,13 @@ public class ExamController {
     }
 
     @PostMapping("/exam/create")
-    public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult){
+    public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult, RedirectAttributes re){
 
         if (bindingResult.hasFieldErrors()){
             return "exam/createExam";
         }
         else {
+            re.addFlashAttribute("message", "Tạo đề thi thành công!");
             examService.save(exam);
             return "redirect:/exam/list";
         }
@@ -118,11 +120,12 @@ public class ExamController {
     }
 
     @PostMapping("/exam/update")
-    public String update(@Validated Exam exam, BindingResult bindingResult){
+    public String update(@Validated Exam exam, BindingResult bindingResult, RedirectAttributes re){
         if (bindingResult.hasFieldErrors()){
             return "exam/editExam";
         }
         else {
+            re.addFlashAttribute("message", "chỉnh sửa đề thi thành công!");
             examService.save(exam);
             return "redirect:/exam/list";
         }
