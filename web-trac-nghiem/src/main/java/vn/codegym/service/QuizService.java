@@ -73,17 +73,15 @@ public class QuizService {
     }
 
     public void saveScore(Result result) {
-<<<<<<< HEAD
+
         Result saveResult = new Result();
         saveResult.setUsername(result.getUsername());
         saveResult.setTotalCorrect(result.getTotalCorrect());
-
         rRepo.save(saveResult);
-=======
         result.getUsers().setResult(null);
         result.getQuestions().setUsers(null);
         rRepo.save(result);
->>>>>>> 5dfdc4309c6ce7c32196cb3e1a4476435f775ae2
+
     }
 
     public List<Result> getTopScore() {

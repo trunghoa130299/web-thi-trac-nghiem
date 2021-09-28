@@ -98,7 +98,7 @@ public class MainController {
         m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
         return "exam/quiz";
     }
-<<<<<<< HEAD
+
 //    @GetMapping("/quiz1/{userName}/{id}")
 //    public String quiz1 (@PathVariable("userName") String username,@PathVariable("id") int id, Model m, RedirectAttributes ra) throws ParseException {
 //        if (username.equals("null")) {
@@ -126,25 +126,34 @@ public class MainController {
 //        m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
 //        return "exam/quiz1";
 //    }
-@GetMapping("/quiz1/{userName}/{id}")
-public String quiz1 (@PathVariable("userName") String username,@PathVariable("id") int id, Model m, RedirectAttributes ra) throws ParseException {
-    if (username.equals("null")) {
-        ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
-        return "redirect:/";
-    }
-    submitted = false;
-    User user1 = userService.findById(username);
-    result.setUsername(username);
-    result.setUsers(user1);
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    if (this.status){
-        timer = new Date(System.currentTimeMillis());
-        timer.setMinutes(timer.getMinutes()+5);
-//            System.out.println(formatter.format(timer));
-        this.status = false;
-=======
+//@GetMapping("/quiz1/{userName}/{id}")
+//public String quiz1 (@PathVariable("userName") String username,@PathVariable("id") int id, Model m, RedirectAttributes ra) throws ParseException {
+//    if (username.equals("null")) {
+//        ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
+//        return "redirect:/";
+//    }
+//    submitted = false;
+//    User user1 = userService.findById(username);
+//    result.setUsername(username);
+//    result.setUsers(user1);
+//    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//    if (this.status){
+//        timer = new Date(System.currentTimeMillis());
+//        timer.setMinutes(timer.getMinutes()+5);
+////            System.out.println(formatter.format(timer));
+//        this.status = false;}
+//        QuestionForm qForm = qService.getQuestionss(id);
+//        m.addAttribute("qForm", qForm);
+//        List<Result> sList = qService.getTopScore();
+//        m.addAttribute("sList", sList);
+//        int total = userService.findByTotalUser();
+//        m.addAttribute("idExam",id);
+//        m.addAttribute("total", total);
+//        m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
+//        return "exam/quizTest";
+//    }
     @GetMapping("/quiz1/{userName}/{id}")
-    public String quiz1 (@PathVariable("userName") String username,@PathVariable("id") int id, Model m, RedirectAttributes ra) throws ParseException {
+    public String quiz13(@PathVariable("userName") String username,@PathVariable("id") int id, Model m, RedirectAttributes ra) throws ParseException {
         if (username.equals("null")) {
             ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
             return "redirect:/";
@@ -167,20 +176,12 @@ public String quiz1 (@PathVariable("userName") String username,@PathVariable("id
         m.addAttribute("sList", sList);
         int total = userService.findByTotalUser();
         m.addAttribute("total", total);
+            m.addAttribute("idExam",id);
         m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
-        return "exam/quiz1";
->>>>>>> 5dfdc4309c6ce7c32196cb3e1a4476435f775ae2
+        return "exam/quizTest";
+
     }
-    QuestionForm qForm = qService.getQuestionss(id);
-    m.addAttribute("qForm", qForm);
-    List<Result> sList = qService.getTopScore();
-    m.addAttribute("sList", sList);
-    int total = userService.findByTotalUser();
-m.addAttribute("idExam",id);
-    m.addAttribute("total", total);
-    m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
-    return "exam/quizTest";
-}
+
 
     @GetMapping("/quiz11/{userName}/{id}")
     public String beforeQuiz(@PathVariable("userName") String username,@PathVariable("id") int id, RedirectAttributes ra){
@@ -203,7 +204,7 @@ m.addAttribute("idExam",id);
         }
         return "exam/result";
     }
-<<<<<<< HEAD
+
 //    @PostMapping("/submit1")
 //    public String submit1 (@ModelAttribute QuestionForm qForm, Model m){
 //        this.status = true;
@@ -222,24 +223,25 @@ public String submit1 (@PathVariable(name = "id") int idExam,@ModelAttribute Que
     if (!submitted) {
         result.setTotalCorrect(qService.getResult(qForm));
         qService.saveScore(result);
+        result = new Result();
         m.addAttribute("qForm", qForm);
-        m.addAttribute("idExam",idExam);
+        m.addAttribute("idExam", idExam);
         submitted = true;
-=======
-    @PostMapping("/submit1")
-    public String submit1 (@ModelAttribute QuestionForm qForm, Model m){
-        this.status = true;
-        if (!submitted) {
-            result.setTotalCorrect(qService.getResult(qForm));
-            qService.saveScore(result);
-            result = new Result();
-            m.addAttribute("qForm", qForm);
-            submitted = true;
-        }
-
-        return "exam/result";
->>>>>>> 5dfdc4309c6ce7c32196cb3e1a4476435f775ae2
     }
+//    @PostMapping("/submit1")
+//    public String submit1 (@ModelAttribute QuestionForm qForm, Model m){
+//        this.status = true;
+//        if (!submitted) {
+//            result.setTotalCorrect(qService.getResult(qForm));
+//            qService.saveScore(result);
+//            result = new Result();
+//            m.addAttribute("qForm", qForm);
+//            submitted = true;
+//        }
+//
+//        return "exam/result";
+//
+//    }
 
     return "exam/resultTest";
 }
