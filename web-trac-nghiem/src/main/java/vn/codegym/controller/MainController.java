@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import vn.codegym.model.Exam;
 import vn.codegym.model.QuestionForm;
 import vn.codegym.model.Result;
 import vn.codegym.model.User;
+import vn.codegym.service.ExamService;
 import vn.codegym.service.QuizService;
 import vn.codegym.service.ResultService;
 import vn.codegym.service.UserService;
@@ -36,6 +38,9 @@ public class MainController {
 
     @Autowired
     ResultService rService;
+
+    @Autowired
+    ExamService examService;
 
     @ModelAttribute("result")
     public Result getResult() {
@@ -100,14 +105,15 @@ public class MainController {
             return "redirect:/";
         }
         submitted = false;
+        Exam exam = examService.findById(id);
         User user1 = userService.findById(username);
         result.setUsername(username);
         result.setUsers(user1);
+        result.setQuestions(exam);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         if (this.status){
             timer = new Date(System.currentTimeMillis());
             timer.setMinutes(timer.getMinutes()+5);
-//            System.out.println(formatter.format(timer));
             this.status = false;
         }
         QuestionForm qForm = qService.getQuestionss(id);
@@ -147,6 +153,7 @@ public class MainController {
         if (!submitted) {
             result.setTotalCorrect(qService.getResult(qForm));
             qService.saveScore(result);
+            result = new Result();
             m.addAttribute("qForm", qForm);
             submitted = true;
         }

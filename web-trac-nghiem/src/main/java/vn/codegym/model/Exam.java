@@ -33,7 +33,7 @@ public class Exam {
     @OneToMany(mappedBy = "exams")
     private List<TestExam> testExams;
 
-    @OneToMany(mappedBy = "questions")
+    @OneToMany(mappedBy = "questions", cascade = CascadeType.ALL)
     private List<Result> results;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
