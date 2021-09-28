@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.model.*;
 
 import vn.codegym.service.*;
@@ -99,11 +100,21 @@ public class ExamController {
     }
 
     @PostMapping("/exam/create")
+<<<<<<< HEAD
     public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult) {
+=======
+    public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult, RedirectAttributes re){
+>>>>>>> 5dfdc4309c6ce7c32196cb3e1a4476435f775ae2
 
         if (bindingResult.hasFieldErrors()) {
             return "exam/createExam";
+<<<<<<< HEAD
         } else {
+=======
+        }
+        else {
+            re.addFlashAttribute("message", "Tạo đề thi thành công!");
+>>>>>>> 5dfdc4309c6ce7c32196cb3e1a4476435f775ae2
             examService.save(exam);
             return "redirect:/exam/list";
         }
@@ -117,10 +128,19 @@ public class ExamController {
     }
 
     @PostMapping("/exam/update")
+<<<<<<< HEAD
     public String update(@Validated Exam exam, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
             return "exam/editExam";
         } else {
+=======
+    public String update(@Validated Exam exam, BindingResult bindingResult, RedirectAttributes re){
+        if (bindingResult.hasFieldErrors()){
+            return "exam/editExam";
+        }
+        else {
+            re.addFlashAttribute("message", "chỉnh sửa đề thi thành công!");
+>>>>>>> 5dfdc4309c6ce7c32196cb3e1a4476435f775ae2
             examService.save(exam);
             return "redirect:/exam/list";
         }

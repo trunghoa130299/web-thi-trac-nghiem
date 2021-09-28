@@ -17,6 +17,7 @@ public class Question {
     private String optionA;
     private String optionB;
     private String optionC;
+    private String optionD;
     private int ans;
     private int chose;
 
@@ -31,7 +32,8 @@ public class Question {
         super();
     }
 
-    public Question(int quesId, String title, String optionA, String optionB, String optionC, int ans, int chose, Subject subjects, List<Result> results) {
+    public Question(int quesId, String title, String optionA, String optionB, String optionC,String optionD ,int ans, int chose,
+                    Subject subjects, List<Result> results) {
         this.quesId = quesId;
         this.title = title;
         this.optionA = optionA;
@@ -41,6 +43,7 @@ public class Question {
         this.chose = chose;
         this.subjects = subjects;
         this.results = results;
+        this.optionD = optionD;
     }
 
     public int getQuesId() {
@@ -93,6 +96,14 @@ public class Question {
 
     public int getChose() {
         return chose;
+    }
+
+    public String getOptionD() {
+        return optionD;
+    }
+
+    public void setOptionD(String optionD) {
+        this.optionD = optionD;
     }
 
     public void setChose(int chose) {
