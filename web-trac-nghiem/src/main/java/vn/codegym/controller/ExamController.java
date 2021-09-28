@@ -15,6 +15,7 @@ import vn.codegym.model.*;
 
 import vn.codegym.service.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,17 +40,17 @@ public class ExamController {
     private QuestionService questionService;
 
     @ModelAttribute("subjects")
-    public Iterable<Subject> subjects(){
+    public Iterable<Subject> subjects() {
         return subjectService.findAll();
     }
 
     @ModelAttribute("classes")
-    public Iterable<Classes> classes(){
+    public Iterable<Classes> classes() {
         return classesService.findAll();
     }
 
     @ModelAttribute("questions")
-    public Iterable<Question> questions(){
+    public Iterable<Question> questions() {
         return questionService.findAll();
     }
 
@@ -61,19 +62,18 @@ public class ExamController {
     @GetMapping("/exam/list")
     public String showList(@RequestParam("subjectId") Optional<Integer> subjectId,
                            @RequestParam("keyword") Optional<String> name,
-                           Model model, @PageableDefault(value = 5) Pageable pageable){
+                           Model model, @PageableDefault(value = 5) Pageable pageable) {
         Page<Exam> exams;
         model.addAttribute("subjects", subjectService.findAll());
-        if (!name.isPresent()){
-            if (subjectId.isPresent()){
+        if (!name.isPresent()) {
+            if (subjectId.isPresent()) {
                 exams = examService.findAllBySubject(subjectId.get(), pageable);
                 model.addAttribute("exams", exams);
                 model.addAttribute("subjectId", subjectId.get());
                 return "exam/listExam";
             }
             exams = examService.findAll(pageable);
-        }
-        else {
+        } else {
             exams = examService.findAllByNameExamContaining(name.get(), pageable);
         }
         model.addAttribute("exams", exams);
@@ -81,11 +81,11 @@ public class ExamController {
     }
 
     @GetMapping("/exam/create")
-    public String showCreateForm(@RequestParam(value = "subjectId",required = false) Optional<Integer> subjectId,
+    public String showCreateForm(@RequestParam(value = "subjectId", required = false) Optional<Integer> subjectId,
                                  @RequestParam("keyword") Optional<String> title, Model model,
-                                 @PageableDefault(value = 100) Pageable pageable){
+                                 @PageableDefault(value = 100) Pageable pageable) {
         model.addAttribute("subjects", subjectService.findAll());
-        if (subjectId.isPresent()){
+        if (subjectId.isPresent()) {
             Page<Question> questions1 = questionService.findAllBySubject(subjectId, pageable);
             model.addAttribute("question1", questions1);
             model.addAttribute("exam", new Exam());
@@ -99,58 +99,111 @@ public class ExamController {
     }
 
     @PostMapping("/exam/create")
-    public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult){
+    public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult) {
 
-        if (bindingResult.hasFieldErrors()){
+        if (bindingResult.hasFieldErrors()) {
             return "exam/createExam";
-        }
-        else {
+        } else {
             examService.save(exam);
             return "redirect:/exam/list";
         }
     }
 
     @GetMapping("/exam/editExam/{id}")
-    public String editMember(@PathVariable("id") Integer id, Model model)  {
+    public String editMember(@PathVariable("id") Integer id, Model model) {
         Exam exam = examService.findById(id);
         model.addAttribute("exam", exam);
         return "exam/editExam";
     }
 
     @PostMapping("/exam/update")
-    public String update(@Validated Exam exam, BindingResult bindingResult){
-        if (bindingResult.hasFieldErrors()){
+    public String update(@Validated Exam exam, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
             return "exam/editExam";
-        }
-        else {
+        } else {
             examService.save(exam);
             return "redirect:/exam/list";
         }
     }
 
     @GetMapping("/exam/delete/{id}")
-    public String delete(@PathVariable("id") Integer id){
+    public String delete(@PathVariable("id") Integer id) {
         Exam exam = examService.findById(id);
         examService.delete(exam);
         return "redirect:/exam/list";
     }
 
+    //    @GetMapping("/listExamSubject/{id}")
+//    public String listExamSubject(@PathVariable int id, Model model, @PageableDefault(value = 5) Pageable pageable){
+//        Page<Exam> exams;
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        if (principal instanceof UserDetails){
+//            String userName = ((UserDetails) principal).getUsername();
+//            model.addAttribute("userName",userName);
+//        }
+//        List<Result> sList = rService.getTopFive();
+//        model.addAttribute("sList", sList);
+//        int total = userService.findByTotalUser();
+//        String newUser = userService.findByNewUser();
+//        model.addAttribute("total", total);
+//        model.addAttribute("newUser",newUser);
+//        exams = examService.findAllBySubject(id,pageable);
+//        model.addAttribute("exams", exams);
+//        return "listExamSubject";
+//    }
     @GetMapping("/listExamSubject/{id}")
-    public String listExamSubject(@PathVariable int id, Model model, @PageableDefault(value = 5) Pageable pageable){
+    public String listExamSubject(@PathVariable int id, Model model, @PageableDefault(value = 5) Pageable pageable) {
         Page<Exam> exams;
+        String userName = "null";
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails){
-            String userName = ((UserDetails) principal).getUsername();
-            model.addAttribute("userName",userName);
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails) principal).getUsername();
+            model.addAttribute("userName", userName);
         }
+        String newUser = userService.findByNewUser();
+        List<Result> results = null;
+        int normal = 0;
+        if (userName.equals("null")) {
+            normal++;
+        } else {
+            results = rService.findByHistory(userName);
+        }
+        exams = examService.findAllBySubject(id, pageable);
+        List<Integer> arrayNumber = new ArrayList<>();
+        int dem = 0;
+        if (results != null) {
+            for (Exam exam : exams) {
+                for (Result result : results) {
+                    if (exam.getId() == result.getQuestions().getId()) {
+                        dem++;
+                    }
+                }
+                arrayNumber.add(dem);
+                dem = 0;
+
+            }
+        }
+//        int flag = 0;
+//        for (Integer integer : arrayNumber) {
+//            if (integer == 0) {
+//                flag++;
+//            }
+//        }
+//        if (flag > 3) {
+//            model.addAttribute("flag", flag);
+//        } else {
+//            model.addAttribute("flag", 0);
+//        }
         List<Result> sList = rService.getTopFive();
         model.addAttribute("sList", sList);
         int total = userService.findByTotalUser();
-        String newUser = userService.findByNewUser();
         model.addAttribute("total", total);
-        model.addAttribute("newUser",newUser);
-        exams = examService.findAllBySubject(id,pageable);
+        model.addAttribute("newUser", newUser);
+
         model.addAttribute("exams", exams);
+        model.addAttribute("normal", normal);
+        model.addAttribute("arrayNumber", arrayNumber);
+        model.addAttribute("listIdExam", results);
         return "listExamSubject";
     }
 }

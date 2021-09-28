@@ -93,32 +93,60 @@ public class MainController {
         m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
         return "exam/quiz";
     }
-    @GetMapping("/quiz1/{userName}/{id}")
-    public String quiz1 (@PathVariable("userName") String username,@PathVariable("id") int id, Model m, RedirectAttributes ra) throws ParseException {
-        if (username.equals("null")) {
-            ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
-            return "redirect:/";
-        }
-        submitted = false;
-        User user1 = userService.findById(username);
-        result.setUsername(username);
-        result.setUsers(user1);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        if (this.status){
-            timer = new Date(System.currentTimeMillis());
-            timer.setMinutes(timer.getMinutes()+5);
-//            System.out.println(formatter.format(timer));
-            this.status = false;
-        }
-        QuestionForm qForm = qService.getQuestionss(id);
-        m.addAttribute("qForm", qForm);
-        List<Result> sList = qService.getTopScore();
-        m.addAttribute("sList", sList);
-        int total = userService.findByTotalUser();
-        m.addAttribute("total", total);
-        m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
-        return "exam/quiz1";
+//    @GetMapping("/quiz1/{userName}/{id}")
+//    public String quiz1 (@PathVariable("userName") String username,@PathVariable("id") int id, Model m, RedirectAttributes ra) throws ParseException {
+//        if (username.equals("null")) {
+//            ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
+//            return "redirect:/";
+//        }
+//        submitted = false;
+//        User user1 = userService.findById(username);
+//        result.setUsername(username);
+//        result.setUsers(user1);
+//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        if (this.status){
+//            timer = new Date(System.currentTimeMillis());
+//            timer.setMinutes(timer.getMinutes()+5);
+////            System.out.println(formatter.format(timer));
+//            this.status = false;
+//        }
+//        QuestionForm qForm = qService.getQuestionss(id);
+//        m.addAttribute("qForm", qForm);
+//        List<Result> sList = qService.getTopScore();
+//        m.addAttribute("sList", sList);
+//        int total = userService.findByTotalUser();
+//
+//        m.addAttribute("total", total);
+//        m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
+//        return "exam/quiz1";
+//    }
+@GetMapping("/quiz1/{userName}/{id}")
+public String quiz1 (@PathVariable("userName") String username,@PathVariable("id") int id, Model m, RedirectAttributes ra) throws ParseException {
+    if (username.equals("null")) {
+        ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
+        return "redirect:/";
     }
+    submitted = false;
+    User user1 = userService.findById(username);
+    result.setUsername(username);
+    result.setUsers(user1);
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    if (this.status){
+        timer = new Date(System.currentTimeMillis());
+        timer.setMinutes(timer.getMinutes()+5);
+//            System.out.println(formatter.format(timer));
+        this.status = false;
+    }
+    QuestionForm qForm = qService.getQuestionss(id);
+    m.addAttribute("qForm", qForm);
+    List<Result> sList = qService.getTopScore();
+    m.addAttribute("sList", sList);
+    int total = userService.findByTotalUser();
+m.addAttribute("idExam",id);
+    m.addAttribute("total", total);
+    m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
+    return "exam/quizTest";
+}
 
     @GetMapping("/quiz11/{userName}/{id}")
     public String beforeQuiz(@PathVariable("userName") String username,@PathVariable("id") int id, RedirectAttributes ra){
@@ -141,24 +169,43 @@ public class MainController {
         }
         return "exam/result";
     }
-    @PostMapping("/submit1")
-    public String submit1 (@ModelAttribute QuestionForm qForm, Model m){
-        this.status = true;
-        if (!submitted) {
-            result.setTotalCorrect(qService.getResult(qForm));
-            qService.saveScore(result);
-            m.addAttribute("qForm", qForm);
-            submitted = true;
-        }
-
-        return "exam/result";
+//    @PostMapping("/submit1")
+//    public String submit1 (@ModelAttribute QuestionForm qForm, Model m){
+//        this.status = true;
+//        if (!submitted) {
+//            result.setTotalCorrect(qService.getResult(qForm));
+//            qService.saveScore(result);
+//            m.addAttribute("qForm", qForm);
+//            submitted = true;
+//        }
+//
+//        return "exam/result";
+//    }
+@PostMapping("/submit1/{id}")
+public String submit1 (@PathVariable(name = "id") int idExam,@ModelAttribute QuestionForm qForm, Model m){
+    this.status = true;
+    if (!submitted) {
+        result.setTotalCorrect(qService.getResult(qForm));
+        qService.saveScore(result);
+        m.addAttribute("qForm", qForm);
+        m.addAttribute("idExam",idExam);
+        submitted = true;
     }
 
-    @GetMapping("/score")
-    public String score (Model m){
-        List<Result> sList = qService.getTopScore();
-        m.addAttribute("sList", sList);
+    return "exam/resultTest";
+}
 
+//    @GetMapping("/score")
+//    public String score (Model m){
+//        List<Result> sList = qService.getTopScore();
+//        m.addAttribute("sList", sList);
+//        return "exam/scoreboard";
+//    }
+
+    @GetMapping("/score/{id}")
+    public String score (@PathVariable(name = "id") int idExam,Model m){
+        List<Result> sList = qService.getTopScoreByExam(idExam);
+        m.addAttribute("sList", sList);
         return "exam/scoreboard";
     }
     @GetMapping("/listInformation")
