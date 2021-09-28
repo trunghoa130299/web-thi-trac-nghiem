@@ -73,10 +73,9 @@ int fag=10;
     }
 
     public void saveScore(Result result) {
-        Result saveResult = new Result();
-        saveResult.setUsername(result.getUsername());
-        saveResult.setTotalCorrect(result.getTotalCorrect());
-        rRepo.save(saveResult);
+        result.getUsers().setResult(null);
+        result.getQuestions().setUsers(null);
+        rRepo.save(result);
     }
 
     public List<Result> getTopScore() {
