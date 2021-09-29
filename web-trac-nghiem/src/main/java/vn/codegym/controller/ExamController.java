@@ -13,14 +13,16 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.model.*;
-
 import vn.codegym.service.*;
 
+import javax.servlet.http.Cookie;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
+@SessionAttributes("question")
 public class ExamController {
     @Autowired
     UserService userService;
@@ -60,6 +62,11 @@ public class ExamController {
 //        return questionService.findAll(pageable);
 //    }
 
+    @ModelAttribute("question")
+    public HashMap<Long, Question> setExam() {
+        return new HashMap<Long, Question>();
+    }
+
     @GetMapping("/exam/list")
     public String showList(@RequestParam("subjectId") Optional<Integer> subjectId,
                            @RequestParam("keyword") Optional<String> name,
@@ -82,9 +89,9 @@ public class ExamController {
     }
 
     @GetMapping("/exam/create")
-    public String showCreateForm(@RequestParam(value = "subjectId", required = false) Optional<Integer> subjectId,
-                                 @RequestParam("keyword") Optional<String> title, Model model,
-                                 @PageableDefault(value = 100) Pageable pageable) {
+    public String showCreateForm(@RequestParam(value = "subjectId", required = false) Optional<Integer> subjectId, Model model,
+                                 @CookieValue(value = "setQuestion", defaultValue = "") String setQuestion, @PageableDefault(value = 100) Pageable pageable) {
+
         model.addAttribute("subjects", subjectService.findAll());
         if (subjectId.isPresent()) {
             Page<Question> questions1 = questionService.findAllBySubject(subjectId, pageable);
@@ -95,16 +102,13 @@ public class ExamController {
         }
         model.addAttribute("subjects", subjectService.findAll());
         model.addAttribute("exam", new Exam());
+        Cookie cookie = new Cookie("setQuestion", setQuestion);
+        model.addAttribute("cookieValue", cookie);
         return "exam/createExam";
-
     }
 
     @PostMapping("/exam/create")
-
-
     public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult, RedirectAttributes re) {
-
-
         if (bindingResult.hasFieldErrors()) {
             return "exam/createExam";
 
@@ -160,6 +164,7 @@ public class ExamController {
 //        model.addAttribute("exams", exams);
 //        return "listExamSubject";
 //    }
+    
     @GetMapping("/listExamSubject/{id}")
     public String listExamSubject(@PathVariable int id, Model model, @PageableDefault(value = 5) Pageable pageable) {
         Page<Exam> exams;

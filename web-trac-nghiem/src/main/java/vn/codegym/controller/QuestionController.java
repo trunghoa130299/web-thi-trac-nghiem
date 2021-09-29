@@ -57,7 +57,10 @@ public class QuestionController {
     }
 
     @PostMapping("/question/update")
-    public String update(Question question){
+    public String update(@Valid Question question, BindingResult bindingResult){
+        if (bindingResult.hasFieldErrors()) {
+            return "question/editQuestion";
+        }
         questionService.save(question);
         return "redirect:/question/list";
     }

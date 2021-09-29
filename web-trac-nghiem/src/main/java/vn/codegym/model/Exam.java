@@ -26,7 +26,6 @@ public class Exam {
     @JoinColumn(name = "subject_id", referencedColumnName = "id")
     private Subject subject;
 
-
     @OneToMany(mappedBy = "exams")
     private List<TestExam> testExams;
 

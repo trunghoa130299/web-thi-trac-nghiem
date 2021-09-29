@@ -3,6 +3,8 @@ package vn.codegym.model;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Set;
 
@@ -13,12 +15,25 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int quesId;
+
+    @NotBlank(message = "Câu hỏi không được để trống.")
     private String title;
+
+    @NotBlank(message = "Câu trả lời không được để trống.")
     private String optionA;
+
+    @NotBlank(message = "Câu trả lời không được để trống.")
     private String optionB;
+
+    @NotBlank(message = "Câu trả lời không được để trống.")
     private String optionC;
+
+    @NotBlank(message = "Câu trả lời không được để trống.")
     private String optionD;
+
     private int ans;
+
+    @NotNull(message = "Đáp án không được để trống.")
     private int chose;
 
     @ManyToOne(targetEntity = Subject.class)
