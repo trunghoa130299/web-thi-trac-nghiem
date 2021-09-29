@@ -102,14 +102,13 @@ public class ExamController {
     @PostMapping("/exam/create")
 
 
-    public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult, RedirectAttributes re){
+    public String saveExam(@Validated @ModelAttribute("exam") Exam exam, BindingResult bindingResult, RedirectAttributes re) {
 
 
         if (bindingResult.hasFieldErrors()) {
             return "exam/createExam";
 
-        }
-        else {
+        } else {
             re.addFlashAttribute("message", "Tạo đề thi thành công!");
 
             examService.save(exam);
@@ -125,11 +124,10 @@ public class ExamController {
     }
 
     @PostMapping("/exam/update")
-    public String update(@Validated Exam exam, BindingResult bindingResult, RedirectAttributes re){
-        if (bindingResult.hasFieldErrors()){
+    public String update(@Validated Exam exam, BindingResult bindingResult, RedirectAttributes re) {
+        if (bindingResult.hasFieldErrors()) {
             return "exam/editExam";
-        }
-        else {
+        } else {
             re.addFlashAttribute("message", "chỉnh sửa đề thi thành công!");
 
             examService.save(exam);
