@@ -45,10 +45,8 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;
 
-    @OneToMany(mappedBy = "users")
-    private List<Exam> exams;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
     private List<TestExam> testExams;
 
     @OneToOne(mappedBy = "users", cascade = CascadeType.ALL)
@@ -70,7 +68,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.img = img;
         this.roles = roles;
-        this.exams = exams;
+
         this.testExams = testExams;
         this.result = result;
     }
@@ -147,13 +145,7 @@ public class User {
         this.roles = roles;
     }
 
-    public List<Exam> getExams() {
-        return exams;
-    }
 
-    public void setExams(List<Exam> exams) {
-        this.exams = exams;
-    }
 
     public List<TestExam> getTestExams() {
         return testExams;

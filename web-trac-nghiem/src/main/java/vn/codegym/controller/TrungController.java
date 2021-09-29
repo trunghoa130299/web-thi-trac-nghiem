@@ -61,6 +61,9 @@ public class    TrungController {
     @GetMapping(value = "/view/{userName}")
     public String showMemberView(@PathVariable String userName, Model model){
         User user = userService.findById(userName);
+        if(user.getImg()==null){
+            user.setImg("anh2.jpg");
+        }
         model.addAttribute("users",user);
         return "trung/view";
     }

@@ -79,7 +79,7 @@ public class QuizService {
         saveResult.setTotalCorrect(result.getTotalCorrect());
         rRepo.save(saveResult);
         result.getUsers().setResult(null);
-        result.getQuestions().setUsers(null);
+
         rRepo.save(result);
 
     }

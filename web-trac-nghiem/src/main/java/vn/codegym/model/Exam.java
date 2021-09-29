@@ -26,9 +26,6 @@ public class Exam {
     @JoinColumn(name = "subject_id", referencedColumnName = "id")
     private Subject subject;
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "users_id", referencedColumnName = "id")
-    private User users;
 
     @OneToMany(mappedBy = "exams")
     private List<TestExam> testExams;
@@ -53,13 +50,13 @@ public class Exam {
         this.subject = subject;
     }
 
-    public Exam(int id, String idName, String nameExam, Classes classes, Subject subject, User users, List<TestExam> testExams, List<Question> questions) {
+    public Exam(int id, String idName, String nameExam, Classes classes, Subject subject,  List<TestExam> testExams, List<Question> questions) {
         this.id = id;
         this.idName = idName;
         this.nameExam = nameExam;
         this.classes = classes;
         this.subject = subject;
-        this.users = users;
+
         this.testExams = testExams;
         this.questions = questions;
     }
@@ -104,13 +101,7 @@ public class Exam {
         this.subject = subject;
     }
 
-    public User getUsers() {
-        return users;
-    }
 
-    public void setUsers(User users) {
-        this.users = users;
-    }
 
     public List<TestExam> getTestExams() {
         return testExams;
@@ -128,13 +119,13 @@ public class Exam {
         this.questions = questions;
     }
 
-    public Exam(int id, @NotBlank() @Pattern(regexp = "^MD-[\\d]{4}$", message = "Mã đề thì phải là định dạng MD-XXXX(XXXX là số)") String idName, @NotBlank() String nameExam, Classes classes, Subject subject, User users, List<TestExam> testExams, List<Result> results, List<Question> questions) {
+    public Exam(int id, @NotBlank() @Pattern(regexp = "^MD-[\\d]{4}$", message = "Mã đề thì phải là định dạng MD-XXXX(XXXX là số)") String idName, @NotBlank() String nameExam, Classes classes, Subject subject, List<TestExam> testExams, List<Result> results, List<Question> questions) {
         this.id = id;
         this.idName = idName;
         this.nameExam = nameExam;
         this.classes = classes;
         this.subject = subject;
-        this.users = users;
+
         this.testExams = testExams;
         this.results = results;
         this.questions = questions;

@@ -38,7 +38,7 @@
 
                 <form action="/exam/list" method="get">
                     <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="this.form.submit()" th:value ="${subjectId}" th:name="subjectId">
-                        <option value="" disabled selected> Chọn...</option>
+                        <option value="" disabled > Chọn...</option>
                         <th:block class="dropdown-menu" th:each = "subject : ${subjects}">
                             <option class="dropdown-item" th:value="${subject.id}" th:text="${subject.name}"></option>
                         </th:block>

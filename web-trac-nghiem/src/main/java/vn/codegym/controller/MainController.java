@@ -205,18 +205,18 @@ public class MainController {
         return "exam/result";
     }
 
-//    @PostMapping("/submit1")
-//    public String submit1 (@ModelAttribute QuestionForm qForm, Model m){
-//        this.status = true;
-//        if (!submitted) {
-//            result.setTotalCorrect(qService.getResult(qForm));
-//            qService.saveScore(result);
-//            m.addAttribute("qForm", qForm);
-//            submitted = true;
-//        }
-//
-//        return "exam/result";
-//    }
+    @PostMapping("/submit1")
+    public String submit1quiz (@ModelAttribute QuestionForm qForm, Model m){
+        this.status = true;
+        if (!submitted) {
+            result.setTotalCorrect(qService.getResult(qForm));
+            qService.saveScore(result);
+            m.addAttribute("qForm", qForm);
+            submitted = true;
+        }
+
+        return "exam/result";
+    }
 @PostMapping("/submit1/{id}")
 public String submit1 (@PathVariable(name = "id") int idExam,@ModelAttribute QuestionForm qForm, Model m){
     this.status = true;
@@ -225,7 +225,7 @@ public String submit1 (@PathVariable(name = "id") int idExam,@ModelAttribute Que
         qService.saveScore(result);
         result = new Result();
         m.addAttribute("qForm", qForm);
-        m.addAttribute("idExam", idExam);
+        m.addAttribute("idExam", idExam); m.addAttribute("no",1);
         submitted = true;
     }
 //    @PostMapping("/submit1")
