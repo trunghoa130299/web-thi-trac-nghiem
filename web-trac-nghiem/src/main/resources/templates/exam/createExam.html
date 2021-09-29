@@ -27,10 +27,14 @@
         <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff" onchange="a()" th:value ="${subjectId}" th:name="subjectId">
             <option value="" disabled selected> Chọn...</option>
             <th:block class="dropdown-menu" th:each = "subject : ${subjects}">
-                <option class="dropdown-item" th:value="${subject.id}" th:text="${subject.name}"></option>
+                <option class="dropdown-item" th:selected="${subject.id==subjectId}" th:value="${subject.id}" th:text="${subject.name}"></option>
             </th:block>
         </select>
-    </form></div>
+    </form>
+
+
+
+    </div>
 
     <form style="max-width: 1200px; margin: 0 auto; background-color: #d8f5ff;" th:action="@{/exam/create}" th:object="${exam}" method="post">
         <div id="wrapFormExam">

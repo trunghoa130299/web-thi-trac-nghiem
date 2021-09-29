@@ -167,7 +167,7 @@ public class MainController {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         if (this.status){
             timer = new Date(System.currentTimeMillis());
-            timer.setMinutes(timer.getMinutes()+5);
+            timer.setMinutes(timer.getMinutes()+1);
             this.status = false;
         }
         QuestionForm qForm = qService.getQuestionss(id);
