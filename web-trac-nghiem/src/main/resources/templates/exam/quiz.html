@@ -39,30 +39,30 @@
 
             <div class="option">
                 <input type="radio" th:name="|questions[${i.index}].chose|" th:value="1" />
-                <p th:text="${ques.optionA}"></p>
+                <p th:text="|A. ${ques.optionA}|"></p>
             </div>
 
             <div class="option">
                 <input type="radio" th:name="|questions[${i.index}].chose|" th:value="2" />
-                <p th:text="${ques.optionB}"></p>
+                <p th:text="|B. ${ques.optionB}|"></p>
             </div>
 
             <div class="option">
                 <input type="radio" th:name="|questions[${i.index}].chose|" th:value="3" />
-                <p th:text="${ques.optionC}"></p>
+                <p th:text="|C. ${ques.optionC}|"></p>
             </div>
             <div class="option">
                 <input type="radio" th:name="|questions[${i.index}].chose|" th:value="4" />
-                <p th:text="${ques.optionD}"></p>
+                <p th:text="|D. ${ques.optionD}|"></p>
             </div>
             <input type="hidden" th:name="|questions[${i.index}].quesId|" th:value="${ques.quesId}" />
             <input type="hidden" th:name="|questions[${i.index}].title|" th:value="${ques.title}" />
             <input type="hidden" th:name="|questions[${i.index}].ans|" th:value="${ques.ans}" />
             <p class="alert alert-danger d-none" th:id="${'alert' + i.index}" role="alert">
-                Hãy chọn một đáp án!!!
+                Hãy chọn một đáp án
             </p>
         </div>
-
+        <input type="hidden" id="time" value="1">
         <button type="submit" class="btn btn-info d-block mx-auto mt-4" >Nộp bài</button>
     </form>
 </div>
@@ -96,48 +96,53 @@
 
             if (seconds <= 0 && minutes <= 0){
                 clearInterval(timer);
+                document.getElementById("time").value = 0;
                 $('#formQuestion').submit();
             }
         }
         $("#formQuestion").submit(function (event) {
             // event.preventDefault();
-            let isSubmit = true;
-            let listQuestion = $('.ques-box');
-            for(let i=0; i<listQuestion.length; i++){
-                let answer = listQuestion[i].childNodes;
-                let statusCheck = false;
-                for (let k=0; k<answer.length; k++){
-                    let check = true;
-                    if (answer[k].nodeName === 'DIV'){
-                        let option = answer[k].childNodes;
-                        for(let j=0; j<option.length; j++){
-                            if (option[j].nodeName === 'INPUT'){
-                                if (option[j].checked === true){
-                                    break;
+            var time = document.getElementById("time").value;
+            if (time == 0) {
+                return true;
+            } else {
+                let isSubmit = true;
+                let listQuestion = $('.ques-box');
+                for (let i = 0; i < listQuestion.length; i++) {
+                    let answer = listQuestion[i].childNodes;
+                    let statusCheck = false;
+                    for (let k = 0; k < answer.length; k++) {
+                        let check = true;
+                        if (answer[k].nodeName === 'DIV') {
+                            let option = answer[k].childNodes;
+                            for (let j = 0; j < option.length; j++) {
+                                if (option[j].nodeName === 'INPUT') {
+                                    if (option[j].checked === true) {
+                                        break;
+                                    }
+                                    check = false;
                                 }
-                                check = false;
+                            }
+                            if (check) {
+                                statusCheck = true;
+                                break;
                             }
                         }
-                        if (check){
-                            statusCheck = true;
-                            break;
-                        }
                     }
+                    if (!statusCheck) {
+                        listQuestion[i].querySelector('#alert' + i).classList.add('d-block')
+                        listQuestion[i].querySelector('#alert' + i).classList.remove('d-none')
+                        isSubmit = false;
+                    } else {
+                        listQuestion[i].querySelector('#alert' + i).classList.remove('d-block')
+                        listQuestion[i].querySelector('#alert' + i).classList.add('d-none')
+                    }
+                    statusCheck = true;
                 }
-                if (!statusCheck){
-                    listQuestion[i].querySelector('#alert' + i).classList.add('d-block')
-                    listQuestion[i].querySelector('#alert' + i).classList.remove('d-none')
-                    isSubmit = false;
-                }else{
-                    listQuestion[i].querySelector('#alert' + i).classList.remove('d-block')
-                    listQuestion[i].querySelector('#alert' + i).classList.add('d-none')
+                if (!isSubmit) {
+                    event.preventDefault();
                 }
-                statusCheck = true;
-            }
-            if (!isSubmit){
-                event.preventDefault();
-            }
-        })
+            }})
 
         let timer = setInterval(function () {
             countdown();
