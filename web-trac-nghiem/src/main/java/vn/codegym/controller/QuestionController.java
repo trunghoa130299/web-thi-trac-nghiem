@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.model.Exam;
 import vn.codegym.model.Question;
 import vn.codegym.service.ExamService;
@@ -57,11 +58,12 @@ public class QuestionController {
     }
 
     @PostMapping("/question/update")
-    public String update(@Valid Question question, BindingResult bindingResult){
+    public String update(@Valid Question question, BindingResult bindingResult, RedirectAttributes ra){
         if (bindingResult.hasFieldErrors()) {
             return "question/editQuestion";
         }
         questionService.save(question);
+        ra.addFlashAttribute("message","sửa thành công");
         return "redirect:/question/list";
     }
 
@@ -80,15 +82,17 @@ public class QuestionController {
     }
 
     @PostMapping("/question/create")
-    public String save(@Valid @ModelAttribute Question question, BindingResult bindingResult, Model model) {
+    public String save(@Valid @ModelAttribute Question question, BindingResult bindingResult, Model model, RedirectAttributes ra) {
 //        if (questionService.existById(id) {
 //            bindingResult.addError(new FieldError("question", "id", "Cau hoi đã tồn tại"));
 //        }
 
         if (bindingResult.hasFieldErrors()) {
+            model.addAttribute("subjects", subjectService.findAll());
             return "question/createQuestion";
         }
         questionService.save(question);
+        ra.addFlashAttribute("message","Thêm thành công");
         return "redirect:/question/list";
     }
 }

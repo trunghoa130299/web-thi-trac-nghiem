@@ -23,6 +23,12 @@
     <div class="h4 text-center mb-4">
        Cập Nhật Câu Hỏi
     </div>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert" th:if="${message}">
+        <strong th:text="${message}"></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <form style="max-width: 600px; margin: 0 auto; background-color: #d8f5ff;" th:action="@{/question/update}" th:object="${question}" method="post">
         <input th:type="hidden" name="id" th:field="*{quesId}">
         <div class="border border-secondary rounded p-3 pt-5">
@@ -52,19 +58,33 @@
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Đáp án C</label>
                 <div class="col-sm-8 pt-2">
-
                         <input type="text" class="form-control" th:field="*{optionC}">
-
                 </div>
             </div>
+<!--            <div class="form-group row">-->
+<!--                <label class="col-sm-3 col-form-label">Câu trả lời đúng</label>-->
+<!--                <div class="col-sm-8 pt-2">-->
+
+<!--                        <input type="text" class="form-control" th:field="*{ans}">-->
+
+<!--                </div>-->
+<!--            </div>-->
+
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Câu trả lời đúng</label>
+                <label class="col-sm-3 col-form-label" style="font-weight: bold">Đáp án đúng</label>
                 <div class="col-sm-8 pt-2">
-
-                        <input type="text" class="form-control" th:field="*{ans}">
-
+                    <div class="form-check form-check-inline">
+                        <select class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #14c4ff"th:field="*{ans}">
+                            <option th:selected="${question.ans==1}" value="1">Đáp án A</option>
+                            <option th:selected="${question.ans==2}"  value="2">Đáp án B</option>
+                            <option th:selected="${question.ans==3}"   value="3">Đáp án C</option>
+                            <option th:selected="${question.ans==4}"  value="4">Đáp án D</option>
+                        </select>
+                    </div>
                 </div>
             </div>
+
+
 <!--            <div class="form-group row">-->
 <!--                <label class="col-sm-3 col-form-label">Đề thi</label>-->
 <!--                <div class="col-sm-8 pt-2">-->
@@ -75,6 +95,7 @@
 <!--                    </div>-->
 <!--                </div>-->
 <!--            </div>-->
+
             <div class="text-center">
                 <button type="submit" class="btn m-2" style="background-color: #3bceff">Cập nhật</button>
                 <a href="/question/list" type="button" class="btn m-2 btn btn-primary" style="background-color: #3bceff">Quay về</a>

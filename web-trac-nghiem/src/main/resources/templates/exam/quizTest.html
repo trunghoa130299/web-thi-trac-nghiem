@@ -35,6 +35,7 @@
 
     <form th:action="@{/submit1/{id}(id=${idExam})}" method="POST" th:object="${qForm}" id="formQuestion">
         <input type="hidden" th:value="${idExam}" id="idExam">
+        <input type="hidden" th:value="${userName}" id="nameuser">
         <div class="ques-box bg-dark text-light" th:each="ques, i: ${qForm.questions}">
             <p class="title" th:text="${'Câu '+i.count+': '+ ques.title}"></p>
 
@@ -161,12 +162,42 @@
     //         + '<span class="h1 font-weight-bold">%S</span> Sec'));
     //     console.log('<span class="h1 font-weight-bold">%M</span> Min');
     // });
-    // window.onbeforeunload = function(e) {
-    //     var idExam=document.getElementById("idExam").value;
-    //     if(window.location.pathname.localeCompare('/submit1/'+idExam)!=-1){
-    //         return 'Bạn đang thi vui lòng hoàn thành bài thi';
+
+        //
+        // $(window).bind("beforeunload", function (event) {
+        //     var id = document.getElementById("idExam").value;
+        //     var user = document.getElementById("nameuser").value;
+        //     var str= "/submit1/"+id;
+        //     var str1= "/quiz1/"+user+"/"+id;
+        // if (window.location.pathname != str && window.location.pathname!=str1 ) {
+        //         return "You have unsaved changes";
+        // }else {
+        //     window.onbeforeunload=false;
+        // }
+        //
+        // });
+    // window.onbeforeunload = function() {
+    //     var id = document.getElementById("idExam").value;
+    //     var user = document.getElementById("nameuser").value;
+    //     var str= "/submit1/"+id;
+    //     var str1= "/quiz1/"+user+"/"+id;
+    //     if (window.location.pathname != str && window.location.pathname!=str1 ) {
+    //         return 'Do you really want to discard all your data?';
     //     }
-    // };
+    // }
+
+
+    // $('#a_exit').on("click", function(){
+    //     $(window).unbind('beforeunload');
+    // });
+    // window.addEventListener('beforeunload', (event) => {
+    //     // Cancel the event as stated by the standard.
+    //     event.preventDefault();
+    //     // Chrome requires returnValue to be set.
+    //     event.returnValue = 'Dữ liệu sẽ không lưu nếu bạn rời đi anh ơi anh ở lại';
+    // });
+
+
 </script>
 
 

@@ -74,6 +74,7 @@ public class MainController {
 
     @GetMapping("/quiz1/{userName}")
     public String quiz (@PathVariable("userName") String username, Model m, RedirectAttributes ra) throws ParseException {
+        status=true;
         if (username.equals("null") ) {
             ra.addFlashAttribute("warning", "Vui Lòng Đăng nhập ");
             return "redirect:/";
