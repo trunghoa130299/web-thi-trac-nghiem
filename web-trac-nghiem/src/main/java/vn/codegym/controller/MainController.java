@@ -100,59 +100,7 @@ public class MainController {
         return "exam/quiz";
     }
 
-//    @GetMapping("/quiz1/{userName}/{id}")
-//    public String quiz1 (@PathVariable("userName") String username,@PathVariable("id") int id, Model m, RedirectAttributes ra) throws ParseException {
-//        if (username.equals("null")) {
-//            ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
-//            return "redirect:/";
-//        }
-//        submitted = false;
-//        User user1 = userService.findById(username);
-//        result.setUsername(username);
-//        result.setUsers(user1);
-//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        if (this.status){
-//            timer = new Date(System.currentTimeMillis());
-//            timer.setMinutes(timer.getMinutes()+5);
-////            System.out.println(formatter.format(timer));
-//            this.status = false;
-//        }
-//        QuestionForm qForm = qService.getQuestionss(id);
-//        m.addAttribute("qForm", qForm);
-//        List<Result> sList = qService.getTopScore();
-//        m.addAttribute("sList", sList);
-//        int total = userService.findByTotalUser();
-//
-//        m.addAttribute("total", total);
-//        m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
-//        return "exam/quiz1";
-//    }
-//@GetMapping("/quiz1/{userName}/{id}")
-//public String quiz1 (@PathVariable("userName") String username,@PathVariable("id") int id, Model m, RedirectAttributes ra) throws ParseException {
-//    if (username.equals("null")) {
-//        ra.addFlashAttribute("warning", "Bạn Phải Nhập Tên ");
-//        return "redirect:/";
-//    }
-//    submitted = false;
-//    User user1 = userService.findById(username);
-//    result.setUsername(username);
-//    result.setUsers(user1);
-//    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//    if (this.status){
-//        timer = new Date(System.currentTimeMillis());
-//        timer.setMinutes(timer.getMinutes()+5);
-////            System.out.println(formatter.format(timer));
-//        this.status = false;}
-//        QuestionForm qForm = qService.getQuestionss(id);
-//        m.addAttribute("qForm", qForm);
-//        List<Result> sList = qService.getTopScore();
-//        m.addAttribute("sList", sList);
-//        int total = userService.findByTotalUser();
-//        m.addAttribute("idExam",id);
-//        m.addAttribute("total", total);
-//        m.addAttribute("futureDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatter.format(timer)));
-//        return "exam/quizTest";
-//    }
+
     @GetMapping("/quiz1/{userName}/{id}")
     public String quiz13(@PathVariable("userName") String username,@PathVariable("id") int id, Model m, RedirectAttributes ra) throws ParseException {
         if (username.equals("null")) {
@@ -168,7 +116,7 @@ public class MainController {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         if (this.status){
             timer = new Date(System.currentTimeMillis());
-            timer.setMinutes(timer.getMinutes()+1);
+            timer.setMinutes(timer.getMinutes()+2);
             this.status = false;
         }
         QuestionForm qForm = qService.getQuestionss(id);

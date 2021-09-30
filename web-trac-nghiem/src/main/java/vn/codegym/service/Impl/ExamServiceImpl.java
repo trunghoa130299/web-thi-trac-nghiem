@@ -6,13 +6,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import vn.codegym.model.Exam;
 import vn.codegym.repository.ExamRepository;
+import vn.codegym.repository.ResultRepository;
 import vn.codegym.service.ExamService;
+
+import java.util.Collections;
 
 @Service
 public class ExamServiceImpl implements ExamService {
     @Autowired
     private ExamRepository examRepository;
-
+    @Autowired
+    private ResultRepository resultRepository;
     @Override
     public Page<Exam> findAll(Pageable pageable) {
         return examRepository.findAll(pageable);
@@ -37,6 +41,11 @@ public class ExamServiceImpl implements ExamService {
     public void delete(Exam exam) {
         examRepository.delete(exam);
     }
+
+//    @Override
+//    public void deletebyExam(int id) {
+//        resultRepository.deleteAllByExam(id);
+//    }
 
     @Override
     public Page<Exam> findAllBySubject(int id, Pageable pageable) {

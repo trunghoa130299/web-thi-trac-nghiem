@@ -133,18 +133,23 @@ public class ExamController {
             return "exam/editExam";
         } else {
             re.addFlashAttribute("message", "chỉnh sửa đề thi thành công!");
-
             examService.save(exam);
             return "redirect:/exam/list";
         }
     }
 
     @GetMapping("/exam/delete/{id}")
-    public String delete(@PathVariable("id") Integer id) {
+    public String delete(@PathVariable("id") Integer id, RedirectAttributes re) {
         Exam exam = examService.findById(id);
+//        examService.deletebyExam(id);
+        List<Result> result = rService.finResultByIdExam(id);
+        if(result.size()!=0){
+            re.addFlashAttribute("message", "Không được xoá đề thi đã thi rồi!");
+            return "redirect:/exam/list";
+        }else {
         examService.delete(exam);
         return "redirect:/exam/list";
-    }
+    }}
 
     //    @GetMapping("/listExamSubject/{id}")
 //    public String listExamSubject(@PathVariable int id, Model model, @PageableDefault(value = 5) Pageable pageable){

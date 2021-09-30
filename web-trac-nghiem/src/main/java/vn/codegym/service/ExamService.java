@@ -16,6 +16,7 @@ public interface ExamService {
     void save(Exam exam);
 
     void delete(Exam exam);
+//    void deletebyExam(int id);
 
     Page<Exam> findAllBySubject(int id, Pageable pageable);
 

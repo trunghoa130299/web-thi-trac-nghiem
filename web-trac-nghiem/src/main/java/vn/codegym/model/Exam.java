@@ -26,7 +26,7 @@ public class Exam {
     @JoinColumn(name = "subject_id", referencedColumnName = "id")
     private Subject subject;
 
-    @OneToMany(mappedBy = "exams")
+    @OneToMany(mappedBy = "exams", cascade = CascadeType.ALL)
     private List<TestExam> testExams;
 
     @OneToMany(mappedBy = "questions", cascade = CascadeType.ALL)

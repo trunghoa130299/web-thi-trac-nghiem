@@ -83,17 +83,17 @@
             <td th:text="${exam.nameExam}"></td>
             <td th:text="${exam.subject.name}"></td>
             <td th:text="${exam.classes.nameClass}"></td>
-            <td class="text-center">
+            <td class="text-center" >
                 <a th:href="@{/exam/editExam/{id}(id=${exam.getId()})}"><i class="fas fa-edit text-primary"></i></a>
                 <a th:href="@{/exam/delete/{id}(id=${exam.getId()})}" id="deleteButton"><i
                         class="far fa-trash-alt text-danger"></i></a>
-            </td>
+            </td >
             <!--                <td class="text-center">-->
             <!--                    <a href="/listQuestInExam" class="btn btn-primary">Câu hỏi</a>-->
             <!--                </td>-->
         </tr>
         </tbody>
-    </table>
+    </table >
 </div>
 
 <!--    <div class="table-pagination d-flex justify-content-center">-->

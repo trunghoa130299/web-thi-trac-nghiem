@@ -73,7 +73,7 @@
 </div>
 
 
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center" style="margin-bottom: 100px">
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item">
@@ -125,7 +125,7 @@
                 </a>
             </li>
             <li class="page-item">
-                <a class="page-link btnNext" th:href="@{'/question/list'(page=${questions.totalPages-1})}">
+                <a class="page-link btnNext" th:href="@{'/question/list'(page=${questions.totalPages })}">
 <!--                   th:if="${!questions.hasNext()}" aria-label="Trang Cuoi">-->
                     <span aria-hidden="true">Trang Cuối</span>
                 </a>

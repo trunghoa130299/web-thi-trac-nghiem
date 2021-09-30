@@ -28,5 +28,7 @@ public interface ResultRepository extends JpaRepository<Result, Integer> {
 
     @Query(value = "SELECT * FROM web_thuc_tap.result where id_exam= :idExam order by total_correct desc", nativeQuery = true)
     List<Result> findTopByExam(@Param("idExam") int idExam);
+    @Query(value = "SELECT * FROM result where id_exam = :id ", nativeQuery = true)
+    List<Result> finResultByIdExam(@Param("id") int id);
 
 }

@@ -6,6 +6,7 @@ import vn.codegym.model.Result;
 import vn.codegym.repository.ResultRepository;
 import vn.codegym.service.ResultService;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -32,4 +33,13 @@ public class ResultServiceImpl implements ResultService {
     public Object findAvg(String id) {
         return resultRepository.findAvg(id);
     }
+
+    @Override
+    public List<Result> finResultByIdExam(int id) {
+        return resultRepository.finResultByIdExam(id);
+    }
+
+
+
+
 }

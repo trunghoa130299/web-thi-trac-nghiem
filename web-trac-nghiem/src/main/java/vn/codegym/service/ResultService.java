@@ -12,4 +12,5 @@ public interface ResultService {
     Object findSum(String id);
 
     Object findAvg(String id);
+   List<Result> finResultByIdExam(int id);
 }
