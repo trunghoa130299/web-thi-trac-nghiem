@@ -68,9 +68,10 @@ public class QuestionController {
     }
 
     @GetMapping("/question/delete/{id}")
-    public String delete(@PathVariable("id") Integer id){
+    public String delete(@PathVariable("id") Integer id,RedirectAttributes ra){
         Question question = questionService.findById(id);
         questionService.delete(question);
+        ra.addFlashAttribute("message","Xóa thành công");
         return "redirect:/question/list";
     }
     @GetMapping("/question/create")
